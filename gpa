@@ -1,9 +1,12 @@
 // PEASY 
+
 import peasy.test.*;
 import peasy.org.apache.commons.math.*;
 import peasy.*;
 import peasy.org.apache.commons.math.geometry.*;
+
 import processing.opengl.*;
+
 import saito.objloader.*;
 // --PEASY 
 
@@ -38,15 +41,22 @@ ArrayList<OBJModel> listModel;
 ArrayList<PVector> listModelPos;
 ArrayList<Float> listModelRot;
 
+float[] rotOr = new float[4];
+
 BoundingBox bbox;
 
 int a;
 
-String[] rotOr = { "0", "90", "180", "360" };
+
 
 void setup() {
 
   size(1200,800,OPENGL);
+  
+  rotOr[0]= -PI;
+  rotOr[1]= PI/2;
+  rotOr[2]= PI;
+  rotOr[3]= 2*PI;
   
   //camera(300, 300, 300, 0, 0, 0.0, 0.0, 0, -1.0);
   
@@ -62,20 +72,25 @@ void setup() {
   listModelRot = new ArrayList<Float>();
   
   a = 700;
+
+  
   
   //On charge et "add" des models
   for(int i=0; i<3; i++) { //On decide arbitrairement d'en ajouter 3 de chaque
-    listModel.add(new OBJModel(this, "chaiseA1.obj", "relative", POLYGON));
-    listModel.add(new OBJModel(this, "chaiseB1.obj", "relative", QUADS));
-    listModel.add(new OBJModel(this, "chaiseC1.obj", "relative", QUADS));
+    listModel.add(new OBJModel(this, "chair1.obj", "relative", POLYGON));
+    listModel.add(new OBJModel(this, "chair2.obj", "relative", POLYGON));
+    listModel.add(new OBJModel(this, "chair3.obj", "relative", POLYGON));
+    listModel.add(new OBJModel(this, "chair4.obj", "relative", POLYGON));
     
+
+
   }
   
   
   //On parse (parcoure la liste, du premier au dernier objet) la liste, et on defini la position et la rotation specifique à l'objet en question 
   for(int i=0; i<listModel.size(); i++) {
     listModel.get(i).enableDebug();
-    listModel.get(i).scale(0.1);
+    listModel.get(i).scale(100);
     listModel.get(i).translateToCenter();
     
     //pos
@@ -84,7 +99,7 @@ void setup() {
 
     //pos
 
-    listModelRot.add(random(rotOr.length));
+    listModelRot.add(rotOr.get(int(random(3)))); 
   }
   
 }
@@ -92,11 +107,11 @@ void setup() {
 
 void draw() {
   
-  background(0);
+  background(255);
       
   //lights();
-  fill(255);
-  box(a, a, 1);
+  fill(100);
+  box(a, a, 40);
   
   // On parse la liste pour l'affichage
   for(int i=0; i<listModel.size(); i++) {
@@ -112,6 +127,8 @@ void draw() {
       listModel.get(i).draw();
     popMatrix();
   }
+  
+  
   
 }
 

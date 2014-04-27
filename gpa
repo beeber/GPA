@@ -1,0 +1,117 @@
+// PEASY 
+import peasy.test.*;
+import peasy.org.apache.commons.math.*;
+import peasy.*;
+import peasy.org.apache.commons.math.geometry.*;
+import processing.opengl.*;
+import saito.objloader.*;
+// --PEASY 
+
+
+/*
+To Do
+A) Orga en classe
+  1) Creer une classe qui regroupe OBJModel, PVector (position), et float (rot)
+  2) Afficher 1 objet
+  3) Creer un ArrayList de cette nouvelle classe
+
+B) Meilleur camera
+  1) Decouvrire la librairie pcam (ou peasy ou peasycam....) jouer avec les ex
+  2) Instancier une peasycam dans ton sketch, verifier que tu peux tourner à la souris
+  
+C) Meilleur affichage
+  1) Vois comment charger les textures pour les OBJModel
+  
+D) Rotation
+  1) Constraindre la rotation à 4 angles orthogonaux
+  
+E) Translation
+  1) Interdire les superpositions (en clair, tester si un objet et déjà à la place de la ou tu veux afficher le suivant)
+  
+*/
+
+// PEASY 
+PeasyCam cam;
+//-- PEASY 
+
+ArrayList<OBJModel> listModel;
+ArrayList<PVector> listModelPos;
+ArrayList<Float> listModelRot;
+
+BoundingBox bbox;
+
+int a;
+
+String[] rotOr = { "0", "90", "180", "360" };
+
+void setup() {
+
+  size(1200,800,OPENGL);
+  
+  //camera(300, 300, 300, 0, 0, 0.0, 0.0, 0, -1.0);
+  
+  // PEASY 
+  cam = new PeasyCam(this, 0, 0, 0, 500); // valeur de base du point visé (x,y,z, distance)
+  cam.setMinimumDistance(500); // distance minimal et maximal de la cam par rapport au model
+  cam.setMaximumDistance(5000);
+  // --PEASY 
+  
+  //On cree les trois List pour les trois refs
+  listModel = new ArrayList<OBJModel>();
+  listModelPos = new ArrayList<PVector>();
+  listModelRot = new ArrayList<Float>();
+  
+  a = 700;
+  
+  //On charge et "add" des models
+  for(int i=0; i<3; i++) { //On decide arbitrairement d'en ajouter 3 de chaque
+    listModel.add(new OBJModel(this, "chaiseA1.obj", "relative", POLYGON));
+    listModel.add(new OBJModel(this, "chaiseB1.obj", "relative", QUADS));
+    listModel.add(new OBJModel(this, "chaiseC1.obj", "relative", QUADS));
+    
+  }
+  
+  
+  //On parse (parcoure la liste, du premier au dernier objet) la liste, et on defini la position et la rotation specifique à l'objet en question 
+  for(int i=0; i<listModel.size(); i++) {
+    listModel.get(i).enableDebug();
+    listModel.get(i).scale(0.1);
+    listModel.get(i).translateToCenter();
+    
+    //pos
+    BoundingBox bbox = new BoundingBox(this, listModel.get(i) );
+    listModelPos.add(new PVector(random(-a/2,a/2),random(-a/2,a/2),bbox.getWHD().z));
+
+    //pos
+
+    listModelRot.add(random(rotOr.length));
+  }
+  
+}
+
+
+void draw() {
+  
+  background(0);
+      
+  //lights();
+  fill(255);
+  box(a, a, 1);
+  
+  // On parse la liste pour l'affichage
+  for(int i=0; i<listModel.size(); i++) {
+    pushMatrix();
+      //On le bouge à sa place
+      translate(listModelPos.get(i).x, listModelPos.get(i).y, listModelPos.get(i).z);
+      rotateZ(listModelRot.get(i));
+      rotateX(-PI/2); // remettre droit
+      
+      //On dessine
+      fill(255);
+      noStroke();
+      listModel.get(i).draw();
+    popMatrix();
+  }
+  
+}
+

@@ -1,0 +1,28 @@
+import saito.objloader.*;
+
+class Chair{
+  PVector position;
+  float rotation;
+  OBJModel model;
+  BoundingBox bbox;
+  String type;
+  
+  //méthode constructeur
+  Chair(PApplet parent, String fileName, PVector position, float rotation){
+    this.position = position;
+    this.rotation = rotation;
+    
+    
+    
+    model = new OBJModel(parent, fileName, "relative", POLYGON);
+    model.enableDebug();
+    model.enableTexture();
+    model.scale(100);
+    model.translateToCenter();
+    
+    bbox = new BoundingBox(parent, model);
+    this.position.z = bbox.getWHD().z;
+   
+  }
+ 
+} // fin class

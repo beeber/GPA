@@ -1,134 +1,100 @@
-// PEASY 
-
 import peasy.test.*;
 import peasy.org.apache.commons.math.*;
 import peasy.*;
 import peasy.org.apache.commons.math.geometry.*;
-
 import processing.opengl.*;
-
 import saito.objloader.*;
-// --PEASY 
+import controlP5.*;
+
+ControlP5 buttonCon; // déclare mes buttons
+PeasyCam cam; // déclare ma caméra
 
 
-/*
-To Do
-A) Orga en classe
-  1) Creer une classe qui regroupe OBJModel, PVector (position), et float (rot)
-  2) Afficher 1 objet
-  3) Creer un ArrayList de cette nouvelle classe
-
-B) Meilleur camera
-  1) Decouvrire la librairie pcam (ou peasy ou peasycam....) jouer avec les ex
-  2) Instancier une peasycam dans ton sketch, verifier que tu peux tourner à la souris
-  
-C) Meilleur affichage
-  1) Vois comment charger les textures pour les OBJModel
-  
-D) Rotation
-  1) Constraindre la rotation à 4 angles orthogonaux
-  
-E) Translation
-  1) Interdire les superpositions (en clair, tester si un objet et déjà à la place de la ou tu veux afficher le suivant)
-  
-*/
-
-// PEASY 
-PeasyCam cam;
-//-- PEASY 
-
-ArrayList<OBJModel> listModel;
-ArrayList<PVector> listModelPos;
-ArrayList<Float> listModelRot;
-
-float[] rotOr = new float[4];
-
+//ArrayList<Furniture> furnitures;
+ArrayList<Chair> chairs;
 BoundingBox bbox;
 
-int a;
-
-
+float[] rotOr = new float[4]; // tableau rotation orthogonale
+int a; // valeur box 
 
 void setup() {
-
   size(1200,800,OPENGL);
-  
+
+  // GUI creation d'un bouton randomizer
+  buttonCon = new ControlP5(this);
+      buttonCon.addBang("randomizer")
+       .setPosition(width-100,height-100 )
+       .setSize(50, 50)
+       ;
+       buttonCon.setAutoDraw(false); // pour eviter que le button soit inscrit dans le mouvement de caméra
+
+  // rotation orthogonale
   rotOr[0]= -PI;
   rotOr[1]= PI/2;
   rotOr[2]= PI;
   rotOr[3]= 2*PI;
-  
-  //camera(300, 300, 300, 0, 0, 0.0, 0.0, 0, -1.0);
-  
-  // PEASY 
+
+  // PEASYcam
   cam = new PeasyCam(this, 0, 0, 0, 500); // valeur de base du point visé (x,y,z, distance)
   cam.setMinimumDistance(500); // distance minimal et maximal de la cam par rapport au model
   cam.setMaximumDistance(5000);
-  // --PEASY 
-  
-  //On cree les trois List pour les trois refs
-  listModel = new ArrayList<OBJModel>();
-  listModelPos = new ArrayList<PVector>();
-  listModelRot = new ArrayList<Float>();
-  
+  cam.rotateX(-45); // positionnement de la cam au début
+  cam.setYawRotationMode(); // contrainte rotation caméra
+
+  // taille boite fond
   a = 700;
 
-  
-  
-  //On charge et "add" des models
-  for(int i=0; i<3; i++) { //On decide arbitrairement d'en ajouter 3 de chaque
-    listModel.add(new OBJModel(this, "chair1.obj", "relative", POLYGON));
-    listModel.add(new OBJModel(this, "chair2.obj", "relative", POLYGON));
-    listModel.add(new OBJModel(this, "chair3.obj", "relative", POLYGON));
-    listModel.add(new OBJModel(this, "chair4.obj", "relative", POLYGON));
-    
-
-
-  }
-  
-  
-  //On parse (parcoure la liste, du premier au dernier objet) la liste, et on defini la position et la rotation specifique à l'objet en question 
-  for(int i=0; i<listModel.size(); i++) {
-    listModel.get(i).enableDebug();
-    listModel.get(i).scale(100);
-    listModel.get(i).translateToCenter();
-    
-    //pos
-    BoundingBox bbox = new BoundingBox(this, listModel.get(i) );
-    listModelPos.add(new PVector(random(-a/2,a/2),random(-a/2,a/2),bbox.getWHD().z));
-
-    //pos
-
-    listModelRot.add(rotOr.get(int(random(3)))); 
-  }
-  
-}
-
+ seed(); // crée une nouvelle seed générative au lancement de la scène
+} 
 
 void draw() {
-  
-  background(255);
-      
-  //lights();
-  fill(100);
+  background(0); 
+  fill(100); // de la boite
   box(a, a, 40);
   
   // On parse la liste pour l'affichage
-  for(int i=0; i<listModel.size(); i++) {
-    pushMatrix();
+  for(int i=0; i< chairs.size(); i++) {
+     pushMatrix();
       //On le bouge à sa place
-      translate(listModelPos.get(i).x, listModelPos.get(i).y, listModelPos.get(i).z);
-      rotateZ(listModelRot.get(i));
+      translate(chairs.get(i).position.x, chairs.get(i).position.y, chairs.get(i).position.z);
+      rotateZ(chairs.get(i).rotation);
       rotateX(-PI/2); // remettre droit
       
       //On dessine
-      fill(255);
       noStroke();
-      listModel.get(i).draw();
-    popMatrix();
-  }
-  
-  
-  
+      chairs.get(i).model.draw();
+      popMatrix();
+  }  
+  gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier
 }
 
+
+// void qui controle l'impact des buttons
+void controlEvent(ControlEvent theEvent) { // obligatoire
+ if(theEvent.controller().name()=="randomizer") {  // concerne le button "randomizer"
+      print("new seed generated");  
+      seed(); // quand on clique, on crée une nouvelle seed();
+ }
+}
+
+// void de génération pure
+void seed(){
+  
+   chairs = new ArrayList<Chair>(); // crée ou vide un tableau
+   
+  //On charge et "add" des models
+  for(int i=0; i<3; i++) { //On decide arbitrairement d'en ajouter 3 de chaque
+    for(int j=0; j<4; j++){ // On parcours la liste des chair present dans le dossier(de 0 à 4)
+      chairs.add(new Chair(this, "chair"+(j+1)+".obj", new PVector(random(-a/2,a/2),random(-a/2,a/2)), rotOr[int(random(3))]));
+    } 
+  }
+}
+
+// permet à la GUI de rester au premier plan
+void gui(){ 
+  hint(DISABLE_DEPTH_TEST);
+  cam.beginHUD();
+  buttonCon.draw();
+  cam.endHUD();
+  hint(ENABLE_DEPTH_TEST);
+}

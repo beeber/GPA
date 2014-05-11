@@ -7,28 +7,20 @@ import saito.objloader.*;
 import controlP5.*;
 import processing.dxf.*;
 
-
-
 ControlP5 buttonCon; // déclare mes buttons
 PeasyCam cam; // déclare ma caméra
 
 
-
-//ArrayList<Furniture> furnitures;
 ArrayList<Chair> chairs;
-
 ArrayList<String> ChairName; // tabeau noms des fichiers .obj
-
 float[] rotOr = new float[4]; // tableau rotation orthogonale
 int a; // valeur box 
 int nbChair;
 int sliderChair = 0;
 String textValue = ""; // pour le texte input
 
-   // tableau du noms
- 
- 
 void setup() {
+
   size(1200,600,OPENGL);
   noSmooth();
 
@@ -40,14 +32,28 @@ void setup() {
    ChairName.add("chair4.obj");
   
 
-   
-  // GUI 
+
+
+// GUI ************************************************************************ 
+
   buttonCon = new ControlP5(this);
+  
+  
+// COLOR GUI
+  //buttonCon.setColorBackground(0xff4e4e4e);
+  //buttonCon.setColorLabel(color(255, 255, 255));
+  //buttonCon.setColorForeground(240);
+  //buttonCon.setColorActive(color(198, 18, 48));
+  
+  
        
-      // framerate
-        buttonCon.addFrameRate().setInterval(10).setPosition(0,height - 10);
-      // tabs
-         buttonCon.addTab("attributes") // add une nouvelle tab
+// FRAMERATE
+        buttonCon.addFrameRate().setInterval(10).setPosition(0,height - 10)
+        .moveTo("global"); // toujours onTop
+        ;
+// TABS
+      // add une nouvelle tab
+         buttonCon.addTab("attributes") 
        .setColorBackground(color(0, 160, 100))
        .setColorLabel(color(255))
        .setColorActive(color(255,128,0))
@@ -63,7 +69,8 @@ void setup() {
        .setColorActive(color(255,128,0))
        ;
        
-         buttonCon.getTab("default") // "appelle" les différentes tabs
+       // "appelle" les différentes tabs
+         buttonCon.getTab("default") 
        .activateEvent(true)
        .setLabel("files")
        .setId(1)
@@ -84,8 +91,7 @@ void setup() {
        .setId(4)
        ;
      
-     // sliders
-     
+// SLIDERS
        buttonCon.addSlider("sliderChair")
      .setLabel("Chairs")
      .setPosition(10,200)
@@ -95,59 +101,39 @@ void setup() {
      .setSliderMode(Slider.FIX) // fix = barre / flexible = main
         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
      ;
-     
-     // checkbox
-     
-       buttonCon.addCheckBox("checkBoxTxt")
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("sliderChair","Changes the number of Chair.");
+  
+// CHECKBOX
+       buttonCon.addCheckBox("checkBox")
         .setPosition(width -100, 455)
         .setColorForeground(color(120))
-        //.setColorActive(color(255))
-        //.setColorLabel(color(255))
         .setSize(20, 20)
+        .setSpacingRow(5)
         .addItem("create list", 0)
-        ;
-
-       buttonCon.addCheckBox("checkBoxSave")
-        .setPosition(width -100,480)
-        .setColorForeground(color(120))
-        //.setColorActive(color(255))
-        //.setColorLabel(color(255))
-        .setSize(20, 20)
         .addItem("save & seed", 0)
-        ;
-
-       buttonCon.addCheckBox("checkBoxCam")
-        .setPosition(width -100,505)
-        .setColorForeground(color(120))
-        //.setColorActive(color(255))
-        //.setColorLabel(color(255))
-        .setSize(20, 20)
         .addItem("set camera", 0)
+        .moveTo("global"); // toujours onTop
         ;
-        
+       buttonCon.getTooltip().setDelay(500);
+       buttonCon.getTooltip().register("create list","create a list of used object");
+       buttonCon.getTooltip().register("save & seed","create a new seed at each save");
+       buttonCon.getTooltip().register("set camera","save camera position");
+       
           
-     // button
-               buttonCon.addBang("saveImg")
+// BUTTONS
+          buttonCon.addBang("saveImg")
        .setLabel("save img")
        .setPosition(width -100,530)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
-                  buttonCon.addBang("saveObj")
+          buttonCon.addBang("saveObj")
        .setLabel("save as model")
        .setPosition(width -100,555)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
-       /*
-       buttonCon.addBang("saveImgSeed")
-       .setLabel("seed & save img ")
-       .setPosition(width -185,555)
-       .setSize(80,20)
-       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;
-       */
-
           buttonCon.addBang("randomizer")
        .setLabel("new seed")
        .setPosition(width -185,555)
@@ -166,13 +152,18 @@ void setup() {
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
-          buttonCon.addTextfield("input")       // input texte
+       
+       // input texte
+          buttonCon.addTextfield("textValue")       
+       .setLabel("enter tags")
        .setPosition(10,100)
        .setSize(200,20)
-       .setFocus(true)
-       .setColor(color(255,0,0))
-       ;     
-          buttonCon.addBang("clear")       // clear texte
+       .setAutoClear(true)
+       //.setColor(color(255,0,0))
+       ;   
+     
+       // clear texte  
+          buttonCon.addBang("clear")       
        .setPosition(210,100)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
@@ -180,20 +171,19 @@ void setup() {
        
        // positionne les buttons dans des tabs différentes
        buttonCon.getController("randomizer").moveTo("global"); // global toujours visible
-       buttonCon.getController("saveImg").moveTo("global");
-       
-       //buttonCon.getController("checkBoxTxt").moveTo("global");
-       //buttonCon.getController("checkBoxSave").moveTo("global");
-       //buttonCon.getController("checkBoxCam").moveTo("global");
-       //buttonCon.getController("saveImgSeed").moveTo("global");
+       buttonCon.getController("saveImg").moveTo("global"); 
        buttonCon.getController("saveObj").moveTo("global");
        buttonCon.getController("addChair").moveTo("archetypes");
        buttonCon.getController("removeChair").moveTo("archetypes");
        buttonCon.getController("sliderChair").moveTo("archetypes");
-       buttonCon.getController("input").moveTo("keyword");
+       buttonCon.getController("textValue").moveTo("keyword");
        buttonCon.getController("clear").moveTo("keyword");
          
-  buttonCon.setAutoDraw(false); // pour eviter que le button soit inscrit dans le mouvement de caméra
+        buttonCon.setAutoDraw(false); // pour eviter que le button soit inscrit dans le mouvement de caméra
+
+
+//******************************************************************************
+
 
   // rotation orthogonale
   rotOr[0]= -PI;
@@ -210,7 +200,8 @@ void setup() {
   a = 500;
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
-} 
+
+}  // fin SETUP ******
 
 void draw() {
   // rotation intiale pour la cam
@@ -240,8 +231,12 @@ void draw() {
   }  
   disableCam(); // enleve la camera
   // rapport bouton
-  text(buttonCon.get(Textfield.class,"input").getText(), 360,130);
-  text(textValue, 360,180);
+
+
+  
+  fill(255);
+  text(textValue, 10,300);
+  text(buttonCon.get(Textfield.class,"textValue").getText(), 10,300);
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier
   enableCam();
 }
@@ -249,7 +244,7 @@ void draw() {
 
   // bouton input texte
 public void clear() {
-  buttonCon.get(Textfield.class,"input").clear();
+  buttonCon.get(Textfield.class,"textValue").clear();
 }
 
 

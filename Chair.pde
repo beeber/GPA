@@ -8,6 +8,8 @@ class Chair{
   PVector box3D;
 
   BoundingBox bboxTemp;
+  
+  int tSphere; // taille sphere bounding box
 
   
   //méthode constructeur
@@ -27,5 +29,65 @@ class Chair{
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
    
   }
+  
+  
+  
+  void drawCorners(){
+    
+    tSphere = 5;
+    fill(255,0,0);
+  
+     
+    pushMatrix();
+    translate(bboxTemp.getMin().x, bboxTemp.getMin().y, bboxTemp.getMin().z);
+
+    sphere(tSphere);
+    popMatrix();
+    
+    pushMatrix();
+    translate(bboxTemp.getMin().x, bboxTemp.getMin().y, bboxTemp.getMax().z);
+    sphere(tSphere);
+    popMatrix();
+     
+    pushMatrix();
+    translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+    sphere(tSphere);
+    popMatrix();
+    
+    pushMatrix();
+    translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
+    sphere(tSphere);
+    popMatrix();
+    
+    pushMatrix();
+    translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
+    sphere(tSphere);
+    popMatrix();
+
+    pushMatrix();
+    translate(bboxTemp.getMax().x, bboxTemp.getMin().y, bboxTemp.getMin().z);
+    sphere(tSphere);
+    popMatrix();
+    
+    pushMatrix();
+    translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+    sphere(tSphere);
+    popMatrix();
+
+    pushMatrix();
+    translate(bboxTemp.getMax().x, bboxTemp.getMin().y, bboxTemp.getMax().z);
+    sphere(tSphere);
+    popMatrix();
+    
+  }
+  
  
 } // fin class
+
+
+
+/*
+bbox.getWHD.x
+this.position.x. boundingBox/2
+this.position.y. boundingBox/2
+this.position.y. bounding*/

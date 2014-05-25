@@ -1,6 +1,6 @@
 import saito.objloader.*;
 
-class Chair{
+class Chair {
   PVector position;
   float rotation;
   OBJModel model;
@@ -12,7 +12,28 @@ class Chair{
   int tSphere; // taille sphere bounding box
 
   
-  //méthode constructeur
+  Chair(PApplet parent) {
+   
+    String fileName = ChairName.get(int(random(0,4)));
+    //String fileName = ChairName.get(0);
+    position = new PVector(random(-a/2,a/2),random(-a/2,a/2));
+    rotation = rotOr[int(random(4))];
+  
+  
+    model = new OBJModel(parent, fileName, "relative", POLYGON);
+    model.enableDebug();
+    model.enableTexture();
+    model.scale(100);
+    model.translateToCenter();
+    
+    BoundingBox bbox = new BoundingBox(parent, model);
+    bboxTemp = new BoundingBox(parent, model);
+    //this.position.z = bbox.getWHD().z;
+    box3D = bbox.getWHD(); // pour collision on va chercher le x,y
+   
+  }
+  
+  
   Chair(PApplet parent, String fileName, PVector position, float rotation){
     this.position = position;
     this.rotation = rotation;

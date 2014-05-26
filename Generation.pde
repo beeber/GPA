@@ -4,9 +4,17 @@ void seed(){
    listFurniture = new ArrayList<Furniture>();
 
   // 2) On le surtout b
-  for(int i=0; i<sliderChair; i++) {
-    listFurniture.add(new Furniture(this));
-  }
+  for(int i=0; i<sliderChair; i++) 
+    listFurniture.add(new Furniture(this, Archetype.CHAIR));
+  for(int i=0; i<sliderSofa; i++) 
+    listFurniture.add(new Furniture(this, Archetype.SOFA));
+  for(int i=0; i<sliderShelf; i++) 
+    listFurniture.add(new Furniture(this, Archetype.SHELF));
+  for(int i=0; i<sliderTable; i++) 
+    listFurniture.add(new Furniture(this, Archetype.TABLE));
+  for(int i=0; i<sliderCoffeeTable; i++) 
+    listFurniture.add(new Furniture(this, Archetype.COFFEE_TABLE));
+  
   // 3) On test des positions
   for(int i=0; i<100; println(i++)) // On essaie 10 fois de trouver des positions qui marchent
     if( testPosition() )

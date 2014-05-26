@@ -20,7 +20,12 @@ float[] rotOr = new float[4]; // tableau rotation orthogonale
 int a; // valeur box 
 int nbChair;
 int sliderChair = 0;
-String textValue = ""; // pour le texte input
+int sliderSofa = 0;
+int sliderShelf = 0;
+int sliderTable = 0;
+int sliderCoffeeTable = 0;
+
+String tags = ""; // pour le texte input
 
 
 // SETUP **************************************************************************************************************
@@ -40,30 +45,29 @@ void setup() {
 
 //Database for the furnitures
    ChairName = new ArrayList<String>();
-   ChairName.add("chair5.obj");
-   ChairName.add("chair6.obj");
-   ChairName.add("chair7.obj");
-   ChairName.add("chair8.obj");
+   ChairName.add("chair5");
+   ChairName.add("chair6");
+   ChairName.add("chair7");
    
    TableName = new ArrayList<String>();
-   TableName.add("table1.obj");
-   //TableName.add("table2.obj");
-   //TableName.add("table3.obj");
+   TableName.add("table1");
+//   TableName.add("table2");
+//   TableName.add("table3");
    
    SofaName = new ArrayList<String>();
-   SofaName.add("sofa1.obj");
-   SofaName.add("sofa2.obj");
-   SofaName.add("sofa3.obj");
+   SofaName.add("sofa1");
+   SofaName.add("sofa2");
+   SofaName.add("sofa3");
    
    ShelfName = new ArrayList<String>();
-   ShelfName.add("shelf1.obj");
-   ShelfName.add("shelf2.obj");
-   ShelfName.add("shelf3.obj");
+   ShelfName.add("shelf1");
+   ShelfName.add("shelf2");
+   ShelfName.add("shelf3");
    
    CoffeeTableName = new ArrayList<String>();
-   CoffeeTableName.add("coffeeTable1.obj");
-   CoffeeTableName.add("coffeeTable2.obj");
-   CoffeeTableName.add("coffeeTable3.obj");
+   CoffeeTableName.add("coffeeTable1");
+   CoffeeTableName.add("coffeeTable2");
+   CoffeeTableName.add("coffeeTable3");
   
    rotOr(); //rotation orthogonale  
 } 

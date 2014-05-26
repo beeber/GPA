@@ -170,7 +170,7 @@ void initGUI(){
        ;
        
        // input texte
-          buttonCon.addTextfield("textValue")       
+          buttonCon.addTextfield("tags")       
        .setLabel("enter tags")
        .setPosition(10,100)
        .setSize(200,20)
@@ -200,7 +200,7 @@ void initGUI(){
        buttonCon.getController("removeChair").moveTo("archetypes");
        buttonCon.getController("addChair").moveTo("archetypes");
        
-       buttonCon.getController("textValue").moveTo("keyword");
+       buttonCon.getController("tags").moveTo("keyword");
        buttonCon.getController("clear").moveTo("keyword");
          
        buttonCon.setAutoDraw(false); // pour eviter que le button soit inscrit dans le mouvement de caméra
@@ -258,8 +258,8 @@ void inputTextField(){ // permet de dessiner l'input de keyword
   disableCam(); // enleve la camera
 
   fill(255);
-  text(textValue, 10,300);
-  text(buttonCon.get(Textfield.class,"textValue").getText(), 10,300);
+  text(tags, 10,300);
+  text(buttonCon.get(Textfield.class,"tags").getText(), 10,300);
   
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier
   

@@ -47,8 +47,8 @@ void setup() {
    
    TableName = new ArrayList<String>();
    TableName.add("table1.obj");
-   TableName.add("table2.obj");
-   TableName.add("table3.obj");
+   //TableName.add("table2.obj");
+   //TableName.add("table3.obj");
    
    SofaName = new ArrayList<String>();
    SofaName.add("sofa1.obj");

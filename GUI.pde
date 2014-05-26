@@ -6,12 +6,14 @@ void initGUI(){
   
 // COLOR GUI
       buttonCon.setColorBackground(#897171);
-      //buttonCon.setColorLabel(color(255, 255, 255));
-      //buttonCon.setColorForeground(240);
-      //buttonCon.setColorActive(color(198, 18, 48));
+      //buttonCon.setColorLabel(color(0));
+      //buttonCon.setColorForeground(#BCA1A1);
+      buttonCon.setColorActive(color(198, 18, 48));
   
 // FRAMERATE
+
         buttonCon.addFrameRate().setInterval(10).setPosition(0,height - 10)
+               .setColor(0)
         .moveTo("global"); // toujours onTop
         ;
         
@@ -156,6 +158,8 @@ void initGUI(){
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
+       
+       
           buttonCon.addBang("addChair")
        .setLabel("add chair")
        .setPosition(20,100)
@@ -168,6 +172,7 @@ void initGUI(){
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
+       
        
        // input texte
           buttonCon.addTextfield("textValue")       
@@ -257,7 +262,8 @@ void inputTextField(){ // permet de dessiner l'input de keyword
   
   disableCam(); // enleve la camera
 
-  fill(255);
+
+  fill(0); // keyword
   text(textValue, 10,300);
   text(buttonCon.get(Textfield.class,"textValue").getText(), 10,300);
   

@@ -5,13 +5,14 @@ void initGUI(){
          buttonCon = new ControlP5(this);
   
 // COLOR GUI
-      buttonCon.setColorBackground(#897171);
+      buttonCon.setColorBackground(#6A5757);
       //buttonCon.setColorLabel(color(255, 255, 255));
-      //buttonCon.setColorForeground(240);
-      //buttonCon.setColorActive(color(198, 18, 48));
+      buttonCon.setColorForeground(#B9B8B8);
+      buttonCon.setColorActive(color(198, 18, 48));
   
 // FRAMERATE
         buttonCon.addFrameRate().setInterval(10).setPosition(0,height - 10)
+        .setColor(0)
         .moveTo("global"); // toujours onTop
         ;
         
@@ -19,17 +20,17 @@ void initGUI(){
 
       // add une nouvelle tab
          buttonCon.addTab("attributes") 
-       .setColorBackground(color(0, 160, 100))
+       .setColorBackground(color(#A09E9E))
        .setColorLabel(color(255))
        .setColorActive(color(255,128,0))
        ;
          buttonCon.addTab("archetypes") // 
-       .setColorBackground(color(0, 160, 100))
+       .setColorBackground(color(#A09E9E))
        .setColorLabel(color(255))
        .setColorActive(color(255,128,0))
        ;
          buttonCon.addTab("keyword") // 
-       .setColorBackground(color(0, 160, 100))
+       .setColorBackground(color(#A09E9E))
        .setColorLabel(color(255))
        .setColorActive(color(255,128,0))
        ;
@@ -59,6 +60,7 @@ void initGUI(){
          buttonCon.addSlider("sliderChair")
        .setLabel("Chairs")
      //.setDecimalPrecision (1)
+  
        .setPosition(10,200)
        .setSize(100,20)
        .setRange(0,10)
@@ -124,16 +126,19 @@ void initGUI(){
 // CHECKBOX
        buttonCon.addCheckBox("checkBox")
         .setPosition(width -100, 455)
-        .setColorForeground(color(120))
+        //.setColorForeground(color(120))
         .setSize(20, 20)
         .setSpacingRow(5)
+           .setColorLabel(#B9B8B8)
         .addItem("create list", 0)
         .addItem("save & seed", 0)
         .addItem("set camera", 0)
         .moveTo("global"); // toujours onTop
         ;
+        fill(0);
        buttonCon.getTooltip().setDelay(500);
        buttonCon.getTooltip().register("create list","create a list of used object");
+
        buttonCon.getTooltip().register("save & seed","create a new seed at each save");
        buttonCon.getTooltip().register("set camera","save camera position");
            
@@ -257,7 +262,7 @@ void inputTextField(){ // permet de dessiner l'input de keyword
   
   disableCam(); // enleve la camera
 
-  fill(255);
+  fill(0);
   text(tags, 10,300);
   text(buttonCon.get(Textfield.class,"tags").getText(), 10,300);
   

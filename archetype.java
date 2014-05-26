@@ -1,0 +1,3 @@
+enum Archetype {
+ TABLE, COFFEE_TABLE, SOFA, SHELF, CHAIR 
+}

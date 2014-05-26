@@ -4,13 +4,11 @@ void initGUI(){
   
          buttonCon = new ControlP5(this);
   
-  
 // COLOR GUI
-      //buttonCon.setColorBackground(0xff4e4e4e);
+      buttonCon.setColorBackground(#897171);
       //buttonCon.setColorLabel(color(255, 255, 255));
       //buttonCon.setColorForeground(240);
       //buttonCon.setColorActive(color(198, 18, 48));
-      
   
 // FRAMERATE
         buttonCon.addFrameRate().setInterval(10).setPosition(0,height - 10)
@@ -18,6 +16,7 @@ void initGUI(){
         ;
         
 // TABS
+
       // add une nouvelle tab
          buttonCon.addTab("attributes") 
        .setColorBackground(color(0, 160, 100))
@@ -34,7 +33,6 @@ void initGUI(){
        .setColorLabel(color(255))
        .setColorActive(color(255,128,0))
        ;
-       
        // "appelle" les différentes tabs
          buttonCon.getTab("default") 
        .activateEvent(false)
@@ -57,12 +55,37 @@ void initGUI(){
        .setId(4)
        ;
 
-
-  
 // SLIDERS
          buttonCon.addSlider("sliderChair")
        .setLabel("Chairs")
+     //.setDecimalPrecision (1)
        .setPosition(10,200)
+       .setSize(100,20)
+       .setRange(0,10)
+       .setNumberOfTickMarks(11) // nombre de tick
+       .setSliderMode(Slider.FIX) // fix = barre / flexible = main
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("sliderChair","Changes the number of Chair.");
+    
+         buttonCon.addSlider("sliderShelf")
+       .setLabel("shelf")
+       .setDecimalPrecision (0)
+       .setPosition(10,230)
+       .setSize(100,20)
+       .setRange(0,10)
+       .setNumberOfTickMarks(11) // nombre de tick
+       .setSliderMode(Slider.FIX) // fix = barre / flexible = main
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("sliderShelf","Changes the number of shelf.");
+      
+         buttonCon.addSlider("sliderCoffeeTable")
+       .setLabel("coffee table")
+       .setDecimalPrecision (0)
+       .setPosition(10,260)
        .setSize(100,20)
        .setRange(0,10)
        .setNumberOfTickMarks(11) // nombre de tick
@@ -70,7 +93,33 @@ void initGUI(){
           .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
       buttonCon.getTooltip().setDelay(500);
-      buttonCon.getTooltip().register("sliderChair","Changes the number of Chair.");
+      buttonCon.getTooltip().register("sliderCoffeeTable","Changes the number of coffee table.");
+      
+               buttonCon.addSlider("sliderTable")
+       .setLabel("table")
+       .setDecimalPrecision (0)
+       .setPosition(10,290)
+       .setSize(100,20)
+       .setRange(0,10)
+       .setNumberOfTickMarks(11) // nombre de tick
+       .setSliderMode(Slider.FIX) // fix = barre / flexible = main
+          .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("sliderTable","Changes the number of table.");
+      
+               buttonCon.addSlider("sliderSofa")
+       .setLabel("sofa")
+       .setDecimalPrecision (0)
+       .setPosition(10,320)
+       .setSize(100,20)
+       .setRange(0,10)
+       .setNumberOfTickMarks(11) // nombre de tick
+       .setSliderMode(Slider.FIX) // fix = barre / flexible = main
+          .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("sliderSofa","Changes the number of sofa.");
   
 // CHECKBOX
        buttonCon.addCheckBox("checkBox")
@@ -141,9 +190,16 @@ void initGUI(){
        buttonCon.getController("randomizer").moveTo("global"); // global toujours visible
        buttonCon.getController("saveImg").moveTo("global"); 
        buttonCon.getController("saveObj").moveTo("global");
-       buttonCon.getController("addChair").moveTo("archetypes");
-       buttonCon.getController("removeChair").moveTo("archetypes");
+       
        buttonCon.getController("sliderChair").moveTo("archetypes");
+       buttonCon.getController("sliderShelf").moveTo("archetypes");
+       buttonCon.getController("sliderCoffeeTable").moveTo("archetypes");
+       buttonCon.getController("sliderTable").moveTo("archetypes");
+       buttonCon.getController("sliderSofa").moveTo("archetypes");
+       
+       buttonCon.getController("removeChair").moveTo("archetypes");
+       buttonCon.getController("addChair").moveTo("archetypes");
+       
        buttonCon.getController("textValue").moveTo("keyword");
        buttonCon.getController("clear").moveTo("keyword");
          
@@ -176,7 +232,7 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
       seed(); 
   }
   if(theEvent.isAssignableFrom(Textfield.class)) { // concerne le button texte
-    println("controlEvent: accessing a string from controller '"
+      println("controlEvent: accessing a string from controller '"
             +theEvent.getName()+"': "
             +theEvent.getStringValue()
             );
@@ -188,7 +244,7 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
    if(theEvent.controller().name()=="saveImgSeed") { 
         saveFrame("project-####.png");
       print("image saved & new seed"); 
-           seed();  
+      seed();  
   }
 }
 

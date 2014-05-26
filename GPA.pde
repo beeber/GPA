@@ -23,7 +23,7 @@ String textValue = ""; // pour le texte input
 // SETUP **************************************************************************************************************
 void setup() {
 
-  size(1200,600,OPENGL);
+  size(displayWidth - 100,displayHeight - 100,OPENGL);
   noSmooth();
   
   initGUI(); // intialise la GUI
@@ -47,7 +47,7 @@ void setup() {
 
 // DRAW **************************************************************************************************************
 void draw() {
-  background(0); 
+  background(255); 
     
     
 // ROTATION CAMERA INTIALE

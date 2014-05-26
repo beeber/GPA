@@ -20,6 +20,11 @@ float[] rotOr = new float[4]; // tableau rotation orthogonale
 int a; // valeur box 
 int nbChair;
 int sliderChair = 0;
+int sliderSofa = 0;
+int sliderShelf = 0;
+int sliderTable = 0;
+int sliderCoffeeTable = 0;
+
 String textValue = ""; // pour le texte input
 
 

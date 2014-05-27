@@ -50,19 +50,19 @@ void setup() {
    ChairName.add("chair7");
    
    TableName = new ArrayList<String>();
-   TableName.add("table1");
-   TableName.add("table2");
-   TableName.add("table3");
+   TableName.add("table");
+   //TableName.add("table2");
+   //TableName.add("table3");
    
    SofaName = new ArrayList<String>();
-   SofaName.add("sofa1");
-   SofaName.add("sofa2");
+   //SofaName.add("sofa1");
+   //SofaName.add("sofa2");
    SofaName.add("sofa3");
    
    ShelfName = new ArrayList<String>();
    ShelfName.add("shelf1");
-   ShelfName.add("shelf2");
-   ShelfName.add("shelf3");
+   //ShelfName.add("shelf2");
+   //ShelfName.add("shelf3");
    
    CoffeeTableName = new ArrayList<String>();
    CoffeeTableName.add("coffeeTable1");
@@ -77,13 +77,15 @@ void setup() {
 // DRAW **************************************************************************************************************
 void draw() {
   background(255); 
-    
+  
+
     
 // ROTATION CAMERA INTIALE
   rotateX(45); 
   rotateZ(45);
 
 // BOX
+  stroke(0);  
   fill(100); 
   box(a, a, 2);
 

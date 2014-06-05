@@ -10,6 +10,7 @@ import processing.dxf.*;
 ControlP5 buttonCon; // déclare mes buttons
 PeasyCam cam; // déclare ma caméra
 
+OBJModel model; // model appartement
 
 ArrayList<Furniture> listFurniture;
 ArrayList<Furniture> listPivot;
@@ -18,7 +19,8 @@ ArrayList<String> ChairName, SofaName, TableName, CoffeeTableName, ShelfName; //
 
 
 float[] rotOr = new float[4]; // tableau rotation orthogonale
-int a; // valeur box 
+int xGeneral; // valeur box 
+int yGeneral; // valeur box 
 int nbChair;
 int sliderChair = 0;
 int sliderSofa  = 0;
@@ -30,17 +32,28 @@ String tags = ""; // pour le texte input
 XML catalog;
 
 // SETUP **************************************************************************************************************
+
 void setup() {
 
   size(displayWidth - 100,displayHeight - 100,OPENGL);
   noSmooth();
-  
+
+xGeneral = 410; // valeur box 
+yGeneral = 560; 
+    
+    
   initGUI(); // intialise la GUI
 
   cam();
   seed(); // crée une nouvelle seed générative au lancement de la scène
-  
-  a = 500; // taille boite fond
+
+  model = new OBJModel(this, "appartement6.obj", "relative", POLYGON); // APPARTEMENT
+          model.scale(100);
+          model.enableTexture();
+         // model.disableMaterial();  //mesh view
+          model.translateToCenter();
+
+
   
 // TABLEAU .obj name
 
@@ -55,10 +68,11 @@ void setup() {
    ChairName.add("chair7");
    
    TableName = new ArrayList<String>();
-   TableName.add("table1");
-//   TableName.add("table2");
-//   TableName.add("table3");
-   
+   //TableName.add("table1");
+   //TableName.add("table2");
+   //TableName.add("table3");
+   //TableName.add("table4");
+   TableName.add("table6");   
    SofaName = new ArrayList<String>();
    SofaName.add("sofa1");
    SofaName.add("sofa2");
@@ -66,8 +80,9 @@ void setup() {
    
    ShelfName = new ArrayList<String>();
    ShelfName.add("shelf1");
-   ShelfName.add("shelf2");
-   ShelfName.add("shelf3");
+   ShelfName.add("shelf4");
+   ShelfName.add("shelf5");
+   ShelfName.add("shelf6");
    
    CoffeeTableName = new ArrayList<String>();
    CoffeeTableName.add("coffeeTable1");
@@ -86,18 +101,51 @@ void setup() {
 // DRAW **************************************************************************************************************
 void draw() {
   background(255); 
-    
+  
+
+ 
     
 // ROTATION CAMERA INTIALE
   rotateX(45); 
   rotateZ(45);
+  
+  //Display BOX (DEBUG)
+  //box(410, 560, 2);
 
-// BOX
-  fill(100); 
-  box(a, a, 2);
 
+  //Display APPARTEMENT
+  stroke(120);
+  noFill();
 
-  parsingList();
+  pushMatrix();  
+    rotateX(-PI/2);
+    translate(0,-120,0);
+    model.draw();
+  popMatrix();     
+ 
+  
+  //Display Furnitures
+  for(int i=0; i< listFurniture.size(); i++) {
+    
+    pushMatrix();
+    
+      translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
+      rotateZ(listFurniture.get(i).rotation);
+      rotateX(-PI/2); // remettre droit
+  
+      noStroke();
+      listFurniture.get(i).model.draw(); // dessiner model
+       
+      // BOUNDING BOX
+      //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+      //stroke(150);
+      //noFill();
+      //chairs.get(i).bboxTemp.draw();
+     
+    popMatrix();     
+ 
+  }  
+  
 
 // GUI **********
   disableCam(); // enleve la camera

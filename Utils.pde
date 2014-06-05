@@ -1,11 +1,3 @@
-void rotOr(){
-  rotOr[0]= PI/2;
-  rotOr[1]= PI;
-  rotOr[2]= 3*PI/2;
-  rotOr[3]= 2*PI;
-
-}
-
 
 boolean isColliding(Furniture chair1, Furniture chair2){
       
@@ -17,5 +9,23 @@ boolean isColliding(Furniture chair1, Furniture chair2){
     
           || chair1.position.z + chair1.bboxTemp.getMin().z > chair2.position.z + chair2.bboxTemp.getMax().z 
           || chair1.position.z + chair1.bboxTemp.getMax().z < chair2.position.z + chair2.bboxTemp.getMin().z);
+}
+
+XML getListArchetype(Archetype _arType) {
+  
+  XML[] listArchetype = catalog.getChildren("archetype");
+  
+  for(int i=0; i<listArchetype.length; i++) {
+    switch(_arType) {
+     case CHAIR:         if(listArchetype[i].getString("type").equals("CHAIR") )        return listArchetype[i]; break;
+     case TABLE:         if(listArchetype[i].getString("type").equals("TABLE") )        return listArchetype[i]; break;
+     case COFFEE_TABLE:  if(listArchetype[i].getString("type").equals("COFFEE_TABLE"))  return listArchetype[i]; break;
+     case SOFA:          if(listArchetype[i].getString("type").equals("SOFA"))          return listArchetype[i]; break;
+     case SHELF:         if(listArchetype[i].getString("type").equals("SHELF"))         return listArchetype[i]; break;
+    }
+  }
+  
+  println("ISSUE in get list archetype");
+  return listArchetype[0];
 }
 

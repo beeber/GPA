@@ -35,60 +35,47 @@ class Furniture {
    
   }
    
+   
    Furniture(PApplet parent, Archetype myType) {
    
+    int fileID; 
     String fileName;
-   /* switch(myType) {
-      case CHAIR: fileName        = ChairName.get(       int(random(0,ChairName.size())))  + ".obj"; break;
-      case TABLE: fileName        = TableName.get(       int(random(0,TableName.size()))) + ".obj"; break;
-      case SOFA:  fileName        = SofaName.get(        int(random(0,SofaName.size()))) + ".obj"; break;
-      case SHELF: fileName        = ShelfName.get(       int(random(0,ShelfName.size()))) + ".obj"; break;
-      case COFFEE_TABLE: fileName = CoffeeTableName.get( int(random(0,CoffeeTableName.size()))) + ".obj"; break;
+
+    ArrayList<Integer> myListFur = new ArrayList<Integer>();
+    ArrayList<Integer> myListFurFinal = new ArrayList<Integer>();
+    println();
+    println("START------------------------");
+    XML[] listFurXML = getListArchetype(myType).getChildren("furniture");
+    
+    for(int i=0; i<listFurXML.length; i++)
+      myListFur.add(i);
       
-      default: fileName = ChairName.get(int(random(0,4))) + ".obj"; break;
-    }   
-   */
-   
-    ArrayList<String> myListFur;
-    switch(myType) {
-      case CHAIR:        myListFur = new ArrayList<String>(ChairName); break;
-      case TABLE:        myListFur = new ArrayList<String>(TableName); break;
-      case SOFA:         myListFur = new ArrayList<String>(SofaName); break;
-      case SHELF:        myListFur = new ArrayList<String>(ShelfName); break;
-      case COFFEE_TABLE: myListFur = new ArrayList<String>(CoffeeTableName); break;
-      
-      default: myListFur = new ArrayList<String>(ChairName); break;
-    } 
+      println(getListArchetype(myType).getString("type"));
    
    if(buttonCon.get(Textfield.class,"tags").getText().equals("")) {
-     
-    fileName = myListFur.get( int(random(0,myListFur.size())))  + ".obj";
-     
+     fileID = myListFur.get( int(random(0,myListFur.size())));
    }else {
      
-    String[] listTags = split(buttonCon.get(Textfield.class,"tags").getText(), ' ');  
-    println("tags: " + listTags);
-    
-    ArrayList<String> myListFurFinal = new ArrayList<String>();
-   
+    String[] myTags = split(buttonCon.get(Textfield.class,"tags").getText(), ' ');  
     for(int i=0; i< myListFur.size(); i++) {
-      String lines[] = loadStrings("furniture/" + myListFur.get(i) + ".txt");
-      println(lines);
-      boolean ok = false;
       
-      for(int j=0; j< lines.length; j++)
-      for(int k=0; k< listTags.length; k++)
-        if(lines[j].equals(listTags[k]))
+      //Load tags
+      String[] furTags = split( listFurXML[i].getChildren("tag")[0].getContent(), ' ');  
+      
+      //Check tags
+      boolean ok = false;
+      for(int j=0; j< furTags.length; j++)
+      for(int k=0; k< myTags.length; k++)
+        if(furTags[j].equals(myTags[k]))
            ok = true;
       if(ok)
         myListFurFinal.add( myListFur.get(i) );
     }
     
-    fileName = myListFurFinal.get( int(random(0,myListFurFinal.size())))  + ".obj";
+    fileID = myListFurFinal.get( int(random(0,myListFurFinal.size())));
    }
    
-   
-   
+   fileName = listFurXML[fileID].getChildren("filename")[0].getContent()  + ".obj";
    
     //String fileName = ChairName.get(0);
     position = new PVector(random(-a/2,a/2),random(-a/2,a/2));

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+	<archetype type="CHAIR">
+		<furniture id="0">
+			<name>chair1</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>chair1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="1">
+			<name>chair2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>chair2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="2">
+			<name>chair3</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>chair3</filename>
+			<tag>tagDDD</tag>
+		</furniture>
+	</archetype>
+
+	<archetype type="TABLE">
+		<furniture id="3">
+			<name>table1</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>table1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="4">
+			<name>table2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>table2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+
+	<archetype type="SOFA">
+		<furniture id="5">
+			<name>sofa1</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>sofa1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="6">
+			<name>sofa2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>sofa2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+
+	<archetype type="COFFEE_TABLE">
+		<furniture id="7">
+			<name>coffeeTable1</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>coffeeTable1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="8">
+			<name>coffeeTable2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>coffeeTable2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+
+	<archetype type="SHELF">
+		<furniture id="9">
+			<name>shelf1</name>
+			<author>Daniel la pute</author>
+			<year>1985</year>
+			<bio>C'est la fete du slip.</bio>
+			<filename>shelf1</filename>
+			<tag>tagAAA tagBBB  tagCCC</tag>
+		</furniture>
+		<furniture id="10">
+			<name>shelf2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>shelf2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+</catalog>

@@ -21,13 +21,13 @@ float[] rotOr = new float[4]; // tableau rotation orthogonale
 int a; // valeur box 
 int nbChair;
 int sliderChair = 0;
-int sliderSofa = 0;
+int sliderSofa  = 0;
 int sliderShelf = 0;
 int sliderTable = 0;
 int sliderCoffeeTable = 0;
 
 String tags = ""; // pour le texte input
-
+XML catalog;
 
 // SETUP **************************************************************************************************************
 void setup() {
@@ -45,6 +45,10 @@ void setup() {
 // TABLEAU .obj name
 
 //Database for the furnitures
+
+  catalog = loadXML("catalog.xml");
+  
+   /*
    ChairName = new ArrayList<String>();
    ChairName.add("chair5");
    ChairName.add("chair6");
@@ -69,8 +73,12 @@ void setup() {
    CoffeeTableName.add("coffeeTable1");
    CoffeeTableName.add("coffeeTable2");
    CoffeeTableName.add("coffeeTable3");
-  
-   rotOr(); //rotation orthogonale  
+  */
+
+  rotOr[0]= PI/2;
+  rotOr[1]= PI;
+  rotOr[2]= 3*PI/2;
+  rotOr[3]= 2*PI;
 } 
 
 

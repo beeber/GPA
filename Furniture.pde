@@ -18,7 +18,7 @@ class Furniture {
    
     String fileName = ChairName.get(int(random(0,ChairName.size())));
     //String fileName = ChairName.get(0);
-    position = new PVector(random(-a/2,a/2),random(-a/2,a/2));
+    position = new PVector(random(-xGeneral/2,yGeneral/2),random(-xGeneral/2,yGeneral/2));
     rotation = rotOr[int(random(4))];
   
   
@@ -64,7 +64,7 @@ class Furniture {
      
     fileName = myListFur.get( int(random(0,myListFur.size())))  + ".obj";
      
-   }else {
+   } else {
      
     String[] listTags = split(buttonCon.get(Textfield.class,"tags").getText(), ' ');  
     println("tags: " + listTags);
@@ -87,13 +87,6 @@ class Furniture {
     fileName = myListFurFinal.get( int(random(0,myListFurFinal.size())))  + ".obj";
    }
    
-   
-   
-   
-    //String fileName = ChairName.get(0);
-    position = new PVector(random(-a/2,a/2),random(-a/2,a/2));
-    rotation = rotOr[int(random(4))];
-  
   
     model = new OBJModel(parent, "furniture/"+fileName, "relative", POLYGON);
     model.enableDebug();
@@ -105,6 +98,15 @@ class Furniture {
     bboxTemp = new BoundingBox(parent, model);
     //this.position.z = bbox.getWHD().z;
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
+    
+    
+    rotation = rotOr[int(random(4))];
+    if(rotation%2==0)
+      position = new PVector(random(-xGeneral/2 + box3D.x/2, yGeneral/2 - box3D.y/2), 
+                             random(-xGeneral/2 + box3D.x/2, yGeneral/2 - box3D.y/2));
+    else
+      position = new PVector(random(-xGeneral/2 + box3D.y/2, yGeneral/2 - box3D.x/2), 
+                             random(-xGeneral/2 + box3D.y/2, yGeneral/2 - box3D.x/2));
    
   }
   

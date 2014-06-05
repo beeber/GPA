@@ -16,7 +16,10 @@ void seed(){
   for(int i=0; i<sliderCoffeeTable; i++) 
     listFurniture.add(new Furniture(this, Archetype.COFFEE_TABLE));
     //---Old/--
-    
+             
+      
+      
+      
     //2) On rajoute un objet
       // Dans quel ordre ? Quel objet ?
       
@@ -54,7 +57,7 @@ boolean testPosition() {
   
   // a) on donne de nouvelles positions
   for(int i=0; i<listFurniture.size(); i++)
-     listFurniture.get(i).position = new PVector(random(-a/2,a/2),random(-a/2,a/2));
+ //    listFurniture.get(i).position = new PVector(random(-xGeneral/2,yGeneral/2),random(-xGeneral/2,yGeneral/2));
      /*
      if(chairs.size() >1) {
     chairs.get(0).position = new PVector(0,0);
@@ -86,33 +89,3 @@ boolean testPosition() {
       
 }
 
-void parsingList(){  
-  for(int i=0; i< listFurniture.size(); i++) {
-    
-      pushMatrix();
-     
-// MOVING
-
-      translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
-      rotateZ(listFurniture.get(i).rotation);
-      rotateX(-PI/2); // remettre droit
-
- 
-// MODEL
-      noStroke();
-      listFurniture.get(i).model.draw(); // dessiner model
-     
-// BOUNDING BOX
-
-   //   listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-
-      /*
-      stroke(150);
-      noFill();
-      chairs.get(i).bboxTemp.draw();
-      */
-      
-      popMatrix();     
-  }  
-  
-  }

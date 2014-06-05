@@ -6,6 +6,8 @@ class Furniture {
   OBJModel model;
   Archetype type;
   PVector box3D;
+  
+  boolean pivot;
 
   BoundingBox bboxTemp;
   

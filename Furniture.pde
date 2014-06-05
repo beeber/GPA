@@ -6,6 +6,8 @@ class Furniture {
   OBJModel model;
   Archetype type;
   PVector box3D;
+  
+  boolean pivot;
 
   BoundingBox bboxTemp;
   
@@ -112,8 +114,8 @@ class Furniture {
     this.rotation = rotation;
    
     model = new OBJModel(parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
-    model.enableDebug();
-    model.enableTexture();
+    //model.enableDebug();
+    //model.enableTexture();
     model.scale(100);
     model.translateToCenter();
     

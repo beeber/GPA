@@ -3,7 +3,8 @@ void seed(){
   // 1) On instancie notre tableau
    listFurniture = new ArrayList<Furniture>();
 
-  // 2) On le surtout b
+  // 2.OLD) On y rajoute les archétypes que l'on veut
+  //---OLD--
   for(int i=0; i<sliderChair; i++) 
     listFurniture.add(new Furniture(this, Archetype.CHAIR));
   for(int i=0; i<sliderSofa; i++) 
@@ -14,13 +15,39 @@ void seed(){
     listFurniture.add(new Furniture(this, Archetype.TABLE));
   for(int i=0; i<sliderCoffeeTable; i++) 
     listFurniture.add(new Furniture(this, Archetype.COFFEE_TABLE));
-  
+    //---Old/--
+    
+    //2) On rajoute un objet
+      // Dans quel ordre ? Quel objet ?
+      
+      //2) On test les regles vis à vis des autre objets dans l'espace
+    int nbrTrial = 1000;
+    for(int i=0; i< nbrTrial; i++) {
+     //test de toutes les regles pour mon archétype
+     
+
+  //TODO? creer une fonction qui appelera les regles
+        //dans la fonction : boucle qui test mon archétype VS tout les autres archétype environnant, et les points pivot.
+
+     //Si regle n'est pas validé, on relance
+     
+     //Si on a relancé trop de fois, on exit
+      if (i == nbrTrial -1)
+        println("Pas possible ... :(");
+    }
+    
+    
+    
+    
+    
+/*
   // 3) On test des positions
   for(int i=0; i<100; println(i++)) // On essaie 10 fois de trouver des positions qui marchent
     if( testPosition() )
       return;
     
     println("Coin Coin.... pas de chocolat, mauvaises positions de chaises");
+*/
 }
 
 boolean testPosition() {

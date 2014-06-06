@@ -1,6 +1,7 @@
 import saito.objloader.*;
 
 class Furniture {
+  int id;
   PVector position;
   float rotation;
   OBJModel model;
@@ -76,7 +77,7 @@ class Furniture {
    }
    
    fileName = listFurXML[fileID].getChildren("filename")[0].getContent()  + ".obj";
-   
+   id = listFurXML[fileID].getInt("id");
   
     model = new OBJModel(parent, "furniture/"+fileName, "relative", POLYGON);
     model.enableDebug();
@@ -100,6 +101,27 @@ class Furniture {
    
   }
   
+  
+  Furniture(PApplet _parent, int _id){
+    
+    String fileName = getFurXMLByID( _id ).getChildren("filename")[0].getContent();
+    
+    model = new OBJModel(_parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
+    
+    this.position = new PVector();
+    this.rotation = 0;
+   
+    //model.enableDebug();
+    //model.enableTexture();
+    model.scale(100);
+    model.translateToCenter();
+    
+    BoundingBox bbox = new BoundingBox(_parent, model);
+    bboxTemp = new BoundingBox(_parent, model);
+    //this.position.z = bbox.getWHD().z;
+    box3D = bbox.getWHD(); // pour collision on va chercher le x,y
+   
+  }
   
   Furniture(PApplet parent, String fileName, PVector position, float rotation){
     this.position = position;

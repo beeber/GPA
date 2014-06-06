@@ -242,14 +242,21 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
             +theEvent.getStringValue()
             );
   }  
- if(theEvent.controller().name()=="saveImg") { 
-        saveFrame("project-####.png");
-      print("image saved");  
+ if(theEvent.controller().name()=="saveImg") {
+//   saveFrame("project-####.png");
+//      print("image saved");
+    loadScene("test.xml");
   }
-   if(theEvent.controller().name()=="saveImgSeed") { 
-        saveFrame("project-####.png");
+  
+  if(theEvent.controller().name()=="saveImgSeed") { 
+      saveFrame("project-####.png");
       print("image saved & new seed"); 
       seed();  
+  }
+  
+   if(theEvent.controller().name()=="saveObj") { 
+      saveScene("test.xml");
+
   }
 }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene> <furniture id="2" pivot="false" rot="1.5707964"> <pos x="186.90254" y="-50.888947" z="0.0"/> </furniture>
+  <furniture id="1" pivot="false" rot="1.5707964"> <pos x="-100.81348" y="-113.507744" z="0.0"/> </furniture>
+  <furniture id="2" pivot="false" rot="3.1415927"> <pos x="131.44063" y="8.535446" z="0.0"/> </furniture>
+  <furniture id="6" pivot="false" rot="6.2831855"> <pos x="-9.431061" y="-78.843124" z="0.0"/> </furniture>
+  <furniture id="7" pivot="false" rot="6.2831855"> <pos x="81.546936" y="49.08629" z="0.0"/> </furniture>
+  <furniture id="8" pivot="false" rot="3.1415927"> <pos x="121.09714" y="-102.48732" z="0.0"/> </furniture>
+  <furniture id="8" pivot="false" rot="4.712389"> <pos x="-47.00786" y="249.43756" z="0.0"/> </furniture>
+</scene>

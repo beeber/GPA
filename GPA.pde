@@ -35,12 +35,11 @@ XML catalog;
 
 void setup() {
 
-  size(displayWidth - 100,displayHeight - 100,OPENGL);
+  size(displayWidth - 100, displayHeight - 100, OPENGL);
   noSmooth();
 
-xGeneral = 410; // valeur box 
-yGeneral = 560; 
-    
+  xGeneral = 410; // valeur box 
+  yGeneral = 560; 
     
   initGUI(); // intialise la GUI
 
@@ -52,48 +51,21 @@ yGeneral = 560;
           model.enableTexture();
          // model.disableMaterial();  //mesh view
           model.translateToCenter();
-
-
   
 // TABLEAU .obj name
 
 //Database for the furnitures
 
   catalog = loadXML("catalog.xml");
-  
-   /*
-   ChairName = new ArrayList<String>();
-   ChairName.add("chair5");
-   ChairName.add("chair6");
-   ChairName.add("chair7");
-   
-   TableName = new ArrayList<String>();
-   //TableName.add("table1");
-   //TableName.add("table2");
-   //TableName.add("table3");
-   //TableName.add("table4");
-   TableName.add("table6");   
-   SofaName = new ArrayList<String>();
-   SofaName.add("sofa1");
-   SofaName.add("sofa2");
-   SofaName.add("sofa3");
-   
-   ShelfName = new ArrayList<String>();
-   ShelfName.add("shelf1");
-   ShelfName.add("shelf4");
-   ShelfName.add("shelf5");
-   ShelfName.add("shelf6");
-   
-   CoffeeTableName = new ArrayList<String>();
-   CoffeeTableName.add("coffeeTable1");
-   CoffeeTableName.add("coffeeTable2");
-   CoffeeTableName.add("coffeeTable3");
-  */
-
   rotOr[0]= PI/2;
   rotOr[1]= PI;
   rotOr[2]= 3*PI/2;
   rotOr[3]= 2*PI;
+  
+  
+ listFurniture = new ArrayList<Furniture>();
+ listPivot = new ArrayList<Furniture>();
+  
 } 
 
 

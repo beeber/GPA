@@ -18,7 +18,7 @@ void seed(){
     //---Old/--
              
       
-      
+      /*
       
     //2) On rajoute un objet
       // Dans quel ordre ? Quel objet ?
@@ -39,7 +39,7 @@ void seed(){
         println("Pas possible ... :(");
     }
     
-    
+    */
     
     
     

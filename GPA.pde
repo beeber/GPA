@@ -107,7 +107,6 @@ void draw() {
   
       noStroke();
       listFurniture.get(i).model.draw(); // dessiner model
-       
       // BOUNDING BOX
       //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
       //stroke(150);

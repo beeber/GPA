@@ -44,15 +44,11 @@ class Furniture {
 
     ArrayList<Integer> myListFur = new ArrayList<Integer>();
     ArrayList<Integer> myListFurFinal = new ArrayList<Integer>();
-    println();
-    println("START------------------------");
     XML[] listFurXML = getListArchetype(myType).getChildren("furniture");
     
     for(int i=0; i<listFurXML.length; i++)
       myListFur.add(i);
       
-      println(getListArchetype(myType).getString("type"));
-   
    if(buttonCon.get(Textfield.class,"tags").getText().equals("")) {
      fileID = myListFur.get( int(random(0,myListFur.size())));
    }else {
@@ -90,15 +86,17 @@ class Furniture {
     //this.position.z = bbox.getWHD().z;
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
     
-    
-    rotation = rotOr[int(random(4))];
-    if(rotation%2==0)
-      position = new PVector(random(-xGeneral/2 + box3D.x/2, yGeneral/2 - box3D.y/2), 
-                             random(-xGeneral/2 + box3D.x/2, yGeneral/2 - box3D.y/2));
+    int rotID = int(random(4));
+    rotation = rotOr[rotID];
+    if(rotID%2==0)
+      position = new PVector(random(-xGeneral/2 + box3D.z/2, xGeneral/2 - box3D.z/2), 
+                             random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
     else
-      position = new PVector(random(-xGeneral/2 + box3D.y/2, yGeneral/2 - box3D.x/2), 
-                             random(-xGeneral/2 + box3D.y/2, yGeneral/2 - box3D.x/2));
-   
+      position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                             random(-yGeneral/2 + box3D.z/2, yGeneral/2 - box3D.z/2));
+  
+ 
+
   }
   
   

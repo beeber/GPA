@@ -226,10 +226,9 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
  }
  
  if(theEvent.controller().name()=="addChair") { 
-      //nbChair = nbChair+1;
-      //print("new seed generated with additionnal chair");  
-      //seed(); 
-      testPosition();
+      nbChair = nbChair+1;
+      print("new seed generated with additionnal chair");  
+      seed(); 
   } 
   if(theEvent.controller().name()=="removeChair") { 
       nbChair = nbChair-1;

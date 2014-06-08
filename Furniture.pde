@@ -3,7 +3,8 @@ import saito.objloader.*;
 class Furniture {
   int id;
   PVector position;
-  float rotation;
+  //float rotation;
+  int rotId; // Only 4 possibilites
   OBJModel model;
   Archetype type;
   PVector box3D;
@@ -20,7 +21,7 @@ class Furniture {
     String fileName = ChairName.get(int(random(0,ChairName.size())));
     //String fileName = ChairName.get(0);
     position = new PVector(random(-xGeneral/2,yGeneral/2),random(-xGeneral/2,yGeneral/2));
-    rotation = rotOr[int(random(4))];
+    rotId = int(random(4));
   
   
     model = new OBJModel(parent, fileName, "relative", POLYGON);
@@ -86,9 +87,8 @@ class Furniture {
     //this.position.z = bbox.getWHD().z;
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
     
-    int rotID = int(random(4));
-    rotation = rotOr[rotID];
-    if(rotID%2==0)
+    rotId = int(random(4));
+    if(rotId%2==0)
       position = new PVector(random(-xGeneral/2 + box3D.z/2, xGeneral/2 - box3D.z/2), 
                              random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
     else
@@ -107,7 +107,7 @@ class Furniture {
     model = new OBJModel(_parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
     
     this.position = new PVector();
-    this.rotation = 0;
+    this.rotId = 0;
    
     //model.enableDebug();
     //model.enableTexture();
@@ -121,9 +121,9 @@ class Furniture {
    
   }
   
-  Furniture(PApplet parent, String fileName, PVector position, float rotation){
-    this.position = position;
-    this.rotation = rotation;
+  Furniture(PApplet parent, String fileName, PVector _pos, int _rotId){
+    this.position = _pos;
+    this.rotId = _rotId;
    
     model = new OBJModel(parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
     //model.enableDebug();
@@ -136,6 +136,19 @@ class Furniture {
     //this.position.z = bbox.getWHD().z;
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
    
+  }
+  
+  
+  void newPos() {
+   
+    rotId = int(random(4));
+    if(rotId%2==0)
+      position = new PVector(random(-xGeneral/2 + box3D.z/2, xGeneral/2 - box3D.z/2), 
+                             random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+    else
+      position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                             random(-yGeneral/2 + box3D.z/2, yGeneral/2 - box3D.z/2));
+                             
   }
   
   

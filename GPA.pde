@@ -44,6 +44,11 @@ void setup() {
   initGUI(); // intialise la GUI
 
   cam();
+  
+  
+  listFurniture = new ArrayList<Furniture>();
+  listPivot = new ArrayList<Furniture>();
+
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
   model = new OBJModel(this, "appartement6.obj", "relative", POLYGON); // APPARTEMENT
@@ -74,10 +79,7 @@ void setup() {
 void draw() {
   background(255); 
   
-
- 
-    
-// ROTATION CAMERA INTIALE
+  // ROTATION CAMERA INTIALE
   rotateX(45); 
   rotateZ(45);
   
@@ -85,10 +87,8 @@ void draw() {
   //box(410, 560, 2);
 
 
-  //Display APPARTEMENT
-  stroke(120);
-  noFill();
-
+  //Display room
+  stroke(120);  noFill();
   pushMatrix();  
     rotateX(-PI/2);
     translate(0,-120,0);
@@ -98,25 +98,30 @@ void draw() {
   
   //Display Furnitures
   for(int i=0; i< listFurniture.size(); i++) {
-    
-    pushMatrix();
-    
+    pushMatrix();    
       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
-      rotateZ(listFurniture.get(i).rotation);
+      rotateZ(rotOr[ listFurniture.get(i).rotId ]);
       rotateX(-PI/2); // remettre droit
   
       noStroke();
       listFurniture.get(i).model.draw(); // dessiner model
       // BOUNDING BOX
       //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-      //stroke(150);
-      //noFill();
+      //stroke(150);   noFill();
       //chairs.get(i).bboxTemp.draw();
      
     popMatrix();     
- 
   }  
   
+  //DEBUG
+  /*
+  for(int i=0; i< listFurniture.size(); i++)
+  for(int j=i+1; j< listFurniture.size(); j++)
+     if(isColliding(listFurniture.get(i), listFurniture.get(j))) {
+       fill(255,0,0);
+       box(10);
+     }
+  */
 
 // GUI **********
   disableCam(); // enleve la camera

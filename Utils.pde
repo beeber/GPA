@@ -87,16 +87,12 @@ void loadScene(String fileName) {
 
 }
 
-void wireframe(){
-         if(key == 'o') {
-             model.shapeMode(LINES);
-             println("hello");
-                      }
-       if(key == 'p') {
-             model.shapeMode(POLYGON);
-             println("hello");
-                      }
- }
+
+
+
+
+
+
  
  void boxPivot(){   // BOX POUR PIVOT 
 //Porte fenetre

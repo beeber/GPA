@@ -1,4 +1,7 @@
 // GUI CREATION **************************************************************************************************************
+boolean saveAndSeed = false;
+boolean createList = false;
+
 
 void initGUI(){
   
@@ -125,10 +128,10 @@ void initGUI(){
                .setSpacingColumn(70)
                .addItem("mass", 0)
                .addItem("heat source", 1)
-               //.addItem("sliding ", 2)
+              //.addItem("sliding ", 2)
                .setColorLabel(color(255))
                .activateAll()
-              // sssssssssssssssssssssssssssssssssssssssssssssdesactivate(1)
+              // desactivate(1)
                .moveTo(accordion3)
                ;
      
@@ -270,24 +273,60 @@ void initGUI(){
       buttonCon.getTooltip().register("sliderDesk","Changes the number of desk.");
   
 // CHECKBOX
-       buttonCon.addCheckBox("checkBox")
-        .setPosition(width -100, 455)
     
-        .setColorForeground(color(198,18,18))
-        .setColorBackground(color(188,161,161))
-        .setSize(20, 20)
-        .setSpacingRow(5)
-        .addItem("create list", 0)
-        .addItem("save & seed", 0)
-        .addItem("set camera", 0)
-        .moveTo("global"); // toujours onTop
-        ;
-       buttonCon.getTooltip().setDelay(500);
-       buttonCon.getTooltip().register("create list","create a list of used object");
-       buttonCon.getTooltip().register("save & seed","create a new seed at each save");
-       buttonCon.getTooltip().register("set camera","save camera position");
+      buttonCon.addToggle("toggle")
+         .setLabel("            wireframe")
+         .setColorForeground(color(198,18,18))
+         .setColorBackground(color(188,161,161))
+         .setPosition(width -100, 430)
+         .setSize(20,20)
+         .setValue(false)
+         .getCaptionLabel().align(-200, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("toggle","activate wireframe view");
+     
+
+       buttonCon.addToggle("createList")
+         .setLabel("            create list") // pas touché au blanc !
+         .setColorForeground(color(198,18,18))
+         .setColorBackground(color(188,161,161))
+         .setPosition(width -100, 455)
+         .setSize(20,20)
+         .setValue(false)
+         .getCaptionLabel().align(-200, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("createList","create a list of used object");
+          
+
+       buttonCon.addToggle("saveAndSeed")
+         .setLabel("            Save & seed") // pas touché au blanc !
+         .setColorForeground(color(198,18,18))
+         .setColorBackground(color(188,161,161))
+         .setPosition(width -100, 480)
+         .setSize(20,20)
+         .setValue(false)
+         .getCaptionLabel().align(-200, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("saveAndSeed","new seed at each save");
+      
+      
+       buttonCon.addToggle("setCamera")
+         .setLabel("            set camera") // pas touché au blanc !
+         .setColorForeground(color(198,18,18))
+         .setColorBackground(color(188,161,161))
+         .setPosition(width -100, 505)
+         .setSize(20,20)
+         .setValue(false)
+         .getCaptionLabel().align(-200, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("setCamera","set camera position");
            
 // BUTTONS
+
 
           buttonCon.addBang("buttonTest")
        .setLabel("buttonTest")
@@ -366,16 +405,19 @@ void initGUI(){
        buttonCon.getController("saveDisposition").moveTo("global");
        buttonCon.getController("exportImage").moveTo("global");
        buttonCon.getController("exportObj").moveTo("global");
-       
+       buttonCon.getController("toggle").moveTo("global");
+       buttonCon.getController("setCamera").moveTo("global");
+       buttonCon.getController("saveAndSeed").moveTo("global");
+         
        buttonCon.getController("buttonTest").moveTo("attributes");
-              buttonCon.getController("buttonTest2").moveTo("attributes");
+       buttonCon.getController("buttonTest2").moveTo("attributes");
        
        buttonCon.getController("sliderChair").moveTo("archetypes");
        buttonCon.getController("sliderShelf").moveTo("archetypes");
        buttonCon.getController("sliderCoffeeTable").moveTo("archetypes");
        buttonCon.getController("sliderTable").moveTo("archetypes");
        buttonCon.getController("sliderSofa").moveTo("archetypes");
-        buttonCon.getController("sliderDesk").moveTo("archetypes");     
+       buttonCon.getController("sliderDesk").moveTo("archetypes");     
    
        
        buttonCon.getController("tags").moveTo("keyword");
@@ -447,15 +489,36 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
      print("disposition loaded"); 
   }
   
-   if(theEvent.controller().name()=="exportImage") {
-   saveFrame("project-####.png");
-    print("image saved");
+  if(theEvent.controller().name()=="exportImage") {
+     if(saveAndSeed==true){ // SI LE CHECKBOX SAVEANDSEED
+        seed();
+        saveFrame("export/project-####.png");
+        print("image exported and new seed generated");       
+     } else {
+        saveFrame("export/project-####.png");
+        print("image exported");
+     }
+     if(createList==true){ // SI LE CHECKBOX CREATE LIST
+            String words = "apple bear cat dog";
+            String[] list = split(words, ' ');
+            saveStrings("export/list.txt", list);  
+            print("list created ");    
+     }
+  }
+ 
+ 
+ if(theEvent.controller().name()=="exportObj") {
+     if(createList==true){  // SI LE CHECKBOX CREATE LIST
+            String words = "apple bear cat dog";
+            String[] list = split(words, ' ');
+            saveStrings("export/list.txt", list);  
+            print("list created ");    
+     } else {
+        print(".obj saved");
+     }
   }
   
-     if(theEvent.controller().name()=="exportObj") {
-   //saveFrame("project-####.png");
-    print(".obj saved");
-  }
+  
   
   
   if(theEvent.controller().name()=="loadDispositionSeed") { 

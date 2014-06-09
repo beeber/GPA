@@ -18,7 +18,6 @@ ArrayList<Furniture> listPivot;
 
 ArrayList<String> ChairName, SofaName, TableName, CoffeeTableName, ShelfName; // tabeau noms des fichiers .obj
 
-
 float[] rotOr = new float[4]; // tableau rotation orthogonale
 int xGeneral; // valeur box 
 int yGeneral; // valeur box 
@@ -35,6 +34,8 @@ XML catalog;
 int colorBox;// valeur couleur boxPivot A
 int colorBox2;
 color hoverColor = color(0, 230, 150); // DEFINI COULEUR BOX
+boolean toggle = false;
+boolean setCamera = false;
 // SETUP **************************************************************************************************************
 
 void setup() {
@@ -45,7 +46,6 @@ void setup() {
   xGeneral = 410; // valeur box 
   yGeneral = 560; 
   
- 
   colorBox = 120; // valeur couleur boxPivot A
   colorBox2 = 80; // valeur couleur boxPivot B
    
@@ -105,13 +105,25 @@ void draw() {
     model.draw();
   popMatrix(); 
   
-  wireframe(); //  from Utils
   boxPivot(); // pour afficher les box des points pivot en couleur
 
 
+// *************
+// bouton wireframe
+if(toggle==true) {
+  model.shapeMode(LINES);
+  } else {
+   model.shapeMode(POLYGON);
+}
+// bouton set camera
+if(setCamera == true){
+  cam.setActive(false);
+  println(cam);
+  } else {
+  cam.setActive(true);
+}
+// *************
 
-
-  
   
 //Display Furnitures
   for(int i=0; i< listFurniture.size(); i++) {
@@ -154,6 +166,8 @@ void draw() {
 // **************
 
 }
+
+
 
 
 

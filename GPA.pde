@@ -7,6 +7,12 @@ import saito.objloader.*;
 import controlP5.*;
 import processing.dxf.*;
 
+
+//TODO:
+// Create an object scene.
+
+
+
 ControlP5 buttonCon; // déclare mes buttons
 PeasyCam cam; // déclare ma caméra
 Accordion accordion;
@@ -29,7 +35,8 @@ int sliderTable = 0;
 int sliderCoffeeTable = 0;
 
 String tags = ""; // pour le texte input
-XML catalog;
+
+catalog myCat;
 
 int colorBox;// valeur couleur boxPivot A
 int colorBox2;
@@ -70,7 +77,7 @@ void setup() {
 
 //Database for the furnitures
 
-  catalog = loadXML("catalog.xml");
+  myCat = new catalog("catalog.xml");
   rotOr[0]= PI/2;
   rotOr[1]= PI;
   rotOr[2]= 3*PI/2;

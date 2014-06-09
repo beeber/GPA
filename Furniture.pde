@@ -45,7 +45,7 @@ class Furniture {
 
     ArrayList<Integer> myListFur = new ArrayList<Integer>();
     ArrayList<Integer> myListFurFinal = new ArrayList<Integer>();
-    XML[] listFurXML = getListArchetype(myType).getChildren("furniture");
+    XML[] listFurXML = myCat.getListArchetype(myType).getChildren("furniture");
     
     for(int i=0; i<listFurXML.length; i++)
       myListFur.add(i);
@@ -102,7 +102,7 @@ class Furniture {
   
   Furniture(PApplet _parent, int _id){
     
-    String fileName = getFurXMLByID( _id ).getChildren("filename")[0].getContent();
+    String fileName = myCat.getFurXMLByID( _id ).getChildren("filename")[0].getContent();
     
     model = new OBJModel(_parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
     
@@ -138,6 +138,12 @@ class Furniture {
    
   }
   
+  PVector getRbox() {
+    if(rotId%2==0)
+      return new PVector(box3D.z, box3D.x, box3D.y);
+    else
+      return new PVector(box3D.x, box3D.z, box3D.y);
+  }
   
   void newPos() {
    
@@ -151,6 +157,62 @@ class Furniture {
                              
   }
   
+    
+  void newPosTouchFur(Furniture _fur) {
+   
+    rotId = int(random(4));
+    switch(rotId) {
+     case 0:
+      if(getRbox().x < _fur.getRbox().x) // Check if furniture to place is "smaller"
+        position = new PVector( _fur.position.x + _fur.getRbox().x/2 + getRbox().x/2 , random( _fur.position.y - _fur.getRbox().y/2 + getRbox().y/2, _fur.position.y + _fur.getRbox().y/2 - getRbox().y/2) );
+      else
+        position = new PVector( _fur.position.x + _fur.getRbox().x/2 + getRbox().x/2 , _fur.position.y);
+      break; 
+     case 1:
+      if(getRbox().y < _fur.getRbox().y) // Check if furniture to place is "smaller"
+        position = new PVector( random( _fur.position.x - _fur.getRbox().x/2 + getRbox().x/2, _fur.position.x + _fur.getRbox().x/2 - getRbox().x/2), _fur.position.y  + _fur.getRbox().y/2 + getRbox().y/2 );
+      else
+        position = new PVector( _fur.position.x , _fur.position.y  + _fur.getRbox().y/2 + getRbox().y/2);
+      break; 
+     case 2:
+      if(getRbox().x < _fur.getRbox().x) // Check if furniture to place is "smaller"
+        position = new PVector( _fur.position.x - _fur.getRbox().x/2 - getRbox().x/2 , random( _fur.position.y - _fur.getRbox().y/2 + getRbox().y/2, _fur.position.y + _fur.getRbox().y/2 - getRbox().y/2) );
+      else
+        position = new PVector( _fur.position.x - _fur.getRbox().x/2 - getRbox().x/2 , _fur.position.y);
+      break; 
+     case 3:
+      if(getRbox().y < _fur.getRbox().y) // Check if furniture to place is "smaller"
+        position = new PVector( random( _fur.position.x - _fur.getRbox().x/2 + getRbox().x/2, _fur.position.x + _fur.getRbox().x/2 - getRbox().x/2), _fur.position.y  - _fur.getRbox().y/2 - getRbox().y/2 );
+      else
+        position = new PVector( _fur.position.x , _fur.position.y  - _fur.getRbox().y/2 - getRbox().y/2);
+      break;   
+    }
+    
+  }
+  
+  void newPosTouchWall() {
+    
+    rotId = int(random(4));
+    switch(rotId) {
+     case 0:
+      position = new PVector(xGeneral/2 - box3D.z/2, 
+                             random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+      break; 
+     case 1:
+      position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                             yGeneral/2 - box3D.z/2);
+      break; 
+     case 2:
+      position = new PVector(-xGeneral/2 + box3D.z/2, 
+                             random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+      break; 
+     case 3:
+      position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                             -yGeneral/2 + box3D.z/2);
+      break;   
+    }
+   
+  }
   
   
   

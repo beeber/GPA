@@ -29,7 +29,7 @@ int sliderTable = 0;
 int sliderCoffeeTable = 0;
 
 String tags = ""; // pour le texte input
-XML catalog;
+catalog myCat;
 
 int colorBox;// valeur couleur boxPivot A
 int colorBox2;
@@ -40,7 +40,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 300, displayHeight - 300, OPENGL);
+  size(displayWidth - 100, displayHeight - 100, OPENGL);
   noSmooth();
 
   xGeneral = 410; // valeur box 
@@ -70,7 +70,7 @@ void setup() {
 
 //Database for the furnitures
 
-  catalog = loadXML("catalog.xml");
+  myCat = new catalog("catalog.xml");
   rotOr[0]= PI/2;
   rotOr[1]= PI;
   rotOr[2]= 3*PI/2;

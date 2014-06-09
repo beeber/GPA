@@ -40,7 +40,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 100, displayHeight - 100, OPENGL);
+  size(displayWidth - 300, displayHeight - 300, OPENGL);
   noSmooth();
 
   xGeneral = 410; // valeur box 

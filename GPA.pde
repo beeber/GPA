@@ -159,6 +159,13 @@ if(setCamera == true){
 // GUI **********
   disableCam(); // enleve la camera
   
+  
+  if (buttonCon.window(this).isMouseOver()) {
+    cam.setActive(false);
+  } else {
+    cam.setActive(true);
+  }
+  
   inputTextField(); // permet de dessiner les keywords
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier
   

@@ -4,11 +4,11 @@ void seed(){
    listFurniture.clear();
 
   // 2) On y rajoute les archétypes que l'on veut
+  for(int i=0; i<sliderChair; i++)        listFurniture.add(new Furniture(this, Archetype.CHAIR));
   for(int i=0; i<sliderSofa; i++)         listFurniture.add(new Furniture(this, Archetype.SOFA));
   for(int i=0; i<sliderShelf; i++)        listFurniture.add(new Furniture(this, Archetype.SHELF));
   for(int i=0; i<sliderTable; i++)        listFurniture.add(new Furniture(this, Archetype.TABLE));
   for(int i=0; i<sliderCoffeeTable; i++)  listFurniture.add(new Furniture(this, Archetype.COFFEE_TABLE));
-  for(int i=0; i<sliderChair; i++)        listFurniture.add(new Furniture(this, Archetype.CHAIR));
 
     //2) On test les regles vis à vis des autre objets dans l'espace
     int nbrTrial = 1000;
@@ -18,20 +18,10 @@ void seed(){
       allGood = true;
       
       // 3) On genere les nouvelles positions
-      for(int i=0; i<listFurniture.size(); i++) {
-      
-        // a) hasard
+      for(int i=0; i<listFurniture.size(); i++)
         listFurniture.get(i).newPos();
-        // b) colle au mure
-        //listFurniture.get(i).newPosTouchWall();
-        // c) colle a un autre objet
-        //if(i>0)
-        //  listFurniture.get(i).newPosTouchFur(listFurniture.get(0));
-      }
-        
-      // 4) On test les regles
       
-      //"zero" rule : test if all is indeed inside the boundary of the room
+      // 4) On test les regles
       
       // "first" rule : having no collisions
       for(int i=0; i<listFurniture.size(); i++)
@@ -62,6 +52,28 @@ boolean isColliding(Furniture fur1, Furniture fur2) {
     pos2 = fur2.position;
     if(fur2.rotId%2==0)  box2 = new PVector( fur2.box3D.z, fur2.box3D.x, fur2.box3D.y); // Don't ask and I won't tell...
     else                 box2 = new PVector( fur2.box3D.x, fur2.box3D.z, fur2.box3D.y);
+
+  /*
+  fill(255,0,0);
+  pushMatrix();
+  translate(pos1.x - box1.x/2,0,0);
+  box(10);
+  popMatrix();
+  
+  fill(0,0,255);
+  pushMatrix();
+  translate(pos2.x + box2.x/2,0,0);
+  box(10);
+  popMatrix();
+  */
+  /*
+  fill(0,255,0);
+  translate(60,0,0);
+  if((pos1.x - box1.x/2 > pos2.x + box2.x/2 || pos1.x + box1.x/2 < pos2.x - box2.x/2
+          || pos1.y - box1.y/2 > pos2.y + box2.y/2 || pos1.y + box1.y/2 < pos2.y - box2.y/2
+          || pos1.z - box1.z/2 > pos2.z + box2.z/2 || pos1.z + box1.z/2 < pos2.z - box2.z/2 ))
+    box(10);
+  */
   
     return !(pos1.x - box1.x/2 > pos2.x + box2.x/2 || pos1.x + box1.x/2 < pos2.x - box2.x/2
           || pos1.y - box1.y/2 > pos2.y + box2.y/2 || pos1.y + box1.y/2 < pos2.y - box2.y/2

@@ -9,7 +9,8 @@ import processing.dxf.*;
 
 ControlP5 buttonCon; // déclare mes buttons
 PeasyCam cam; // déclare ma caméra
-
+Accordion accordion;
+Range range;
 OBJModel model; // model appartement
 
 ArrayList<Furniture> listFurniture;
@@ -31,31 +32,39 @@ int sliderCoffeeTable = 0;
 String tags = ""; // pour le texte input
 XML catalog;
 
+int colorBox;// valeur couleur boxPivot A
+int colorBox2;
+color hoverColor = color(0, 230, 150); // DEFINI COULEUR BOX
 // SETUP **************************************************************************************************************
 
 void setup() {
 
-  size(displayWidth - 100, displayHeight - 100, OPENGL);
+  size(displayWidth - 300, displayHeight - 300, OPENGL);
   noSmooth();
 
   xGeneral = 410; // valeur box 
   yGeneral = 560; 
-    
+  
+ 
+  colorBox = 120; // valeur couleur boxPivot A
+  colorBox2 = 80; // valeur couleur boxPivot B
+   
   initGUI(); // intialise la GUI
 
   cam();
-  
   
   listFurniture = new ArrayList<Furniture>();
   listPivot = new ArrayList<Furniture>();
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
-  model = new OBJModel(this, "appartement6.obj", "relative", POLYGON); // APPARTEMENT
+  model = new OBJModel(this, "appartement8.obj", "relative", POLYGON); // APPARTEMENT
           model.scale(100);
           model.enableTexture();
-         // model.disableMaterial();  //mesh view
+          //model.disableMaterial();  //mesh view
           model.translateToCenter();
+          model.disableDebug();
+ 
   
 // TABLEAU .obj name
 
@@ -80,23 +89,31 @@ void draw() {
   background(255); 
   
   // ROTATION CAMERA INTIALE
-  rotateX(45); 
-  rotateZ(45);
-  
+ // rotateX(45); 
+ // rotateZ(45);
+
   //Display BOX (DEBUG)
   //box(410, 560, 2);
 
-
   //Display room
-  stroke(120);  noFill();
-  pushMatrix();  
+  stroke(0);
+  pushMatrix();
+     if(key == '-') {stroke(255);} 
+     if(key == '*') {stroke(0);} 
     rotateX(-PI/2);
     translate(0,-120,0);
     model.draw();
-  popMatrix();     
- 
+  popMatrix(); 
   
-  //Display Furnitures
+  wireframe(); //  from Utils
+  boxPivot(); // pour afficher les box des points pivot en couleur
+
+
+
+
+  
+  
+//Display Furnitures
   for(int i=0; i< listFurniture.size(); i++) {
     pushMatrix();    
       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
@@ -104,13 +121,17 @@ void draw() {
       rotateX(-PI/2); // remettre droit
   
       noStroke();
+      
       listFurniture.get(i).model.draw(); // dessiner model
+      listFurniture.get(i).model.disableDebug();
+      listFurniture.get(i).model.enableMaterial();
+      listFurniture.get(i).model.enableTexture();
+ 
       // BOUNDING BOX
       //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
       //stroke(150);   noFill();
       //chairs.get(i).bboxTemp.draw();
-     
-    popMatrix();     
+    popMatrix();    
   }  
   
   //DEBUG
@@ -131,6 +152,7 @@ void draw() {
   
   enableCam();
 // **************
+
 }
 
 

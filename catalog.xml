@@ -33,7 +33,7 @@
 			<author>Daniel la pute</author>
 			<year>1985</year>
 			<bio>C'est la fete du slip.</bio>
-			<filename>table1</filename>
+			<filename>table3</filename>
 			<tag>tagAAA tagBBB tagCCC</tag>
 		</furniture>
 		<furniture id="4">
@@ -41,7 +41,23 @@
 			<author>Salope</author>
 			<year>1985</year>
 			<bio>C'est toujours la fete du slip.</bio>
-			<filename>table2</filename>
+			<filename>table4</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+				<furniture id="11">
+			<name>table2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>table5</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+				<furniture id="12">
+			<name>table2</name>
+			<author>Salope</author>
+			<year>1985</year>
+			<bio>C'est toujours la fete du slip.</bio>
+			<filename>table6</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
 	</archetype>
@@ -102,4 +118,5 @@
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
 	</archetype>
+	
 </catalog>

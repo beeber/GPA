@@ -87,3 +87,73 @@ void loadScene(String fileName) {
 
 }
 
+void wireframe(){
+         if(key == 'o') {
+             model.shapeMode(LINES);
+             println("hello");
+                      }
+       if(key == 'p') {
+             model.shapeMode(POLYGON);
+             println("hello");
+                      }
+ }
+ 
+ void boxPivot(){   // BOX POUR PIVOT 
+//Porte fenetre
+      pushMatrix();
+        translate(-215,-150,110);
+          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+        fill(hoverColor);
+      } else {
+        noStroke();
+        noFill();
+      }
+        box(20,160,220);
+      popMatrix();
+// porte
+      pushMatrix();
+        translate(215,157,105);
+          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+        fill(hoverColor);
+      } else {
+        noStroke();
+        noFill();
+      }
+        box(20,85,210);
+      popMatrix(); 
+// fenetre 
+      pushMatrix();
+        translate(-10,290,150);
+          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+        fill(hoverColor);
+      } else {
+        noStroke();
+        noFill();
+      }
+        box(135,20,120);
+      popMatrix(); 
+// bloc
+     pushMatrix();
+        translate(198,75,134);
+          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+        fill(hoverColor);
+      } else {
+        noStroke();
+        noFill();
+      }
+        box(12,42,60);
+      popMatrix();  
+// Radiateur
+     pushMatrix();
+        translate(140,265,50);
+          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+        fill(hoverColor);
+      } else {
+        noStroke();
+        noFill();
+      }
+        box(125,30,100);
+      popMatrix(); 
+      
+ }
+

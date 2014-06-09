@@ -408,6 +408,7 @@ void initGUI(){
        buttonCon.getController("toggle").moveTo("global");
        buttonCon.getController("setCamera").moveTo("global");
        buttonCon.getController("saveAndSeed").moveTo("global");
+       buttonCon.getController("createList").moveTo("global");
          
        buttonCon.getController("buttonTest").moveTo("attributes");
        buttonCon.getController("buttonTest2").moveTo("attributes");

@@ -64,8 +64,8 @@ void initGUI(){
        ;
    
 // ACCORDION ATTRIBUTE
-/*
-  Group accordion1 = buttonCon.addGroup("Door")
+
+  controlP5.Group g1 = buttonCon.addGroup("Door")
               .setBackgroundColor(color(0, 64))
               .setBackgroundHeight(10)
               .setBarHeight(20)
@@ -82,13 +82,13 @@ void initGUI(){
                 .addItem("entry point", 1)
                 .addItem("can't be block 8", 50)
                 //.addItem("sliding door", 100)
-                .activateAll()
+                //.activateAll()
                 //.activate(3)
-                .moveTo(accordion1)
+                .moveTo(g1)
                 ;
 
 
-  Group accordion2 = buttonCon.addGroup("Window")
+  controlP5.Group g2 = buttonCon.addGroup("Window")
               .setBackgroundColor(color(0, 64))
               .setBackgroundHeight(20)
               .setBarHeight(20)
@@ -108,10 +108,10 @@ void initGUI(){
                 //.addItem("sliding window", 100)
                 //.activate(10)
                 .activateAll()
-                .moveTo(accordion2)
+                .moveTo(g2)
                 ;
                 
-  Group accordion3 = buttonCon.addGroup("Radiator")
+  controlP5.Group g3 = buttonCon.addGroup("Radiator")
               .setBackgroundColor(color(0, 64))
               .setBackgroundHeight(10)
               .setBarHeight(20)
@@ -132,10 +132,10 @@ void initGUI(){
                .setColorLabel(color(255))
                .activateAll()
               // desactivate(1)
-               .moveTo(accordion3)
+               .moveTo(g3)
                ;
      
-   Group accordion14 = buttonCon.addGroup("Sliding Window")
+   controlP5.Group g4 = buttonCon.addGroup("Sliding Window")
               .setBackgroundColor(color(0, 64))
               .setBackgroundHeight(20)
               .setBarHeight(20)
@@ -154,21 +154,22 @@ void initGUI(){
                 .addItem("entry 2", 100)
                 .activate(10)
                  .activateAll()
-                .moveTo(accordion14)
+                .moveTo(g4)
                 ;   
      
  
   accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
                  .setPosition(40,40)
                  .setWidth(200)
-                 .addItem(accordion11)             
-                 .addItem(accordion12)
-                 .addItem(accordion13)
-                 .addItem(accordion14 )
+                 .addItem(g1)             
+                 .addItem(g2)
+                 .addItem(g3)
+                 .addItem(g4 )
                  ;
+                 
     accordion.setCollapseMode(Accordion.SINGLE);               
            
-*/
+
 // SLIDERS
 /*
   range = buttonCon.addRange("rangeChair")
@@ -427,9 +428,10 @@ void initGUI(){
        buttonCon.getController("setCamera").moveTo("global");
        buttonCon.getController("saveAndSeed").moveTo("global");
        buttonCon.getController("createList").moveTo("global");
-         
-       buttonCon.getController("buttonTest").moveTo("attributes");
-       buttonCon.getController("buttonTest2").moveTo("attributes");
+
+       //buttonCon.getController("accordionPiv").moveTo("attributes");        
+       buttonCon.getController("buttonTest").moveTo("global");
+       buttonCon.getController("buttonTest2").moveTo("global");
        
        buttonCon.getController("sliderChair").moveTo("archetypes");
        buttonCon.getController("sliderShelf").moveTo("archetypes");
@@ -507,6 +509,24 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
     loadScene("test.xml");
      print("disposition loaded"); 
   }
+  
+  
+  
+/*
+  if(theEvent.controller().name()=="Door")
+  println("ioyoiuoiu");
+ /*
+if("Door"
+ {
+     pushMatrix();
+       translate(-215,-150,110);
+       fill(hoverColor);
+       box(20,160,220);
+     popMatrix();
+
+  }
+  */
+  
   
   if(theEvent.controller().name()=="exportImage") {
      if(saveAndSeed==true){ // SI LE CHECKBOX SAVEANDSEED

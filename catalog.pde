@@ -21,7 +21,8 @@ class catalog {
        case COFFEE_TABLE:  if(listArchetype[i].getString("type").equals("COFFEE_TABLE"))  return listArchetype[i]; break;
        case SOFA:          if(listArchetype[i].getString("type").equals("SOFA"))          return listArchetype[i]; break;
        case SHELF:         if(listArchetype[i].getString("type").equals("SHELF"))         return listArchetype[i]; break;
-      }
+       case PIVOT_STD:     if(listArchetype[i].getString("type").equals("PIVOT_STD"))     return listArchetype[i]; break;
+     }
     }
     
     println("ISSUE in get list archetype");

@@ -36,7 +36,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 100, displayHeight - 100, OPENGL);
+  size(displayWidth - 50, displayHeight - 50, OPENGL);
   smooth();
 
   xGeneral = 410; yGeneral = 560; 
@@ -51,12 +51,56 @@ void setup() {
   indexFurniture = -1;
   listFurniture = new ArrayList<Furniture>();
 
+  seed(); // crée une nouvelle seed générative au lancement de la scène
+
+  // CREATION APPARTEMENT
   model = new OBJModel(this, "appartement8.obj", "relative", POLYGON); // APPARTEMENT
           model.scale(100);
           model.enableTexture();
           //model.disableMaterial();  //mesh view
           model.translateToCenter();
           model.disableDebug();
+
+  // CREATION POINT PIVOT
+  // list pivot standart
+  Furniture furT;
+  
+  //Porte fenetre
+  furT = new Furniture(this); 
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(-215,-150,110);
+  furT.rotId = 0;
+  furT.box3D = new PVector(20,160,220);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // porte
+  furT = new Furniture(this); 
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(215,157,105);
+  furT.rotId = 0;
+  furT.box3D = new PVector(20,85,210);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // bloc
+    furT = new Furniture(this);
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(198,75,134);
+  furT.rotId = 0;
+  furT.box3D = new PVector(12,42,60);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // Radiateur
+    furT = new Furniture(this);
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(140,265,50);
+  furT.rotId = 0;
+  furT.box3D = new PVector(125,30,100);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
  
   
   myCat = new catalog("catalog.xml");
@@ -104,6 +148,13 @@ if(setCamera == true){
   cam.setActive(true);
 }
 // *************
+
+  if( buttonCon.getGroup("Door").isOpen() ) 
+    println("caca");
+    else
+    println("pip");
+    
+//*********************    
 
   
 //Display Furnitures

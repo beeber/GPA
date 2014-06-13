@@ -15,26 +15,8 @@ class Furniture {
   
   int tSphere; // taille sphere bounding box
 
-  
   Furniture(PApplet parent) {
-   
-    String fileName = ChairName.get(int(random(0,ChairName.size())));
-    //String fileName = ChairName.get(0);
-    position = new PVector(random(-xGeneral/2,yGeneral/2),random(-xGeneral/2,yGeneral/2));
-    rotId = int(random(4));
-  
-  
-    model = new OBJModel(parent, fileName, "relative", POLYGON);
-    model.enableDebug();
-    model.enableTexture();
-    model.scale(100);
-    model.translateToCenter();
-    
-    BoundingBox bbox = new BoundingBox(parent, model);
-    bboxTemp = new BoundingBox(parent, model);
-    //this.position.z = bbox.getWHD().z;
-    box3D = bbox.getWHD(); // pour collision on va chercher le x,y
-   
+    id = -1;
   }
    
    

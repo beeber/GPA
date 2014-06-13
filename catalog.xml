@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ID_MAX = 12, a mettre a jour-->
 <catalog>
 	<archetype type="CHAIR">
 		<furniture id="0">

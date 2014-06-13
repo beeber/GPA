@@ -1,8 +1,4 @@
-import peasy.test.*;
-import peasy.org.apache.commons.math.*;
 import peasy.*;
-import peasy.org.apache.commons.math.geometry.*;
-import processing.opengl.*;
 import saito.objloader.*;
 import controlP5.*;
 import processing.dxf.*;
@@ -14,7 +10,6 @@ Range range;
 OBJModel model; // model appartement
 
 ArrayList<Furniture> listFurniture;
-ArrayList<Furniture> listPivot;
 
 ArrayList<String> ChairName, SofaName, TableName, CoffeeTableName, ShelfName; // tabeau noms des fichiers .obj
 
@@ -54,7 +49,6 @@ void setup() {
   cam();
   
   listFurniture = new ArrayList<Furniture>();
-  listPivot = new ArrayList<Furniture>();
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
@@ -117,10 +111,6 @@ void setup() {
   rotOr[1]= PI;
   rotOr[2]= 3*PI/2;
   rotOr[3]= 2*PI;
-  
-  
- listFurniture = new ArrayList<Furniture>();
- listPivot = new ArrayList<Furniture>();
   
 } 
 
@@ -207,13 +197,6 @@ if(setCamera == true){
 
 // GUI **********
   disableCam(); // enleve la camera
-  
-  
-  if (buttonCon.window(this).isMouseOver()) {
-    cam.setActive(false);
-  } else {
-    cam.setActive(true);
-  }
   
   inputTextField(); // permet de dessiner les keywords
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier

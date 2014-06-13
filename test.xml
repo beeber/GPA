@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scene> <furniture id="10" pivot="false" rot="0"> <pos x="-15.793808" y="278.3427" z="0.0"/> </furniture>
-  <furniture id="9" pivot="false" rot="0"> <pos x="-7.3916016" y="-240.6137" z="0.0"/> </furniture>
-  <furniture id="10" pivot="false" rot="0"> <pos x="-19.992065" y="-44.277924" z="0.0"/> </furniture>
-  <furniture id="12" pivot="false" rot="1"> <pos x="83.35013" y="-204.42834" z="0.0"/> </furniture>
-  <furniture id="4" pivot="false" rot="0"> <pos x="139.08118" y="-13.468216" z="0.0"/> </furniture>
-  <furniture id="11" pivot="false" rot="1"> <pos x="-18.513664" y="12.550919" z="0.0"/> </furniture>
-  <furniture id="8" pivot="false" rot="2"> <pos x="13.405884" y="-79.07994" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="3"> <pos x="115.04588" y="170.94449" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="3"> <pos x="-115.01953" y="133.362" z="0.0"/> </furniture>
+<scene> <furniture id="1" pivot="false" rot="2"> <pos x="5.5834503" y="-149.42596" z="0.0"/> </furniture>
+  <furniture id="2" pivot="false" rot="0"> <pos x="-167.92824" y="-95.394196" z="0.0"/> </furniture>
+  <furniture id="1" pivot="false" rot="2"> <pos x="-71.22556" y="247.89064" z="0.0"/> </furniture>
+  <furniture id="2" pivot="false" rot="2"> <pos x="-166.54213" y="-177.95471" z="0.0"/> </furniture>
 </scene>

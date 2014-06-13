@@ -1,12 +1,19 @@
 void seed(){
   
-  // 1) On instancie notre tableau
-   listFurniture.clear();
+  // 1) On instancie notre tableau A CLEANER
+  int size = listFurniture.size();
+  for (int i = size-1; i >= 0; i--){
+      if (!listFurniture.get(i).pivot){
+              listFurniture.remove(i);
+      }
+   }
+ 
+ //  listFurniture.clear();
 
   // 2) On y rajoute les archétypes que l'on veut
-  for(int i=0; i<sliderSofa; i++)         listFurniture.add(new Furniture(this, Archetype.SOFA));
   for(int i=0; i<sliderShelf; i++)        listFurniture.add(new Furniture(this, Archetype.SHELF));
   for(int i=0; i<sliderTable; i++)        listFurniture.add(new Furniture(this, Archetype.TABLE));
+  for(int i=0; i<sliderSofa; i++)         listFurniture.add(new Furniture(this, Archetype.SOFA));
   for(int i=0; i<sliderCoffeeTable; i++)  listFurniture.add(new Furniture(this, Archetype.COFFEE_TABLE));
   for(int i=0; i<sliderChair; i++)        listFurniture.add(new Furniture(this, Archetype.CHAIR));
 
@@ -19,7 +26,9 @@ void seed(){
       
       // 3) On genere les nouvelles positions
       for(int i=0; i<listFurniture.size(); i++) {
-      
+        if(listFurniture.get(i).pivot)
+          continue;
+          
         // a) hasard
         listFurniture.get(i).newPos();
         // b) colle au mure

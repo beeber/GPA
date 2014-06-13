@@ -9,6 +9,7 @@ Accordion accordion;
 Range range;
 OBJModel model; // model appartement
 
+int indexFurniture;
 ArrayList<Furniture> listFurniture;
 
 ArrayList<String> ChairName, SofaName, TableName, CoffeeTableName, ShelfName; // tabeau noms des fichiers .obj
@@ -36,10 +37,9 @@ boolean setCamera = false;
 void setup() {
 
   size(displayWidth - 100, displayHeight - 100, OPENGL);
-  noSmooth();
+  smooth();
 
-  xGeneral = 410; // valeur box 
-  yGeneral = 560; 
+  xGeneral = 410; yGeneral = 560; 
   
   colorBox = 120; // valeur couleur boxPivot A
   colorBox2 = 80; // valeur couleur boxPivot B
@@ -48,9 +48,8 @@ void setup() {
 
   cam();
   
+  indexFurniture = -1;
   listFurniture = new ArrayList<Furniture>();
-
-  seed(); // crée une nouvelle seed générative au lancement de la scène
 
   model = new OBJModel(this, "appartement8.obj", "relative", POLYGON); // APPARTEMENT
           model.scale(100);
@@ -60,21 +59,13 @@ void setup() {
           model.disableDebug();
  
   
-// TABLEAU .obj name
-
-//Database for the furnitures
-
   myCat = new catalog("catalog.xml");
-  rotOr[0]= PI/2;
-  rotOr[1]= PI;
-  rotOr[2]= 3*PI/2;
-  rotOr[3]= 2*PI;
+  
+  rotOr[0]= PI/2; rotOr[1]= PI; rotOr[2]= 3*PI/2; rotOr[3]= 2*PI;
   
 } 
 
 
-
-// DRAW **************************************************************************************************************
 void draw() {
   background(255); 
   
@@ -129,12 +120,18 @@ if(setCamera == true){
       listFurniture.get(i).model.enableMaterial();
       listFurniture.get(i).model.enableTexture();
  
-      // BOUNDING BOX
-      //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-      //stroke(150);   noFill();
-      //chairs.get(i).bboxTemp.draw();
+      if(listFurniture.get(i).pivot) {
+        listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+      }
+ 
+      if(indexFurniture == i) {
+        //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+        stroke(200,40,40);   noFill();
+        listFurniture.get(i).bboxTemp.draw();
+      }
     popMatrix();    
   }  
+  
   
   //DEBUG
   /*
@@ -158,7 +155,31 @@ if(setCamera == true){
 }
 
 
-
+void keyPressed() {
+ 
+ if(key == 'e')
+   indexFurniture = min(indexFurniture + 1, listFurniture.size() -1);
+   
+ if(key == 'd')
+   indexFurniture = max(indexFurniture - 1, -1);
+   
+ if(key == 'c' && indexFurniture > -1) {
+   listFurniture.get(indexFurniture).pivot = !listFurniture.get(indexFurniture).pivot;
+   
+   //TODO: MODIFIER LA VALEUR DU SLIDER DEPENDANT DE L'ARCHETYPE.  (setValue());
+ }
+   
+   
+   
+  if (key == CODED)
+    switch(keyCode) {
+     case UP:    listFurniture.get(indexFurniture).position.x += 10; break;
+     case DOWN:  listFurniture.get(indexFurniture).position.x -= 10; break;
+     case LEFT:  listFurniture.get(indexFurniture).position.y += 10; break;
+     case RIGHT: listFurniture.get(indexFurniture).position.y -= 10; break;
+    }
+ 
+}
 
 
 

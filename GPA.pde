@@ -1,8 +1,4 @@
-import peasy.test.*;
-import peasy.org.apache.commons.math.*;
 import peasy.*;
-import peasy.org.apache.commons.math.geometry.*;
-import processing.opengl.*;
 import saito.objloader.*;
 import controlP5.*;
 import processing.dxf.*;

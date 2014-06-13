@@ -1,7 +1,7 @@
 // GUI CREATION **************************************************************************************************************
 boolean saveAndSeed = false;
 boolean createList = false;
-
+boolean choiceLib = false;
 
 void initGUI(){
   
@@ -271,9 +271,42 @@ void initGUI(){
        ;
       buttonCon.getTooltip().setDelay(500);
       buttonCon.getTooltip().register("sliderDesk","Changes the number of desk.");
-  
+
+// TEXTE INPUT
+       // input texte
+          buttonCon.addTextfield("tags") 
+       .setLabel("")     
+       .setPosition(10,125)
+       .setSize(100,20)
+       .setAutoClear(true)
+       .setColor(color(0,0,0))
+       ;   
+     
+       // clear texte  
+          buttonCon.addBang("clear")  
+       .setLabel("clear tags")     
+       .setPosition(10,100)
+       .setSize(100,20)
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+       ;  
+     
+       
 // CHECKBOX
-    
+ 
+       buttonCon.addToggle("choiceLib")
+         .setLabel("  Personnal      Shared")
+         .setColorForeground(color(198,18,18))
+         .setColorBackground(color(188,161,161))
+         .setPosition(10, 75)
+         .setSize(100,20)
+         .setValue(false)
+         .setMode(ControlP5.SWITCH)
+         .getCaptionLabel().align(-200, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("choiceLib","choice your furniture library");
+   
+      
       buttonCon.addToggle("toggle")
          .setLabel("            wireframe")
          .setColorForeground(color(198,18,18))
@@ -381,22 +414,7 @@ void initGUI(){
       
        
        
-       // input texte
-          buttonCon.addTextfield("tags") 
-          
-       .setLabel("enter tags")
-       .setPosition(10,100)
-       .setSize(200,20)
-       .setAutoClear(true)
-       .setColor(color(0,0,0))
-       ;   
-     
-       // clear texte  
-          buttonCon.addBang("clear")       
-       .setPosition(210,100)
-       .setSize(80,20)
-       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;  
+
        
        
 // POSITION DES BUTTONS DANS LES TABS
@@ -420,7 +438,7 @@ void initGUI(){
        buttonCon.getController("sliderSofa").moveTo("archetypes");
        buttonCon.getController("sliderDesk").moveTo("archetypes");     
    
-       
+        buttonCon.getController("choiceLib").moveTo("keyword");      
        buttonCon.getController("tags").moveTo("keyword");
        buttonCon.getController("clear").moveTo("keyword");
          

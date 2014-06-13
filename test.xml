@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scene> <furniture id="0" pivot="false" rot="0"> <pos x="2.9600525" y="28.704605" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="0"> <pos x="103.097046" y="53.28862" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="0"> <pos x="-14.626755" y="-103.527115" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="3"> <pos x="-124.33339" y="-32.265335" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="2"> <pos x="151.99173" y="-178.46497" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="3"> <pos x="-62.180325" y="163.75183" z="0.0"/> </furniture>
+<scene> <furniture id="1" pivot="false" rot="2"> <pos x="5.5834503" y="-149.42596" z="0.0"/> </furniture>
+  <furniture id="2" pivot="false" rot="0"> <pos x="-167.92824" y="-95.394196" z="0.0"/> </furniture>
+  <furniture id="1" pivot="false" rot="2"> <pos x="-71.22556" y="247.89064" z="0.0"/> </furniture>
+  <furniture id="2" pivot="false" rot="2"> <pos x="-166.54213" y="-177.95471" z="0.0"/> </furniture>
 </scene>

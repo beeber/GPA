@@ -6,13 +6,7 @@ void saveScene(String fileName) {
   XML fur;
   
   for(int i=0; i<listFurniture.size(); i++) {
-    fur = parseXML("<furniture id=\"" + listFurniture.get(i).id + "\" rot=\""+ listFurniture.get(i).rotId + "\" pivot=\"false\"> <pos x=\"" +
-                   listFurniture.get(i).position.x+"\" y=\""+listFurniture.get(i).position.y+"\" z=\""+listFurniture.get(i).position.z+"\"/> </furniture>");
-    scene.addChild(fur);
-  }
-  
-  for(int i=0; i<listPivot.size(); i++) {
-    fur = parseXML("<furniture id=\"" + listFurniture.get(i).id + "\" rot=\""+ listFurniture.get(i).rotId + "\" pivot=\"true\"> <pos x=\"" +
+    fur = parseXML("<furniture id=\"" + listFurniture.get(i).id + "\" rot=\""+ listFurniture.get(i).rotId + "\" pivot=\""+ listFurniture.get(i).pivot + "\"> <pos x=\"" +
                    listFurniture.get(i).position.x+"\" y=\""+listFurniture.get(i).position.y+"\" z=\""+listFurniture.get(i).position.z+"\"/> </furniture>");
     scene.addChild(fur);
   }
@@ -23,9 +17,8 @@ void saveScene(String fileName) {
 
 
 void loadScene(String fileName) {
+
   listFurniture.clear();
-  listPivot.clear();
-  
   
   XML scene = loadXML(fileName);
   XML[] listFur = scene.getChildren("furniture");
@@ -39,15 +32,15 @@ void loadScene(String fileName) {
     fur.position = new PVector(listFur[i].getChildren("pos")[0].getFloat("x"), listFur[i].getChildren("pos")[0].getFloat("y"), listFur[i].getChildren("pos")[0].getFloat("z"));
     fur.rotId = listFur[i].getInt("rot");
     
-    
-    if(listFur[i].getString("pivot").equals("true")) {
-      listPivot.add(fur);
+    if(listFur[i].getString("pivot").equals("true")) { // Pas possible de lire une boolean d'un XML ?
+      fur.pivot = true;
     } else {
-      listFurniture.add(fur);
+      fur.pivot = false;
     }
+    
+    listFurniture.add(fur);
   }
-  
-
+ 
 }
 
 

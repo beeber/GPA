@@ -14,7 +14,6 @@ Range range;
 OBJModel model; // model appartement
 
 ArrayList<Furniture> listFurniture;
-ArrayList<Furniture> listPivot;
 
 ArrayList<String> ChairName, SofaName, TableName, CoffeeTableName, ShelfName; // tabeau noms des fichiers .obj
 
@@ -54,7 +53,6 @@ void setup() {
   cam();
   
   listFurniture = new ArrayList<Furniture>();
-  listPivot = new ArrayList<Furniture>();
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
@@ -75,10 +73,6 @@ void setup() {
   rotOr[1]= PI;
   rotOr[2]= 3*PI/2;
   rotOr[3]= 2*PI;
-  
-  
- listFurniture = new ArrayList<Furniture>();
- listPivot = new ArrayList<Furniture>();
   
 } 
 

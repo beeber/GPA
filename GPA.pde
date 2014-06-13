@@ -40,7 +40,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 300, displayHeight - 300, OPENGL);
+  size(displayWidth - 50, displayHeight - 50, OPENGL);
   noSmooth();
 
   xGeneral = 410; // valeur box 
@@ -58,12 +58,54 @@ void setup() {
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
+  // CREATION APPARTEMENT
   model = new OBJModel(this, "appartement8.obj", "relative", POLYGON); // APPARTEMENT
           model.scale(100);
           model.enableTexture();
           //model.disableMaterial();  //mesh view
           model.translateToCenter();
           model.disableDebug();
+
+  // CREATION POINT PIVOT
+  // list pivot standart
+  Furniture furT;
+  
+  //Porte fenetre
+  furT = new Furniture(this); 
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(-215,-150,110);
+  furT.rotId = 0;
+  furT.box3D = new PVector(20,160,220);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // porte
+  furT = new Furniture(this); 
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(215,157,105);
+  furT.rotId = 0;
+  furT.box3D = new PVector(20,85,210);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // bloc
+    furT = new Furniture(this);
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(198,75,134);
+  furT.rotId = 0;
+  furT.box3D = new PVector(12,42,60);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // Radiateur
+    furT = new Furniture(this);
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(140,265,50);
+  furT.rotId = 0;
+  furT.box3D = new PVector(125,30,100);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
  
   
 // TABLEAU .obj name
@@ -123,6 +165,13 @@ if(setCamera == true){
   cam.setActive(true);
 }
 // *************
+
+  if( buttonCon.getGroup("Door").isOpen() ) 
+    println("caca");
+    else
+    println("pip");
+    
+//*********************    
 
   
 //Display Furnitures

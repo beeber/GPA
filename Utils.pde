@@ -72,7 +72,7 @@ void loadScene(String fileName) {
 // porte
       pushMatrix();
         translate(215,157,105);
-          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("entry point"))) {
         fill(hoverColor);
       } else {
         noStroke();

@@ -55,10 +55,12 @@ class Furniture {
     fileID = myListFurFinal.get( int(random(0,myListFurFinal.size())));
    }
    
+   
    fileName = listFurXML[fileID].getChildren("filename")[0].getContent()  + ".obj";
    id = listFurXML[fileID].getInt("id");
   
-    model = new OBJModel(parent, "furniture/"+fileName, "relative", POLYGON);
+
+    model = new OBJModel(parent, "data/"+fileName, "relative", POLYGON);
     model.enableDebug();
     model.enableTexture();
     model.scale(100);

@@ -36,7 +36,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 50, displayHeight - 50, OPENGL);
+  size(displayWidth - 300, displayHeight - 300, OPENGL);
   smooth();
 
   xGeneral = 410; yGeneral = 560; 
@@ -53,10 +53,11 @@ void setup() {
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
-  // CREATION APPARTEMENT
-  model = new OBJModel(this, "appartement8.obj", "relative", POLYGON); // APPARTEMENT
+  // DISPLAY APPARTMENT
+  model = new OBJModel(this, "data/appartement8.obj", "relative", POLYGON);
+
           model.scale(100);
-          model.enableTexture();
+          //model.enableTexture();
           //model.disableMaterial();  //mesh view
           model.translateToCenter();
           model.disableDebug();
@@ -109,11 +110,10 @@ void setup() {
   
 } 
 
-
 void draw() {
   background(255); 
   
-  // ROTATION CAMERA INTIALE
+ // ROTATION CAMERA INTIALE
  // rotateX(45); 
  // rotateZ(45);
 
@@ -157,7 +157,7 @@ if(setCamera == true){
 //*********************    
 
 
-//Display Furnitures
+// DISPLAY FURNITURES
   for(int i=0; i< listFurniture.size(); i++) {
     
     if(listFurniture.get(i).type == Archetype.PIVOT_STD) { // RAJOUTER AU TEST (avec &&) des conditions pour l'affichage. (moi qui fait)
@@ -170,18 +170,18 @@ if(setCamera == true){
      continue;
     }
     
-    
     pushMatrix();    
       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
       rotateZ(rotOr[ listFurniture.get(i).rotId ]);
       rotateX(-PI/2); // remettre droit
   
-      noStroke();
-      
-      listFurniture.get(i).model.draw(); // dessiner model
-      listFurniture.get(i).model.disableDebug();
-      listFurniture.get(i).model.enableMaterial();
-      listFurniture.get(i).model.enableTexture();
+     noStroke();
+     // fill(0);
+    
+     listFurniture.get(i).model.disableDebug();
+     listFurniture.get(i).model.draw();
+     // listFurniture.get(i).model.enableMaterial();
+     // listFurniture.get(i).model.enableTexture();
  
       if(listFurniture.get(i).pivot) {
         listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
@@ -192,6 +192,7 @@ if(setCamera == true){
         stroke(200,40,40);   noFill();
         listFurniture.get(i).bboxTemp.draw();
       }
+      
     popMatrix();    
   }  
   

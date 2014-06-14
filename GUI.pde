@@ -44,7 +44,7 @@ void initGUI(){
        
          buttonCon.getTab("default") 
        .activateEvent(false)
-       .setLabel("attributes")
+       .setLabel("scene")
        .setId(1)
        ;
          buttonCon.getTab("attributes")

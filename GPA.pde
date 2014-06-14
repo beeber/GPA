@@ -209,12 +209,18 @@ if(setCamera == true){
 
 // GUI **********
   disableCam(); // enleve la camera
-  
-  if(buttonCon.window(this).isMouseOver())
+
+  if(buttonCon.window(this).isMouseOver()){
     cam.setActive(false);
-  else //TODO: if(buttonCon.getController("setCamera").setValue(false))
+  } else { 
     cam.setActive(true);
-  
+         if(setCamera==true){ // setCamera toggle
+          cam.setActive(false);
+          println("camera disable");
+        } else {
+          cam.setActive(true);
+        }
+  }
   
   inputTextField(); // permet de dessiner les keywords
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier

@@ -2,6 +2,12 @@
 boolean saveAndSeed = false;
 boolean createList = false;
 boolean choiceLib = false;
+boolean pivDoor = false;
+boolean pivWindow = false;
+boolean pivMass = false;
+boolean pivRadiator = false;
+boolean pivSlidingWindow = false;
+
 
 void initGUI(){
   
@@ -159,7 +165,7 @@ void initGUI(){
      
  
   accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
-                 .setPosition(40,40)
+                 .setPosition(10,200)
                  .setWidth(200)
                  .addItem(g1)             
                  .addItem(g2)
@@ -273,6 +279,70 @@ void initGUI(){
       buttonCon.getTooltip().setDelay(500);
       buttonCon.getTooltip().register("sliderDesk","Changes the number of desk.");
 
+
+// TOGGLE ATTRIBUTES
+
+       buttonCon.addToggle("pivDoor")
+         .setLabel("Door")
+         .setColorForeground(color(255))
+         .setColorActive(color(#BCA1A1))
+         //.setColorBackground(color(188,161,161))
+         .setPosition(10, 200)
+         .setSize(100,20)
+         .setValue(false)
+         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("pivDoor","recognise door");
+      
+        buttonCon.addToggle("pivWindow")
+         .setLabel("window")
+         .setColorForeground(color(255))
+         .setColorActive(color(#BCA1A1))
+         .setPosition(10, 230)
+         .setSize(100,20)
+         .setValue(false)
+         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("pivWindow","recognise window");
+      
+         buttonCon.addToggle("pivSlidingWindow")
+         .setLabel("sliding window")
+         .setColorForeground(color(255))
+         .setColorActive(color(#BCA1A1))
+         .setPosition(10, 260)
+         .setSize(100,20)
+         .setValue(false)
+         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("pivSlidingWindow","recognise sliding window");
+      
+          buttonCon.addToggle("pivRadiator")
+         .setLabel("radiator")
+         .setColorForeground(color(255))
+         .setColorActive(color(#BCA1A1))
+         .setPosition(10, 290)
+         .setSize(100,20)
+         .setValue(false)
+         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("pivRadiator","recognise radiator");
+      
+          buttonCon.addToggle("pivMass")
+         .setLabel("generic mass")
+         .setColorForeground(color(255))
+         .setColorActive(color(#BCA1A1))
+         .setPosition(10, 320)
+         .setSize(100,20)
+         .setValue(false)
+         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+         ;
+      buttonCon.getTooltip().setDelay(500);
+      buttonCon.getTooltip().register("pivMass","recognise mass");    
+           
 // TEXTE INPUT
        // input texte
           buttonCon.addTextfield("tags") 
@@ -429,6 +499,13 @@ void initGUI(){
        buttonCon.getController("saveAndSeed").moveTo("global");
        buttonCon.getController("createList").moveTo("global");
 
+
+       buttonCon.getController("pivDoor").moveTo("attributes");     
+       buttonCon.getController("pivWindow").moveTo("attributes");     
+       buttonCon.getController("pivSlidingWindow").moveTo("attributes");     
+       buttonCon.getController("pivMass").moveTo("attributes");     
+       buttonCon.getController("pivRadiator").moveTo("attributes");            
+              
        //buttonCon.getController("accordionPiv").moveTo("attributes");        
        buttonCon.getController("buttonTest").moveTo("global");
        buttonCon.getController("buttonTest2").moveTo("global");

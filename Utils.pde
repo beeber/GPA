@@ -54,7 +54,7 @@ void loadScene(String fileName) {
 //Porte fenetre
       pushMatrix();
         translate(-215,-150,110);
-          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("pivSlidingWindow"))) {
         fill(hoverColor);
       } else {
         noStroke();
@@ -65,7 +65,7 @@ void loadScene(String fileName) {
 // porte
       pushMatrix();
         translate(215,157,105);
-          if(buttonCon.isMouseOver(buttonCon.getController("entry point"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("pivDoor"))) {
         fill(hoverColor);
       } else {
         noStroke();
@@ -76,7 +76,7 @@ void loadScene(String fileName) {
 // fenetre 
       pushMatrix();
         translate(-10,290,150);
-          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("pivWindow"))) {
         fill(hoverColor);
       } else {
         noStroke();
@@ -87,7 +87,7 @@ void loadScene(String fileName) {
 // bloc
      pushMatrix();
         translate(198,75,134);
-          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("pivMass"))) {
         fill(hoverColor);
       } else {
         noStroke();
@@ -98,7 +98,7 @@ void loadScene(String fileName) {
 // Radiateur
      pushMatrix();
         translate(140,265,50);
-          if(buttonCon.isMouseOver(buttonCon.getController("buttonTest"))) {
+          if(buttonCon.isMouseOver(buttonCon.getController("pivRadiator"))) {
         fill(hoverColor);
       } else {
         noStroke();

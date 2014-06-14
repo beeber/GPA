@@ -55,12 +55,12 @@ void initGUI(){
        ;
          buttonCon.getTab("attributes")
        .activateEvent(false)
-       .setLabel("attributes")
+       .setLabel("environnement")
        .setId(2)
        ;
          buttonCon.getTab("archetypes")
        .activateEvent(false)
-       .setLabel("object")
+       .setLabel("object  type")
        .setId(3)
        ;
          buttonCon.getTab("keyword")
@@ -176,7 +176,7 @@ void initGUI(){
     accordion.setCollapseMode(Accordion.SINGLE);               
            
 
-// SLIDERS
+// SLIDERS 
 /*
   range = buttonCon.addRange("rangeChair")
               .setLabel("Chairs")
@@ -434,14 +434,14 @@ void initGUI(){
 
           buttonCon.addBang("buttonTest")
        .setLabel("buttonTest")
-       .setPosition(100,530)
+       .setPosition(10,height -30)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
        
           buttonCon.addBang("buttonTest2")
        .setLabel("buttonTest2")
-       .setPosition(100,630)
+     .setPosition(10,height -60)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
@@ -533,12 +533,12 @@ void initGUI(){
 
 // void qui controle l'impact des buttons
 void controlEvent(ControlEvent theEvent) { // obligatoire
+
  if(theEvent.controller().name()=="randomizer") {  // concerne le button "randomizer"
       print("new seed generated");  
       seed(); // quand on clique, on crée une nouvelle seed();
  }
  
-
 
   if(theEvent.isAssignableFrom(Textfield.class)) { // concerne le button texte
       println("controlEvent: accessing a string from controller '"
@@ -547,7 +547,8 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
             );
   }  
   
-  
+
+
   
   
    if(theEvent.controller().name()=="buttonTest") {
@@ -558,10 +559,8 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
      colorBox = 30;
   }
   
-     if(theEvent.controller().name()=="buttonTest2") {
-//   saveFrame("project-####.png");
-//      print("image saved");
-    //loadScene("test.xml");
+     if(theEvent.controller().name()=="buttonTest2") {      
+      println( buttonCon.getController("sliderChair").getValue() );
   }
   
   /*

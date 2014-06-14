@@ -9,6 +9,8 @@ Accordion accordion;
 Range range;
 OBJModel model; // model appartement
 
+
+
 int indexFurniture;
 ArrayList<Furniture> listFurniture;
 
@@ -63,7 +65,6 @@ void setup() {
           model.disableDebug();
 
   // CREATION POINT PIVOT
-  // list pivot standart
   Furniture furT;
   
   //Porte fenetre
@@ -147,16 +148,9 @@ if(setCamera == true){
   } else {
   cam.setActive(true);
 }
-// *************
-/*
-  if( buttonCon.getGroup("Door").isOpen() ) 
-    println("caca");
-    else
-    println("pip");
-*/  
-//*********************    
-
-
+ // *************
+ 
+ 
 // DISPLAY FURNITURES
   for(int i=0; i< listFurniture.size(); i++) {
     
@@ -173,15 +167,12 @@ if(setCamera == true){
     pushMatrix();    
       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
       rotateZ(rotOr[ listFurniture.get(i).rotId ]);
-      rotateX(-PI/2); // remettre droit
+      rotateX(-PI/2); // put everything straight
   
      noStroke();
-     // fill(0);
     
      listFurniture.get(i).model.disableDebug();
      listFurniture.get(i).model.draw();
-     // listFurniture.get(i).model.enableMaterial();
-     // listFurniture.get(i).model.enableTexture();
  
       if(listFurniture.get(i).pivot) {
         listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
@@ -208,7 +199,7 @@ if(setCamera == true){
   */
 
 // GUI **********
-  disableCam(); // enleve la camera
+  //disableCam(); //
 
   if(buttonCon.window(this).isMouseOver()){
     cam.setActive(false);
@@ -222,17 +213,22 @@ if(setCamera == true){
         }
   }
   
-  inputTextField(); // permet de dessiner les keywords
-  gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier
-  
-  enableCam();
+  inputTextField(); // keyword input
+// gui();
+//  enableCam();
 // **************
 
+
+  
 }
 
 
 void keyPressed() {
- 
+ /*
+ if(key == 'u')
+ println ("setGUI false");
+  setGUI = !setGUI;
+ */ 
  if(key == 'e')
    indexFurniture = min(indexFurniture + 1, listFurniture.size() -1);
    
@@ -241,11 +237,14 @@ void keyPressed() {
    
  if(key == 'c' && indexFurniture > -1) {
    listFurniture.get(indexFurniture).pivot = !listFurniture.get(indexFurniture).pivot;
-   
-   //TODO: MODIFIER LA VALEUR DU SLIDER DEPENDANT DE L'ARCHETYPE.  (setValue());
+    //buttonCon.getController("sliderChair").getValue()
+    //buttonCon.getController("sliderChair").setValue(Value=Value-1);
+    buttonCon.getController("sliderChair").setValue( -1);  
  }
-   
-   
+
+ 
+ 
+    
    
   if (key == CODED)
     switch(keyCode) {

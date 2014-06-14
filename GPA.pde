@@ -148,17 +148,29 @@ if(setCamera == true){
   cam.setActive(true);
 }
 // *************
-
+/*
   if( buttonCon.getGroup("Door").isOpen() ) 
     println("caca");
     else
     println("pip");
-    
+*/  
 //*********************    
 
-  
+
 //Display Furnitures
   for(int i=0; i< listFurniture.size(); i++) {
+    
+    if(listFurniture.get(i).type == Archetype.PIVOT_STD) { // RAJOUTER AU TEST (avec &&) des conditions pour l'affichage. (moi qui fait)
+     
+     pushMatrix(); 
+       fill(100);
+       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).position.z);
+       box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
+     popMatrix();
+     continue;
+    }
+    
+    
     pushMatrix();    
       translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
       rotateZ(rotOr[ listFurniture.get(i).rotId ]);
@@ -196,6 +208,12 @@ if(setCamera == true){
 
 // GUI **********
   disableCam(); // enleve la camera
+  
+  if(buttonCon.window(this).isMouseOver())
+    cam.setActive(false);
+  else //TODO: if(buttonCon.getController("setCamera").setValue(false))
+    cam.setActive(true);
+  
   
   inputTextField(); // permet de dessiner les keywords
   gui(); // GUI reste au premier plan, on lui dit de dessiner en dernier

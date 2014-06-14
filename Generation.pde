@@ -58,6 +58,7 @@ void seed(){
       println("Tries as much as I could, but it didn't work :(");
     }
     
+    checkAccordeon();
 }
 
 boolean isColliding(Furniture fur1, Furniture fur2) {
@@ -77,4 +78,17 @@ boolean isColliding(Furniture fur1, Furniture fur2) {
           || pos1.z - box1.z/2 > pos2.z + box2.z/2 || pos1.z + box1.z/2 < pos2.z - box2.z/2 );
 }
 
+void checkAccordeon() { /// TODO
+
+  // 1) Vérifier que la liste des accordéons corresponds à la liste des furnitures (par exemple avec un id propre).
+  
+  // 2) Supprimer les accordéons qui ne sont plus necessaire (ancien mobilier qui n'est plus présent)
+      // i.e. : tout ce qui n'était pas pivot. Très simple finalement :D
+  
+  // 3) Rajouter des accordéons qui sont necessaire (nouveau mobilier)
+      // i.e. : tout ce qui sont pivot :D
+  
+  
+  
+}
 

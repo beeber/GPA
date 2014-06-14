@@ -44,7 +44,7 @@ void initGUI(){
        
          buttonCon.getTab("default") 
        .activateEvent(false)
-       .setLabel("files")
+       .setLabel("attributes")
        .setId(1)
        ;
          buttonCon.getTab("attributes")
@@ -54,7 +54,7 @@ void initGUI(){
        ;
          buttonCon.getTab("archetypes")
        .activateEvent(false)
-       .setLabel("archetypes")
+       .setLabel("object")
        .setId(3)
        ;
          buttonCon.getTab("keyword")
@@ -176,7 +176,7 @@ void initGUI(){
               .setLabel("Chairs")
              // disable broadcasting since setRange and setRangeValues will trigger an event
              .setBroadcast(false) 
-             .setPosition(50,50)
+             .setPosition(50,400)
              .setDecimalPrecision (0)
              .setSize(100,20)
              .setHandleSize(10)
@@ -191,8 +191,8 @@ void initGUI(){
              ;
             buttonCon.getTooltip().setDelay(500);
             buttonCon.getTooltip().register("rangeChair","Changes the number of Chair.");
-  */          
-            
+        
+    */        
                      
              
          buttonCon.addSlider("sliderChair")

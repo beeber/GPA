@@ -80,15 +80,41 @@ boolean isColliding(Furniture fur1, Furniture fur2) {
 
 void checkAccordeon() { /// TODO
 
-  // 1) Vérifier que la liste des accordéons corresponds à la liste des furnitures (par exemple avec un id propre).
+  //Destroy all the groups (later better just check for whom to erase/create)
+  buttonCon.remove("accordionPiv"); 
   
-  // 2) Supprimer les accordéons qui ne sont plus necessaire (ancien mobilier qui n'est plus présent)
-      // i.e. : tout ce qui n'était pas pivot. Très simple finalement :D
-  
-  // 3) Rajouter des accordéons qui sont necessaire (nouveau mobilier)
-      // i.e. : tout ce qui sont pivot :D
-  
-  
+  //Recreate them
+
+  accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
+                 .setPosition(10,200)
+                 .setWidth(200)
+                 .setCollapseMode(Accordion.SINGLE);
+    
+  for(int i=0; i<listFurniture.size(); i++) {
+    
+    controlP5.Group grp = buttonCon.addGroup("" + i + ": " + listFurniture.get(i).name)
+                .setBackgroundColor(color(0, 64))
+                .setBackgroundHeight(10)
+                .setBarHeight(20)
+                .setId(i);
+                
+    buttonCon.addCheckBox("checkBox"+i)
+                .setPosition(10, 20)
+                .setColorForeground(color(120))
+                .setColorActive(color(255))
+                .setColorLabel(color(255))
+                .setSize(20, 20)
+                .setItemsPerRow(2)
+                .setSpacingColumn(70)
+                .setSpacingRow(10)
+                //.addItem("entry point", 1)
+                //.addItem("can't be block 8", 50)
+                .setId(i)
+                .moveTo(grp);
+                
+    //if( listFurniture.get(i).type == Archetype.PIVOT_STD) { }
+    accordion.addItem(grp);
+  }
   
 }
 

@@ -68,7 +68,8 @@ void setup() {
   Furniture furT;
   
   //Porte fenetre
-  furT = new Furniture(this); 
+  furT = new Furniture(this);
+  furT.name = "Fenetre";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(-215,-150,110);
   furT.rotId = 0;
@@ -78,6 +79,7 @@ void setup() {
   
   // porte
   furT = new Furniture(this); 
+  furT.name = "Porte";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(215,157,105);
   furT.rotId = 0;
@@ -87,6 +89,7 @@ void setup() {
   
   // bloc
     furT = new Furniture(this);
+  furT.name = "Block";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(198,75,134);
   furT.rotId = 0;
@@ -96,6 +99,7 @@ void setup() {
   
   // Radiateur
     furT = new Furniture(this);
+  furT.name = "Radiateur";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(140,265,50);
   furT.rotId = 0;
@@ -105,6 +109,7 @@ void setup() {
   
   // fenetre
       furT = new Furniture(this);
+  furT.name = "Fenetre";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(-10,290,150);
   furT.rotId = 0;
@@ -252,10 +257,42 @@ void keyPressed() {
    }
    
  }
+ /*
+    if(key == ' ') {
+        buttonCon.remove("accordionPiv"); 
+         controlP5.Group g1 = buttonCon.addGroup("Door")
+                .setBackgroundColor(color(0, 64))
+                .setBackgroundHeight(10)
+                .setBarHeight(20)
+                ;
+  buttonCon.addCheckBox("checkBoxDoor")
+                .setPosition(10, 20)
+                .setColorForeground(color(120))
+                .setColorActive(color(255))
+                .setColorLabel(color(255))
+                .setSize(20, 20)
+                .setItemsPerRow(2)
+                .setSpacingColumn(70)
+                .setSpacingRow(10)
+                .addItem("entry point", 1)
+                .addItem("can't be block 8", 50)
+                //.addItem("sliding door", 100)
+                //.activateAll()
+                //.activate(3)
+                .moveTo(g1)
+                ;
 
- 
- 
-    
+
+  accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
+                 .setPosition(10,200)
+                 .setWidth(200)
+                 .addItem(g1)
+                 ;
+                 
+    accordion.setCollapseMode(Accordion.SINGLE); 
+      
+    }
+   */
    
   if (key == CODED)
     switch(keyCode) {

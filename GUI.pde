@@ -68,9 +68,8 @@ void initGUI(){
        .setLabel("keyword")
        .setId(4)
        ;
-   
-// ACCORDION ATTRIBUTE
-
+            
+           
   controlP5.Group g1 = buttonCon.addGroup("Door")
               .setBackgroundColor(color(0, 64))
               .setBackgroundHeight(10)
@@ -94,87 +93,13 @@ void initGUI(){
                 ;
 
 
-  controlP5.Group g2 = buttonCon.addGroup("Window")
-              .setBackgroundColor(color(0, 64))
-              .setBackgroundHeight(20)
-              .setBarHeight(20)
-              ;
-  buttonCon.addCheckBox("checkBoxWindow")
-                .setPosition(10, 20)
-                .setColorForeground(color(120))
-                .setColorActive(color(255))
-                .setColorLabel(color(255))
-                .setSize(20, 20)
-                .setItemsPerRow(2)
-                .setSpacingColumn(70)
-                .setSpacingRow(20)
-                .addItem("light source", 0)
-                .addItem("can't be block", 50)
-                .addItem("entry point 2", 1)
-                //.addItem("sliding window", 100)
-                //.activate(10)
-                .activateAll()
-                .moveTo(g2)
-                ;
-                
-  controlP5.Group g3 = buttonCon.addGroup("Radiator")
-              .setBackgroundColor(color(0, 64))
-              .setBackgroundHeight(10)
-              .setBarHeight(20)
-              ;
-  buttonCon.addCheckBox("checkBoxRadiator")
-               .setPosition(10,20)
-                   .setColorForeground(color(120))
-                .setColorActive(color(255))
-                .setColorLabel(color(255))
-               .setItemWidth(20)
-               .setItemHeight(20)
-               .setItemsPerRow(2)
-               .setSpacingRow(1)
-               .setSpacingColumn(70)
-               .addItem("mass", 0)
-               .addItem("heat source", 1)
-              //.addItem("sliding ", 2)
-               .setColorLabel(color(255))
-               .activateAll()
-              // desactivate(1)
-               .moveTo(g3)
-               ;
-     
-   controlP5.Group g4 = buttonCon.addGroup("Sliding Window")
-              .setBackgroundColor(color(0, 64))
-              .setBackgroundHeight(20)
-              .setBarHeight(20)
-              ;
-  buttonCon.addCheckBox("checkBoxSlidingWindow")
-                .setPosition(10, 20)
-                .setColorForeground(color(120))
-                .setColorActive(color(255))
-                .setColorLabel(color(255))
-                .setSize(20, 20)
-                .setItemsPerRow(2)
-                .setSpacingColumn(70)
-                .setSpacingRow(20)
-                .addItem("light source 2", 0)
-                .addItem("can't be block 2", 50)
-                .addItem("entry 2", 100)
-                .activate(10)
-                 .activateAll()
-                .moveTo(g4)
-                ;   
-     
- 
   accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
                  .setPosition(10,200)
                  .setWidth(200)
-                 .addItem(g1)             
-                 .addItem(g2)
-                 .addItem(g3)
-                 .addItem(g4 )
+                 .addItem(g1)  
                  ;
                  
-    accordion.setCollapseMode(Accordion.SINGLE);               
-           
+    accordion.setCollapseMode(Accordion.SINGLE);
 
 // SLIDERS 
 /*
@@ -534,6 +459,17 @@ void initGUI(){
 // void qui controle l'impact des buttons
 void controlEvent(ControlEvent theEvent) { // obligatoire
 
+// TODO: refaire tes event avec le formalisme suivant.
+//  if (theEvent.isFrom(cp5.getController("n1"))) {
+  
+  
+  /*
+  for(int i=0; i<listFurniture.size(); i++) {
+    if (theEvent.isFrom(cp5.getController("" + i + ": " + listFurniture.get(i).name)))
+  }
+  */
+  
+  
  if(theEvent.controller().name()=="randomizer") {  // concerne le button "randomizer"
       print("new seed generated");  
       seed(); // quand on clique, on crée une nouvelle seed();
@@ -547,10 +483,6 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
             );
   }  
   
-
-
-  
-  
    if(theEvent.controller().name()=="buttonTest") {
 //   saveFrame("project-####.png");
 //      print("image saved");
@@ -563,20 +495,15 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
       println( buttonCon.getController("sliderChair").getValue() );
   }
   
-  /*
-    if(theEvent.controller().name()=="rangeController") {
+  
+//    if(theEvent.controller().name()=="rangeController") {
     // min and max values are stored in an array.
     // access this array with controller().arrayValue().
     // min is at index 0, max is at index 1.
     //colorMin = int(theControlEvent.getController().getArrayValue(0));
     //colorMax = int(theControlEvent.getController().getArrayValue(1));
-    println("range update, done.");
-  }
-  */
-
-  
-  
-  
+  //  println("range update, done.");
+ // }
   
   
  if(theEvent.controller().name()=="loadDisposition") {
@@ -585,24 +512,6 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
     loadScene("test.xml");
      print("disposition loaded"); 
   }
-  
-  
-  
-/*
-  if(theEvent.controller().name()=="Door")
-  println("ioyoiuoiu");
- /*
-if("Door"
- {
-     pushMatrix();
-       translate(-215,-150,110);
-       fill(hoverColor);
-       box(20,160,220);
-     popMatrix();
-
-  }
-  */
-  
   
   if(theEvent.controller().name()=="exportImage") {
      if(saveAndSeed==true){ // SI LE CHECKBOX SAVEANDSEED
@@ -647,6 +556,7 @@ if("Door"
       print("disposition saved"); 
 
   }
+  
 }
 
 
@@ -681,12 +591,3 @@ public void clear() {
   buttonCon.get(Textfield.class,"textValue").clear();
 }
 
-void updateGroups() {
-
-  //Destroy all the groups (later better just check for whom to erase/create)
-  
-  
-  //Recreate them
-
-
-}

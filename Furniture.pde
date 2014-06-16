@@ -8,6 +8,7 @@ class Furniture {
   OBJModel model;
   Archetype type;
   PVector box3D;
+  String name;
   
   boolean pivot;
 
@@ -17,6 +18,7 @@ class Furniture {
 
   Furniture(PApplet parent) {
     id = -1;
+    name = "NO_NAME";
   }
    
    
@@ -57,6 +59,8 @@ class Furniture {
    
    
    fileName = listFurXML[fileID].getChildren("filename")[0].getContent()  + ".obj";
+   name = listFurXML[fileID].getChildren("name")[0].getContent();
+   type = myType;
    id = listFurXML[fileID].getInt("id");
   
 
@@ -87,6 +91,17 @@ class Furniture {
   Furniture(PApplet _parent, int _id){
     
     String fileName = myCat.getFurXMLByID( _id ).getChildren("filename")[0].getContent();
+    name = myCat.getFurXMLByID( _id ).getChildren("name")[0].getContent();
+    
+    String typStr = myCat.getFurXMLByID( _id ).getParent().getString("type");
+    
+    if(typStr.equals("TABLE")) type = Archetype.TABLE;
+    else if(typStr.equals("COFFEE_TABLE")) type = Archetype.COFFEE_TABLE;
+    else if(typStr.equals("SHELF")) type = Archetype.SOFA;
+    else if(typStr.equals("CHAIR")) type = Archetype.TABLE;
+    else if(typStr.equals("PIVOT_STD")) type = Archetype.TABLE;
+    else { println("ISSUE IN LOADINF FURNITURE IN CATALOG: NO TYPE"); type = Archetype.NO_FUR; }
+    
     
     model = new OBJModel(_parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
     
@@ -104,12 +119,14 @@ class Furniture {
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
    
   }
-  
+ /* 
   Furniture(PApplet parent, String fileName, PVector _pos, int _rotId){
     this.position = _pos;
     this.rotId = _rotId;
    
     model = new OBJModel(parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
+    println("BAD LOADING, SHOULD USE DATABASE");
+    name = fileName;
     //model.enableDebug();
     //model.enableTexture();
     model.scale(100);
@@ -121,7 +138,7 @@ class Furniture {
     box3D = bbox.getWHD(); // pour collision on va chercher le x,y
    
   }
-  
+  */
   PVector getRbox() {
     if(rotId%2==0)
       return new PVector(box3D.z, box3D.x, box3D.y);

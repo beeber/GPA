@@ -108,7 +108,7 @@ void checkAccordeon() { /// TODO
                 .setItemsPerRow(2)
                 .setSpacingColumn(70)
                 .setSpacingRow(10)
-                //.addItem("entry point", 1)
+                .addItem(i + "pivot", 1)
                 //.addItem("can't be block 8", 50)
                 .setId(i)
                 .moveTo(grp);

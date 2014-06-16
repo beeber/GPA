@@ -19,11 +19,11 @@ class Furniture {
   Furniture(PApplet parent) {
     id = -1;
     name = "NO_NAME";
+    type = Archetype.PIVOT_STD;
   }
    
    
    Furniture(PApplet parent, Archetype myType) {
-   type = myType;
     int fileID; 
     String fileName;
 

@@ -517,7 +517,7 @@ void initGUI(){
        buttonCon.getController("sliderSofa").moveTo("archetypes");
        buttonCon.getController("sliderDesk").moveTo("archetypes");     
    
-        buttonCon.getController("choiceLib").moveTo("keyword");      
+       buttonCon.getController("choiceLib").moveTo("keyword");      
        buttonCon.getController("tags").moveTo("keyword");
        buttonCon.getController("clear").moveTo("keyword");
          
@@ -681,3 +681,12 @@ public void clear() {
   buttonCon.get(Textfield.class,"textValue").clear();
 }
 
+void updateGroups() {
+
+  //Destroy all the groups (later better just check for whom to erase/create)
+  
+  
+  //Recreate them
+
+
+}

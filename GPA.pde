@@ -38,7 +38,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 300, displayHeight - 300, OPENGL);
+  size(displayWidth - 30, displayHeight - 30, OPENGL);
   smooth();
 
   xGeneral = 410; yGeneral = 560; 
@@ -156,47 +156,43 @@ if(setCamera == true){
     
     if(listFurniture.get(i).type == Archetype.PIVOT_STD) { // RAJOUTER AU TEST (avec &&) des conditions pour l'affichage. (moi qui fait)
      
-     pushMatrix(); 
-       fill(100);
+     pushMatrix();
        translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).position.z);
-       box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
+       if(indexFurniture == i) {
+         stroke(200,40,40);   fill(200,40,40,30);
+         box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
+       }
      popMatrix();
-     continue;
-    }
+     
+     
+    } else {
+      
+      pushMatrix();    
+        translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
+        rotateZ(rotOr[ listFurniture.get(i).rotId ]);
+        rotateX(-PI/2); // put everything straight
     
-    pushMatrix();    
-      translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
-      rotateZ(rotOr[ listFurniture.get(i).rotId ]);
-      rotateX(-PI/2); // put everything straight
-  
-     noStroke();
-    
-     listFurniture.get(i).model.disableDebug();
-     listFurniture.get(i).model.draw();
- 
-      if(listFurniture.get(i).pivot) {
-        listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-      }
- 
+       noStroke();
+      
+       listFurniture.get(i).model.disableDebug();
+       listFurniture.get(i).model.draw();
+   
+        if(listFurniture.get(i).pivot) {
+          listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+        }
+        
       if(indexFurniture == i) {
         //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-        stroke(200,40,40);   noFill();
+        stroke(200,40,40);   fill(200,40,40,30);
         listFurniture.get(i).bboxTemp.draw();
       }
       
-    popMatrix();    
+     popMatrix();
+     
+    }
+      
   }  
-  
-  
-  //DEBUG
-  /*
-  for(int i=0; i< listFurniture.size(); i++)
-  for(int j=i+1; j< listFurniture.size(); j++)
-     if(isColliding(listFurniture.get(i), listFurniture.get(j))) {
-       fill(255,0,0);
-       box(10);
-     }
-  */
+
 
 // GUI **********
   //disableCam(); //
@@ -235,11 +231,18 @@ void keyPressed() {
  if(key == 'd')
    indexFurniture = max(indexFurniture - 1, -1);
    
- if(key == 'c' && indexFurniture > -1) {
+ if(key == 'c' && indexFurniture > -1) {  
+   
    listFurniture.get(indexFurniture).pivot = !listFurniture.get(indexFurniture).pivot;
-    //buttonCon.getController("sliderChair").getValue()
-    //buttonCon.getController("sliderChair").setValue(Value=Value-1);
-    buttonCon.getController("sliderChair").setValue( -1);  
+   
+   
+   if(listFurniture.get(indexFurniture).pivot) { // was not a pivot : minus 1 on the slider
+     if( buttonCon.getController("sliderChair").getValue() >0 )
+      buttonCon.getController("sliderChair").setValue( buttonCon.getController("sliderChair").getValue() - 1);  
+   } else {
+    buttonCon.getController("sliderChair").setValue( buttonCon.getController("sliderChair").getValue() + 1);  
+   }
+   
  }
 
  

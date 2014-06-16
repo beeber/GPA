@@ -122,7 +122,8 @@ void setup() {
 
 void draw() {
   background(255); 
-  
+ //lights();
+ //pointLight(51, 102, 126, 35, 40, 36);
  // ROTATION CAMERA INTIALE
  // rotateX(45); 
  // rotateZ(45);

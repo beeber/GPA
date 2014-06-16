@@ -21,7 +21,7 @@ class Furniture {
    
    
    Furniture(PApplet parent, Archetype myType) {
-   
+   type = myType;
     int fileID; 
     String fileName;
 
@@ -175,7 +175,6 @@ class Furniture {
   }
   
   void newPosTouchWall() {
-    
     rotId = int(random(4));
     switch(rotId) {
      case 0:
@@ -197,9 +196,65 @@ class Furniture {
     }
    
   }
+ /* 
+  void newPosTest() {
+     if(Furniture.type == Archetype.SHELF){
+        rotId = int(random(4));
+        switch(rotId) {
+           case 0:
+            position = new PVector(xGeneral/2 - box3D.z/2, 
+                                   random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+            break; 
+           case 1:
+            position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                                   yGeneral/2 - box3D.z/2);
+            break; 
+           case 2:
+            position = new PVector(-xGeneral/2 + box3D.z/2, 
+                                   random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+            break; 
+           case 3:
+            position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                                   -yGeneral/2 + box3D.z/2);
+            break;  
+          }
+      }
+  }
+    
+    
+
+  /*
+  void ruleShelf()  { // pos = 90% stuck at wall
   
-  void rule()  {
-     }
+    if(listFurniture.get(i).archetype == PIVOT_STD)
+    
+    
+   for(Archetype.SHELF = 1){
+      int i = random(0, 100);
+      if(i>0 && i<90){
+          rotId = int(random(4));
+          switch(rotId) {
+           case 0:
+            Archetype.SHELF.position = new PVector(xGeneral/2 - box3D.z/2, 
+                                   random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+            break; 
+           case 1:
+            Archetype.SHELF.position = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                                   yGeneral/2 - box3D.z/2);
+            break; 
+           case 2:
+            Archetype.SHELF.position = new PVector(-xGeneral/2 + box3D.z/2, 
+                                   random(-yGeneral/2 + box3D.x/2, yGeneral/2 - box3D.x/2));
+            break; 
+           case 3:
+            Archetype.SHELF.positionn = new PVector(random(-xGeneral/2 + box3D.x/2, xGeneral/2 - box3D.x/2), 
+                                   -yGeneral/2 + box3D.z/2);
+            break;   
+         }
+      }
+    }
+  }
+  */
   
   
   

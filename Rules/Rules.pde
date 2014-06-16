@@ -1,11 +1,11 @@
-/*
+
 // faire un mode débug ou on voit visuellement par des lignes de couleur les relations entre les objets ?
 
 // ************************FONCTION*************************************************
 
 void NO_OBJ(){ = collisionON sur zone de point pivot // pas d'objet 
-void LIGHT_CONE(){ 100% efficience en son épicentre et 0% sur le cote. // Probabilité de placement de 100% en son épicentre, diminuant jusqu'a 0%
-void HEAT_CONE(){ 100% efficience en son épicentre et 0% sur le cote. // cercle d'efficience crée les radiateurs
+void LIGHT_CONE(){ Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
+void HEAT_CONE(){ Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
 void IN_USE(){ = collisionON sur type de mobilier, excepté pour les éléments dans ();
 void DISTANCE(){ = random between 0(or specified value) and specified value, the greater is better. // (min (ou 0 si non spécifié), max)
         
@@ -110,7 +110,7 @@ void DISTANCE(){ = random between 0(or specified value) and specified value, the
         
         
         
-   */
+
         
         
         

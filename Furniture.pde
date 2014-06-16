@@ -198,6 +198,9 @@ class Furniture {
    
   }
   
+  void rule()  {
+     }
+  
   
   
   void drawCorners(){

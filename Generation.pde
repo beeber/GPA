@@ -33,6 +33,7 @@ void seed(){
         listFurniture.get(i).newPos();
         // b) colle au mure
         //listFurniture.get(i).newPosTouchWall();
+        //listFurniture.get(i).newPosTest();
         // c) colle a un autre objet
         //if(i>0)
         //  listFurniture.get(i).newPosTouchFur(listFurniture.get(0));

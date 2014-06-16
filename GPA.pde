@@ -38,7 +38,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 300, displayHeight - 300, OPENGL);
+  size(displayWidth - 50, displayHeight - 50, OPENGL);
   smooth();
 
   xGeneral = 410; yGeneral = 560; 
@@ -100,6 +100,15 @@ void setup() {
   furT.position = new PVector(140,265,50);
   furT.rotId = 0;
   furT.box3D = new PVector(125,30,100);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // fenetre
+      furT = new Furniture(this);
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(-10,290,150);
+  furT.rotId = 0;
+  furT.box3D = new PVector(135,20,120);
   furT.pivot = true;
   listFurniture.add(furT);
   
@@ -239,7 +248,7 @@ void keyPressed() {
    listFurniture.get(indexFurniture).pivot = !listFurniture.get(indexFurniture).pivot;
     //buttonCon.getController("sliderChair").getValue()
     //buttonCon.getController("sliderChair").setValue(Value=Value-1);
-    buttonCon.getController("sliderChair").setValue( -1);  
+//    buttonCon.getController("sliderChair").setValue( -1);  
  }
 
  

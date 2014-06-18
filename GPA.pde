@@ -169,8 +169,8 @@ if(setCamera == true){
       rotateZ(rotOr[ listFurniture.get(i).rotId ]);
       rotateX(-PI/2); // put everything straight
   
-     noStroke();
-    
+     //noStroke();
+    stroke(0);
      listFurniture.get(i).model.disableDebug();
      listFurniture.get(i).model.draw();
  

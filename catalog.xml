@@ -1,123 +1,401 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ID_MAX = 12, a mettre a jour-->
+<!-- TOTAL ID_MAX = 46-->
 <catalog>
 	<archetype type="CHAIR">
 		<furniture id="0">
 			<name>chair1</name>
-			<author>Daniel la pute</author>
+			<author>Adri</author>
 			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
+			<bio>test bio A</bio>
 			<filename>chair1</filename>
 			<tag>tagAAA tagBBB tagCCC</tag>
 		</furniture>
 		<furniture id="1">
 			<name>chair2</name>
-			<author>Salope</author>
+			<author>Roman</author>
 			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
+			<bio>test bio B</bio>
 			<filename>chair2</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
 		<furniture id="2">
 			<name>chair3</name>
-			<author>Daniel la pute</author>
+			<author>Arthur</author>
 			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
+			<bio>test bio C</bio>
 			<filename>chair3</filename>
 			<tag>tagDDD</tag>
 		</furniture>
-	</archetype>
-
-	<archetype type="TABLE">
 		<furniture id="3">
-			<name>table1</name>
-			<author>Daniel la pute</author>
+			<name>chair4</name>
+			<author>Adri</author>
 			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
-			<filename>table3</filename>
+			<bio>test bio A</bio>
+			<filename>chair4</filename>
 			<tag>tagAAA tagBBB tagCCC</tag>
 		</furniture>
 		<furniture id="4">
-			<name>table2</name>
-			<author>Salope</author>
+			<name>chair5</name>
+			<author>Adri</author>
 			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
-			<filename>table4</filename>
-			<tag>tagBBB tagCCC</tag>
-		</furniture>
-				<furniture id="11">
-			<name>table2</name>
-			<author>Salope</author>
-			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
-			<filename>table5</filename>
-			<tag>tagBBB tagCCC</tag>
-		</furniture>
-				<furniture id="12">
-			<name>table2</name>
-			<author>Salope</author>
-			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
-			<filename>table6</filename>
-			<tag>tagBBB tagCCC</tag>
-		</furniture>
-	</archetype>
-
-	<archetype type="SOFA">
-		<furniture id="5">
-			<name>sofa1</name>
-			<author>Daniel la pute</author>
-			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
-			<filename>sofa1</filename>
+			<bio>test bio A</bio>
+			<filename>chair5</filename>
 			<tag>tagAAA tagBBB tagCCC</tag>
 		</furniture>
-		<furniture id="6">
-			<name>sofa2</name>
-			<author>Salope</author>
+		<furniture id="5">
+			<name>chair6</name>
+			<author>Arthur</author>
 			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
-			<filename>sofa2</filename>
-			<tag>tagBBB tagCCC</tag>
+			<bio>test bio C</bio>
+			<filename>chair6</filename>
+			<tag>tagDDD</tag>
 		</furniture>
-	</archetype>
-
-	<archetype type="COFFEE_TABLE">
-		<furniture id="7">
-			<name>coffeeTable1</name>
-			<author>Daniel la pute</author>
+		<furniture id="6">
+			<name>chair7</name>
+			<author>Adri</author>
 			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
-			<filename>coffeeTable1</filename>
+			<bio>test bio A</bio>
+			<filename>chair7</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="7">
+			<name>chair8</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>chair8</filename>
 			<tag>tagAAA tagBBB tagCCC</tag>
 		</furniture>
 		<furniture id="8">
-			<name>coffeeTable2</name>
-			<author>Salope</author>
+			<name>chair9</name>
+			<author>Arthur</author>
 			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
+			<bio>test bio C</bio>
+			<filename>chair9</filename>
+			<tag>tagDDD</tag>
+		</furniture>
+		<furniture id="9">
+			<name>chair10</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>chair10</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="10">
+			<name>chair11</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio B</bio>
+			<filename>chair11</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="11">
+			<name>chair12</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>chair12</filename>
+			<tag>tagDDD</tag>
+		</furniture>
+		<furniture id="12">
+			<name>chair13</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>chair13</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="13">
+			<name>chair14</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>chair14</filename>
+			<tag>tagDDD</tag>
+		</furniture>
+		<furniture id="14">
+			<name>chair15</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>chair15</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+
+	</archetype>
+			<!-- ID_MAX = id 16-->
+
+	<archetype type="TABLE">
+		<furniture id="15">
+			<name>table1</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="16">
+			<name>table2</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio B</bio>
+			<filename>table2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="17">
+			<name>table3</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table3</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="18">
+			<name>table4</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table4</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="19">
+			<name>table5</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table5</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="20">
+			<name>table6</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table6</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="21">
+			<name>table7</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table7</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="22">
+			<name>table8</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table8</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="23">
+			<name>table9</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table9</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+			<furniture id="24">
+			<name>table10</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table10</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+			<!-- ID_MAX = id 25-->
+
+	<archetype type="SOFA">
+		<furniture id="25">
+			<name>sofa1</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>sofa1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="26">
+			<name>sofa2</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio B</bio>
+			<filename>sofa2</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="27">
+			<name>sofa3</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>sofa3</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="28">
+			<name>sofa4</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>sofa4</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="29">
+			<name>sofa5</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio B</bio>
+			<filename>sofa5</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="30">
+			<name>sofa6</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>sofa6</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="31">
+			<name>sofa7</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>sofa7</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="32">
+			<name>sofa8</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio B</bio>
+			<filename>sofa8</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+	</archetype>
+			<!-- ID_MAX = id 34-->
+
+	<archetype type="COFFEE_TABLE">
+		<furniture id="33">
+			<name>coffeeTable1</name>
+			<author>Adri</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>coffeeTable1</filename>
+			<tag>tagAAA tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="34">
+			<name>coffeeTable2</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
 			<filename>coffeeTable2</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
+		<furniture id="35">
+			<name>coffeeTable3</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>coffeeTable3</filename>
+			<tag>tagCCC</tag>
+		</furniture>
+		<furniture id="36">
+			<name>coffeeTable4</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>coffeeTable4</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="37">
+			<name>coffeeTable5</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>coffeeTable5</filename>
+			<tag>tagBBB</tag>
+		</furniture>
 	</archetype>
+			<!-- ID_MAX = id 39-->
 
 	<archetype type="SHELF">
-		<furniture id="9">
+		<furniture id="38">
 			<name>shelf1</name>
-			<author>Daniel la pute</author>
+			<author>Roman</author>
 			<year>1985</year>
-			<bio>C'est la fete du slip.</bio>
+			<bio>test bio A</bio>
 			<filename>shelf1</filename>
 			<tag>tagAAA tagBBB  tagCCC</tag>
 		</furniture>
-		<furniture id="10">
+		<furniture id="39">
 			<name>shelf2</name>
-			<author>Salope</author>
+			<author>Arthur</author>
 			<year>1985</year>
-			<bio>C'est toujours la fete du slip.</bio>
+			<bio>test bio C</bio>
 			<filename>shelf2</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
+		<furniture id="40">
+			<name>shelf3</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf3</filename>
+			<tag>tagAAA tagBBB  tagCCC</tag>
+		</furniture>
+		<furniture id="41">
+			<name>shelf4</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>shelf4</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="42">
+			<name>shelf5</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf5</filename>
+			<tag>tagAAA tagBBB  tagCCC</tag>
+		</furniture>
+		<furniture id="43">
+			<name>shelf6</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>shelf6</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="44">
+			<name>shelf7</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf7</filename>
+			<tag>tagAAA tagBBB  tagCCC</tag>
+		</furniture>
+		<furniture id="45">
+			<name>shelf8</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio C</bio>
+			<filename>shelf8</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
+		<furniture id="46">
+			<name>shelf9</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf9</filename>
+			<tag>tagCCC</tag>
+		</furniture>
 	</archetype>
+			<!-- ID_MAX = id 50-->
 	
 </catalog>

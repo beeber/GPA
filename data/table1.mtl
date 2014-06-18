@@ -1,28 +1,24 @@
-# Blender MTL File: 'StylishDesk.blend'
-# Material Count: 3
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
 
-newmtl Material.001
-Ns 96.078431
+newmtl _Color_004_1
 Ka 0.000000 0.000000 0.000000
-Kd 0.021768 0.021768 0.021768
-Ks 0.500000 0.500000 0.500000
-Ni 1.000000
-d 1.000000
-illum 2
+Kd 0.556863 0.556863 0.556863
+Ks 0.330000 0.330000 0.330000
 
-newmtl Material.002
-Ns 96.078431
+newmtl FrontColor
 Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.500000 0.500000 0.500000
-Ni 1.000000
-d 0.180000
-illum 2
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
 
-newmtl None
-Ns 0
+newmtl Color_C14
 Ka 0.000000 0.000000 0.000000
-Kd 0.8 0.8 0.8
-Ks 0.8 0.8 0.8
-d 1
-illum 2
+Kd 0.600000 0.478431 0.356863
+Ks 0.330000 0.330000 0.330000
+
+newmtl Color_B19
+Ka 0.000000 0.000000 0.000000
+Kd 0.400000 0.278431 0.239216
+Ks 0.330000 0.330000 0.330000
+

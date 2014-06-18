@@ -187,7 +187,7 @@ if(setCamera == true){
         rotateX(-PI/2); // put everything straight
     
        //noStroke();
-       stroke(0)
+       stroke(0);
 
        listFurniture.get(i).model.disableDebug();
        listFurniture.get(i).model.draw();

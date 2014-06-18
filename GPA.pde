@@ -38,7 +38,7 @@ boolean setCamera = false;
 
 void setup() {
 
-  size(displayWidth - 300, displayHeight - 300, OPENGL);
+  size(displayWidth - 50, displayHeight - 50, OPENGL);
   smooth();
 
   xGeneral = 410; yGeneral = 560; 
@@ -68,7 +68,8 @@ void setup() {
   Furniture furT;
   
   //Porte fenetre
-  furT = new Furniture(this); 
+  furT = new Furniture(this);
+  furT.name = "Fenetre";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(-215,-150,110);
   furT.rotId = 0;
@@ -78,6 +79,7 @@ void setup() {
   
   // porte
   furT = new Furniture(this); 
+  furT.name = "Porte";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(215,157,105);
   furT.rotId = 0;
@@ -87,6 +89,7 @@ void setup() {
   
   // bloc
     furT = new Furniture(this);
+  furT.name = "Block";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(198,75,134);
   furT.rotId = 0;
@@ -96,10 +99,21 @@ void setup() {
   
   // Radiateur
     furT = new Furniture(this);
+  furT.name = "Radiateur";
   furT.type = Archetype.PIVOT_STD;
   furT.position = new PVector(140,265,50);
   furT.rotId = 0;
   furT.box3D = new PVector(125,30,100);
+  furT.pivot = true;
+  listFurniture.add(furT);
+  
+  // fenetre
+      furT = new Furniture(this);
+  furT.name = "Fenetre";
+  furT.type = Archetype.PIVOT_STD;
+  furT.position = new PVector(-10,290,150);
+  furT.rotId = 0;
+  furT.box3D = new PVector(135,20,120);
   furT.pivot = true;
   listFurniture.add(furT);
   
@@ -113,7 +127,8 @@ void setup() {
 
 void draw() {
   background(255); 
-  
+ //lights();
+ //pointLight(51, 102, 126, 35, 40, 36);
  // ROTATION CAMERA INTIALE
  // rotateX(45); 
  // rotateZ(45);
@@ -156,11 +171,14 @@ if(setCamera == true){
     
     if(listFurniture.get(i).type == Archetype.PIVOT_STD) { // RAJOUTER AU TEST (avec &&) des conditions pour l'affichage. (moi qui fait)
      
-     pushMatrix(); 
-       fill(100);
+     pushMatrix();
        translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).position.z);
-       box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
+       if(indexFurniture == i) {
+         stroke(200,40,40);   fill(200,40,40,30);
+         box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
+       }
      popMatrix();
+<<<<<<< HEAD
      continue;
     }
     
@@ -178,25 +196,38 @@ if(setCamera == true){
         listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
       }
  
+=======
+     
+     
+    } else {
+      
+      pushMatrix();    
+        translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
+        rotateZ(rotOr[ listFurniture.get(i).rotId ]);
+        rotateX(-PI/2); // put everything straight
+    
+       noStroke();
+      
+       listFurniture.get(i).model.disableDebug();
+       listFurniture.get(i).model.draw();
+   
+        if(listFurniture.get(i).pivot) {
+          listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+        }
+        
+>>>>>>> f97ffa1f21e96d5cfec79ce1e20ebf8d7536275f
       if(indexFurniture == i) {
         //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-        stroke(200,40,40);   noFill();
+        stroke(200,40,40);   fill(200,40,40,30);
         listFurniture.get(i).bboxTemp.draw();
       }
       
-    popMatrix();    
+     popMatrix();
+     
+    }
+      
   }  
-  
-  
-  //DEBUG
-  /*
-  for(int i=0; i< listFurniture.size(); i++)
-  for(int j=i+1; j< listFurniture.size(); j++)
-     if(isColliding(listFurniture.get(i), listFurniture.get(j))) {
-       fill(255,0,0);
-       box(10);
-     }
-  */
+
 
 // GUI **********
   //disableCam(); //
@@ -235,16 +266,54 @@ void keyPressed() {
  if(key == 'd')
    indexFurniture = max(indexFurniture - 1, -1);
    
- if(key == 'c' && indexFurniture > -1) {
+ if(key == 'c' && indexFurniture > -1) {  
+   
    listFurniture.get(indexFurniture).pivot = !listFurniture.get(indexFurniture).pivot;
-    //buttonCon.getController("sliderChair").getValue()
-    //buttonCon.getController("sliderChair").setValue(Value=Value-1);
-    buttonCon.getController("sliderChair").setValue( -1);  
+   
+   if(listFurniture.get(indexFurniture).pivot) { // was not a pivot : minus 1 on the slider
+     if( buttonCon.getController("sliderChair").getValue() >0 )
+      buttonCon.getController("sliderChair").setValue( buttonCon.getController("sliderChair").getValue() - 1);  
+   } else {
+    buttonCon.getController("sliderChair").setValue( buttonCon.getController("sliderChair").getValue() + 1);  
+   }
+   
  }
+ /*
+    if(key == ' ') {
+        buttonCon.remove("accordionPiv"); 
+         controlP5.Group g1 = buttonCon.addGroup("Door")
+                .setBackgroundColor(color(0, 64))
+                .setBackgroundHeight(10)
+                .setBarHeight(20)
+                ;
+  buttonCon.addCheckBox("checkBoxDoor")
+                .setPosition(10, 20)
+                .setColorForeground(color(120))
+                .setColorActive(color(255))
+                .setColorLabel(color(255))
+                .setSize(20, 20)
+                .setItemsPerRow(2)
+                .setSpacingColumn(70)
+                .setSpacingRow(10)
+                .addItem("entry point", 1)
+                .addItem("can't be block 8", 50)
+                //.addItem("sliding door", 100)
+                //.activateAll()
+                //.activate(3)
+                .moveTo(g1)
+                ;
 
- 
- 
-    
+
+  accordion = buttonCon.addAccordion("accordionPiv") // création accordion et placement des différents group inside
+                 .setPosition(10,200)
+                 .setWidth(200)
+                 .addItem(g1)
+                 ;
+                 
+    accordion.setCollapseMode(Accordion.SINGLE); 
+      
+    }
+   */
    
   if (key == CODED)
     switch(keyCode) {

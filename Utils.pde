@@ -43,15 +43,9 @@ void loadScene(String fileName) {
  
 }
 
-
-
-
-
-
-
  
  void boxPivot(){   // BOX POUR PIVOT 
- /*
+
 //Porte fenetre
       pushMatrix();
         translate(-215,-150,110);
@@ -63,20 +57,19 @@ void loadScene(String fileName) {
       }
         box(20,160,220);
       popMatrix();
+      
 // porte
-
       pushMatrix();
         translate(215,157,105);
           if(buttonCon.isMouseOver(buttonCon.getController("pivDoor"))) {
              fill(hoverColor);
-             println(
           } else {
              noStroke();
              noFill();
           }
         box(20,85,210);
       popMatrix(); 
-
+      
 // fenetre 
       pushMatrix();
         translate(-10,290,150);
@@ -88,6 +81,7 @@ void loadScene(String fileName) {
           }
          box(135,20,120);
       popMatrix(); 
+      
 // bloc
      pushMatrix();
         translate(198,75,134);
@@ -97,8 +91,9 @@ void loadScene(String fileName) {
         noStroke();
         noFill();
       }
-        box(12,42,60);
-      popMatrix();  
+        box(12,44,60);
+      popMatrix(); 
+      
 // Radiateur
      pushMatrix();
         translate(140,265,50);
@@ -110,6 +105,5 @@ void loadScene(String fileName) {
       }
         box(125,30,100);
       popMatrix(); 
-   */   
  }
  

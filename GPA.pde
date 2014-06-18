@@ -178,26 +178,6 @@ if(setCamera == true){
          box(listFurniture.get(i).box3D.x, listFurniture.get(i).box3D.y, listFurniture.get(i).box3D.z);
        }
      popMatrix();
-<<<<<<< HEAD
-     continue;
-    }
-    
-    pushMatrix();    
-      translate(listFurniture.get(i).position.x, listFurniture.get(i).position.y, listFurniture.get(i).box3D.y/2);
-      rotateZ(rotOr[ listFurniture.get(i).rotId ]);
-      rotateX(-PI/2); // put everything straight
-  
-     //noStroke();
-    stroke(0);
-     listFurniture.get(i).model.disableDebug();
-     listFurniture.get(i).model.draw();
- 
-      if(listFurniture.get(i).pivot) {
-        listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
-      }
- 
-=======
-     
      
     } else {
       
@@ -206,8 +186,9 @@ if(setCamera == true){
         rotateZ(rotOr[ listFurniture.get(i).rotId ]);
         rotateX(-PI/2); // put everything straight
     
-       noStroke();
-      
+       //noStroke();
+       stroke(0)
+
        listFurniture.get(i).model.disableDebug();
        listFurniture.get(i).model.draw();
    
@@ -215,7 +196,6 @@ if(setCamera == true){
           listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
         }
         
->>>>>>> f97ffa1f21e96d5cfec79ce1e20ebf8d7536275f
       if(indexFurniture == i) {
         //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
         stroke(200,40,40);   fill(200,40,40,30);

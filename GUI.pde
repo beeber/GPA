@@ -40,17 +40,18 @@ void initGUI(){
          buttonCon.addTab("attributes") 
        .setColorBackground(color(0, 160, 100))
        .setColorLabel(color(255))
-       .setColorActive(color(255,128,0))
+       .setColorActive(color(198, 18, 48))
        ;
          buttonCon.addTab("archetypes") // 
        .setColorBackground(color(0, 160, 100))
        .setColorLabel(color(255))
-       .setColorActive(color(255,128,0))
+       .setColorActive(color(198, 18, 48))
        ;
          buttonCon.addTab("keyword") // 
        .setColorBackground(color(0, 160, 100))
        .setColorLabel(color(255))
-       .setColorActive(color(255,128,0))
+       .setColorActive(color(198, 18, 48))
+        //.setColorActive(color(255,128,0))
        ;
      
        // "appelle" les différentes tabs
@@ -341,6 +342,7 @@ void initGUI(){
           
 
        buttonCon.addToggle("saveAndSeed")
+
          .setLabel("            Save & seed") // pas touché au blanc !
          .setColorForeground(color(198,18,18))
          .setColorBackground(color(188,161,161))
@@ -369,9 +371,12 @@ void initGUI(){
 
 
           buttonCon.addBang("buttonTest")
+
        .setLabel("buttonTest")
        .setPosition(10,height -30)
        .setSize(80,20)
+       //.setImages(loadImage("Arrow-Left.png"), loadImage("Arrow-Right.png"), loadImage("Refresh.png"))
+       //.updateSize()
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
        

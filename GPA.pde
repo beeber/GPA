@@ -39,7 +39,7 @@ boolean setCamera = false;
 void setup() {
 
   size(displayWidth - 50, displayHeight - 50, OPENGL);
-  smooth();
+  smooth(8); // 2,4 ou 8
 
   xGeneral = 410; yGeneral = 560; 
   
@@ -126,7 +126,8 @@ void setup() {
 } 
 
 void draw() {
-  background(255); 
+  background(255);
+
  //lights();
  //pointLight(51, 102, 126, 35, 40, 36);
  // ROTATION CAMERA INTIALE
@@ -137,6 +138,16 @@ void draw() {
   //box(410, 560, 2);
 
   //Display room
+  
+ /* 
+    disableCam(); 
+      pushMatrix();
+    fill(0, 160, 100);
+     rect(0,0,120,20);
+      popMatrix();
+    enableCam();
+*/
+
   stroke(0);
   pushMatrix();
      if(key == '-') {stroke(255);} 
@@ -165,7 +176,8 @@ if(setCamera == true){
 }
  // *************
  
- 
+
+       
 // DISPLAY FURNITURES
   for(int i=0; i< listFurniture.size(); i++) {
     
@@ -224,6 +236,8 @@ if(setCamera == true){
         }
   }
   
+
+       
   inputTextField(); // keyword input
 // gui();
 //  enableCam();

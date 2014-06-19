@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TOTAL ID_MAX = 46-->
+<!-- LAST USED  = 51-->
 <catalog>
 	<archetype type="CHAIR">
 		<furniture id="0">
@@ -124,7 +124,7 @@
 		</furniture>
 
 	</archetype>
-			<!-- ID_MAX = id 16-->
+
 
 	<archetype type="TABLE">
 		<furniture id="15">
@@ -199,7 +199,7 @@
 			<filename>table9</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
-			<furniture id="24">
+		<furniture id="24">
 			<name>table10</name>
 			<author>Arthur</author>
 			<year>1985</year>
@@ -207,8 +207,23 @@
 			<filename>table10</filename>
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
+		<furniture id="50">
+			<name>table11</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table10</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>		
+		<furniture id="51">
+			<name>table12</name>
+			<author>Arthur</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>table10</filename>
+			<tag>tagBBB tagCCC</tag>
+		</furniture>
 	</archetype>
-			<!-- ID_MAX = id 25-->
 
 	<archetype type="SOFA">
 		<furniture id="25">
@@ -276,7 +291,7 @@
 			<tag>tagBBB tagCCC</tag>
 		</furniture>
 	</archetype>
-			<!-- ID_MAX = id 34-->
+
 
 	<archetype type="COFFEE_TABLE">
 		<furniture id="33">
@@ -320,7 +335,7 @@
 			<tag>tagBBB</tag>
 		</furniture>
 	</archetype>
-			<!-- ID_MAX = id 39-->
+
 
 	<archetype type="SHELF">
 		<furniture id="38">
@@ -395,7 +410,30 @@
 			<filename>shelf9</filename>
 			<tag>tagCCC</tag>
 		</furniture>
+		<furniture id="47">
+			<name>shelf10</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf10</filename>
+			<tag>tagCCC</tag>
+		</furniture>
+		<furniture id="48">
+			<name>shelf11</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf11</filename>
+			<tag>tagCCC</tag>
+		</furniture>
+		<furniture id="49">
+			<name>shelf12</name>
+			<author>Roman</author>
+			<year>1985</year>
+			<bio>test bio A</bio>
+			<filename>shelf12</filename>
+			<tag>tagCCC</tag>
+		</furniture>
 	</archetype>
-			<!-- ID_MAX = id 50-->
-	
+
 </catalog>

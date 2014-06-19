@@ -9,10 +9,17 @@ boolean pivRadiator = false;
 boolean pivSlidingWindow = false;
 
 
+
+
 void initGUI(){
   
          buttonCon = new ControlP5(this);
-  
+
+    PFont pfont = createFont("Arial",20,true); // use true/false for smooth/no-smooth
+        ControlFont font = new ControlFont(pfont,12);
+        
+
+      
 // COLOR GUI
       buttonCon.setColorBackground(#FFFFFC);
       buttonCon.setColorLabel(color(0));
@@ -68,7 +75,7 @@ void initGUI(){
        .setLabel("keyword")
        .setId(4)
        ;
-            
+          
            
   controlP5.Group g1 = buttonCon.addGroup("Door")
               .setBackgroundColor(color(0, 64))
@@ -152,8 +159,12 @@ void initGUI(){
       buttonCon.getTooltip().setDelay(500);
       buttonCon.getTooltip().register("sliderShelf","Changes the number of shelf.");
       
+      
+
+      
          buttonCon.addSlider("sliderCoffeeTable")
        .setLabel("coffee table")
+       
        .setDecimalPrecision (1)
        .setPosition(10,260)
        .setSize(100,20)
@@ -365,12 +376,20 @@ void initGUI(){
        ;
        
           buttonCon.addBang("buttonTest2")
-       .setLabel("buttonTest2")
+       //.setLabel("buttonTest2")
      .setPosition(10,height -60)
        .setSize(80,20)
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
        ;
        
+           buttonCon.getController("buttonTest2")
+     .getCaptionLabel()
+     .setFont(font)
+     .toUpperCase(false)
+     .setSize(24)
+     .setFont(font)
+      ;
+      
           buttonCon.addBang("loadDisposition")
        .setLabel("load disposition")
        .setPosition(width -100,530)

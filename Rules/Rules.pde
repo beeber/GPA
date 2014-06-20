@@ -1,3 +1,77 @@
+       
+load and save
+couleur sur les points pivots de l accordion
+regle
+create list
+
+
+SHELF :
+    █ 100% les face avant soit orienté vers le centre de la pièce
+    █ 100% crée zone interdite de +(0,40cm) face avant
+    
+    █ 90% les étagères soient collé au mur
+      else position au millieu de la pièce avec décallage (-100,+100cm), un des coté de létagère collé au plus longs coté de lappartement
+    █ 10% pas soumise à la lumière
+
+
+TABLE :
+    █ 65% crée zone interdite(excepté pour CHAIR, SOFA, APPARTEMENT) de +(30,80cm) tous coté
+    █ 30% soumise à la lumière
+
+CHAIR :
+    █ if (face avant de la TABLE >65% plus longs que coté de la TABLE)
+        position CHAIR deux par deux, face avant/face arrière de la TABLE
+    █ if (TABLE => 1 )
+        if (CHAIR => 2)
+          75% CHAIR autour de cette TABLE, distance = (0,30)cm
+          CHAIR toujours face à la (de cette) TABLE
+        if (CHAIR => 4)
+          85% CHAIR autour de cette TABLE, distance =  (0,20)cm
+          CHAIR toujours face à la (de cette) TABLE
+      else générée en 5eme
+    █ if (TABLE => 2 )
+        if (CHAIR => 4)
+          95% CHAIR autour d une des TABLE, distance = (0,20)cm
+          80% placement CHAIR soit splité en % de table
+          CHAIR toujours face à la (de cette) TABLE
+      else générée en 5eme
+
+COFFEE_TABLE :
+    █ if (SOFA => 1) 
+         40% que la distance entre SOFA et COFFEE_TABLE ne soit pas plus grande que la face avant de la COFFEE_TABLE
+      else générée en dernier
+    █ if (SOFA => 2)    
+        20 % que la distance entre 1 des COFFEE_TABLES et DOOR soit (0,200)cm
+          if(true) 90% cette COFFEE_TABLE est collée au mur
+        60 % que la distance entre COFFEE_TABLES et les deux premiers SOFA +(40,230)cm
+          if(true) 80 % COFFEE_TABLES positionné en face de SOFA.a
+      else générée en 4eme
+      
+SOFA :
+    █ 65% crée zone interdite(excepté pour COFFEE_TABLE, SOFA, CHAIR) de +(30,80cm) face avant
+    █ 10% soumis à la chaleur
+    █ if (distance SOFA et APPARTMENT <150cm)
+        SOFA jamais face au coté de l appartement a proximité
+    █ if (SOFA = 1)        
+        70% SOFA est collé au mur
+          if(true) 100% face avant soit orienté vers le centre de la pièce  
+        30 % soumit à la lumière 
+          if(false) générée en 3eme  
+    █ if (SOFA => 2)
+        70% distance entre SOFA.a et SOFA.b = SOFA.a face avant/2
+          if(true) 50% SOFA.b face avant soit orienté vers SOFA.a
+               else SOFA.b position = SOFA.a position + SOFA.b face avant/2 en face de SOFA.a   
+      else générée en 3eme  
+                   
+        
+ 
+ 
+ 
+ 
+/// OLD
+
+
+
 
 // faire un mode débug ou on voit visuellement par des lignes de couleur les relations entre les objets ?
 
@@ -10,6 +84,10 @@ void IN_USE(){ = collisionON sur type de mobilier, excepté pour les éléments 
 void DISTANCE(){ = random between 0(or specified value) and specified value, the greater is better. // (min (ou 0 si non spécifié), max)
         
 // ************************POINT SPECIFIQUE*****************************************     
+
+
+// vu que j'ai orienté tout les models dans le même sens
+
 
     █  for(DOOR,SLIDING_WINDOW,WINDOW,RADIATOR){
           if (Side X> Side Y) Side X = pivFrontFace
@@ -108,9 +186,6 @@ void DISTANCE(){ = random between 0(or specified value) and specified value, the
          (30%) SOFA.b.frontSide 
         else pos = like SOFA=1 // utiliser comme si c'était un seul sofa
         
-        
-        
-
         
         
         

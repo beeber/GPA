@@ -1,12 +1,17 @@
-       
-load and save
-couleur sur les points pivots de l accordion
-regle
-create list
+
+// faire un mode débug ou on voit visuellement par des lignes de couleur les relations entre les objets ?
+
+// ************************FONCTION*************************************************
+
+void NO_OBJ() = collision "secondaire" sur zone spécifique 
+void LIGHT_CONE() = Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
+void HEAT_CONE() = Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
+      
+// ************************POINT SPECIFIQUE*****************************************    
 
 
 SHELF :
-    █ 100% les face avant soit orienté vers le centre de la pièce
+    █ 100% faces avant orientées vers le centre de la pièce
     █ 100% crée zone interdite de +(0,40cm) face avant
     
     █ 90% les étagères soient collé au mur
@@ -17,7 +22,34 @@ SHELF :
 TABLE :
     █ 65% crée zone interdite(excepté pour CHAIR, SOFA, APPARTEMENT) de +(30,80cm) tous coté
     █ 30% soumise à la lumière
+    
+SOFA :
+    █ 65% crée zone interdite(excepté pour COFFEE_TABLE, SOFA, CHAIR) de +(30,80cm) face avant
+    █ 10% soumis à la chaleur
+    █ if (distance SOFA et APPARTMENT <150cm)
+        SOFA jamais face au coté de l appartement a proximité
+    █ if (SOFA = 1)        
+        70% SOFA est collé au mur
+          if(true) 100% face avant soit orienté vers le centre de la pièce  
+        30 % soumit à la lumière 
+          if(false) générée en 3eme  
+    █ if (SOFA => 2)
+        70% distance entre SOFA.a et SOFA.b = SOFA.a face avant/2
+          if(true) 50% SOFA.b face avant soit orienté vers SOFA.a
+               else SOFA.b position = SOFA.a position + SOFA.b face avant/2 en face de SOFA.a   
+      else générée en 3eme  
 
+COFFEE_TABLE :
+    █ if (SOFA => 1) 
+         40% que la distance entre SOFA et COFFEE_TABLE ne soit pas plus grande que la face avant de la COFFEE_TABLE
+      else générée en dernier
+    █ if (SOFA => 2)    
+        20 % que la distance entre 1 des COFFEE_TABLES et DOOR soit (0,200)cm
+          if(true) 90% cette COFFEE_TABLE est collée au mur
+        60 % que la distance entre COFFEE_TABLES et les deux premiers SOFA +(40,230)cm
+          if(true) 80 % COFFEE_TABLES positionné en face de SOFA.a
+      else générée en 4eme
+      
 CHAIR :
     █ if (face avant de la TABLE >65% plus longs que coté de la TABLE)
         position CHAIR deux par deux, face avant/face arrière de la TABLE
@@ -36,56 +68,8 @@ CHAIR :
           CHAIR toujours face à la (de cette) TABLE
       else générée en 5eme
 
-COFFEE_TABLE :
-    █ if (SOFA => 1) 
-         40% que la distance entre SOFA et COFFEE_TABLE ne soit pas plus grande que la face avant de la COFFEE_TABLE
-      else générée en dernier
-    █ if (SOFA => 2)    
-        20 % que la distance entre 1 des COFFEE_TABLES et DOOR soit (0,200)cm
-          if(true) 90% cette COFFEE_TABLE est collée au mur
-        60 % que la distance entre COFFEE_TABLES et les deux premiers SOFA +(40,230)cm
-          if(true) 80 % COFFEE_TABLES positionné en face de SOFA.a
-      else générée en 4eme
-      
-SOFA :
-    █ 65% crée zone interdite(excepté pour COFFEE_TABLE, SOFA, CHAIR) de +(30,80cm) face avant
-    █ 10% soumis à la chaleur
-    █ if (distance SOFA et APPARTMENT <150cm)
-        SOFA jamais face au coté de l appartement a proximité
-    █ if (SOFA = 1)        
-        70% SOFA est collé au mur
-          if(true) 100% face avant soit orienté vers le centre de la pièce  
-        30 % soumit à la lumière 
-          if(false) générée en 3eme  
-    █ if (SOFA => 2)
-        70% distance entre SOFA.a et SOFA.b = SOFA.a face avant/2
-          if(true) 50% SOFA.b face avant soit orienté vers SOFA.a
-               else SOFA.b position = SOFA.a position + SOFA.b face avant/2 en face de SOFA.a   
-      else générée en 3eme  
-                   
-        
- 
- 
- 
- 
+
 /// OLD
-
-
-
-
-// faire un mode débug ou on voit visuellement par des lignes de couleur les relations entre les objets ?
-
-// ************************FONCTION*************************************************
-
-void NO_OBJ(){ = collisionON sur zone de point pivot // pas d'objet 
-void LIGHT_CONE(){ Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
-void HEAT_CONE(){ Probabilité de placement de 100% en son épicentre, diminuant jusqua 0%
-void IN_USE(){ = collisionON sur type de mobilier, excepté pour les éléments dans ();
-void DISTANCE(){ = random between 0(or specified value) and specified value, the greater is better. // (min (ou 0 si non spécifié), max)
-        
-// ************************POINT SPECIFIQUE*****************************************     
-
-
 // vu que j'ai orienté tout les models dans le même sens
 
 

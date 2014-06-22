@@ -6,6 +6,7 @@ import processing.dxf.*;
 ControlP5 buttonCon; // déclare mes buttons
 PeasyCam cam; // déclare ma caméra
 Accordion accordion;
+ArrayList<controlP5.Group> myGroups;
 Range range;
 OBJModel model; // model appartement
 
@@ -31,7 +32,7 @@ catalog myCat;
 
 int colorBox;// valeur couleur boxPivot A
 int colorBox2;
-color hoverColor = color(0, 230, 150); // DEFINI COULEUR BOX
+color hoverColor = color(0, 230, 150, 100); // DEFINI COULEUR BOX
 boolean toggle = false;
 boolean setCamera = false;
 // SETUP **************************************************************************************************************
@@ -52,6 +53,9 @@ void setup() {
   
   indexFurniture = -1;
   listFurniture = new ArrayList<Furniture>();
+  
+  
+   myGroups = new ArrayList<controlP5.Group>();
 
   seed(); // crée une nouvelle seed générative au lancement de la scène
 
@@ -203,7 +207,7 @@ if(setCamera == true){
 
        listFurniture.get(i).model.disableDebug();
        listFurniture.get(i).model.draw();
-   
+
         if(listFurniture.get(i).pivot) {
           listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
         }
@@ -211,6 +215,12 @@ if(setCamera == true){
       if(indexFurniture == i) {
         //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
         stroke(200,40,40);   fill(200,40,40,30);
+        listFurniture.get(i).bboxTemp.draw();
+      }
+      
+      if(myGroups.get(i).isMouseOver() ) {
+            noStroke();
+             fill(hoverColor);
         listFurniture.get(i).bboxTemp.draw();
       }
       

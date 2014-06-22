@@ -487,11 +487,17 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
 //  if (theEvent.isFrom(cp5.getController("n1"))) {
   
   
-  /*
+  
   for(int i=0; i<listFurniture.size(); i++) {
-    if (theEvent.isFrom(cp5.getController("" + i + ": " + listFurniture.get(i).name)))
+    if (theEvent.getId() == 1000 + i) {
+      listFurniture.get(i).pivotPos = !listFurniture.get(i).pivotPos;
+    }
+    
+    if (theEvent.getId() == 2000 + i) {
+      listFurniture.get(i).pivotMob = !listFurniture.get(i).pivotMob;
+    }
   }
-  */
+  
   
   
  if(theEvent.controller().name()=="randomizer") {  // concerne le button "randomizer"
@@ -546,24 +552,19 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
         saveFrame("export/project-####.png");
         print("image exported");
      }
-     if(createList==true){ // SI LE CHECKBOX CREATE LIST
-            String words = "apple bear cat dog";
-            String[] list = split(words, ' ');
-            saveStrings("export/list.txt", list);  
-            print("list created ");    
-     }
+  //   if(createList==true){ // SI LE CHECKBOX CREATE LIST
+       saveList("list.txt");
+    //    println("list exported");
+   //  }
   }
  
  
  if(theEvent.controller().name()=="exportObj") {
-     if(createList==true){  // SI LE CHECKBOX CREATE LIST
-            String words = "apple bear cat dog";
-            String[] list = split(words, ' ');
-            saveStrings("export/list.txt", list);  
-            print("list created ");    
-     } else {
-        print(".obj saved");
-     }
+   //  if(createList==true){  // SI LE CHECKBOX CREATE LIST
+        saveList("myList.txt");
+   //  } else {
+   //     print(".obj saved");
+    // }
   }
   
   
@@ -574,6 +575,7 @@ void controlEvent(ControlEvent theEvent) { // obligatoire
       print("disposition load"); 
       seed();  
   }
+  
   
    if(theEvent.controller().name()=="saveDisposition") { 
       saveScene("test.xml");

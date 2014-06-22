@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scene> <furniture id="-1" pivot="true" rot="0"> <pos x="-215.0" y="-150.0" z="110.0"/> </furniture>
-  <furniture id="-1" pivot="true" rot="0"> <pos x="215.0" y="157.0" z="105.0"/> </furniture>
-  <furniture id="-1" pivot="true" rot="0"> <pos x="198.0" y="75.0" z="134.0"/> </furniture>
-  <furniture id="-1" pivot="true" rot="0"> <pos x="140.0" y="265.0" z="50.0"/> </furniture>
-  <furniture id="-1" pivot="true" rot="0"> <pos x="-10.0" y="290.0" z="150.0"/> </furniture>
-  <furniture id="38" pivot="false" rot="1"> <pos x="-71.53233" y="238.9527" z="0.0"/> </furniture>
-  <furniture id="42" pivot="false" rot="0"> <pos x="111.80907" y="-196.83316" z="0.0"/> </furniture>
-  <furniture id="44" pivot="false" rot="1"> <pos x="-39.650654" y="192.66785" z="0.0"/> </furniture>
-  <furniture id="46" pivot="false" rot="1"> <pos x="112.56792" y="-13.015366" z="0.0"/> </furniture>
-  <furniture id="0" pivot="false" rot="1"> <pos x="47.706253" y="-241.95006" z="0.0"/> </furniture>
-  <furniture id="4" pivot="false" rot="1"> <pos x="84.56856" y="116.130844" z="0.0"/> </furniture>
-  <furniture id="10" pivot="false" rot="0"> <pos x="1.8590851" y="-252.43518" z="0.0"/> </furniture>
-  <furniture id="14" pivot="false" rot="1"> <pos x="-100.19439" y="-184.15671" z="0.0"/> </furniture>
-  <furniture id="10" pivot="false" rot="3"> <pos x="-151.27989" y="28.13678" z="0.0"/> </furniture>
-  <furniture id="4" pivot="false" rot="2"> <pos x="111.96315" y="51.38376" z="0.0"/> </furniture>
+<scene> <furniture id="42" pivot="false" rot="3"> <pos x="-62.22737" y="-78.03984" z="0.0"/> </furniture>
+  <furniture id="9" pivot="false" rot="3"> <pos x="84.261" y="-252.98395" z="0.0"/> </furniture>
+  <furniture id="10" pivot="false" rot="0"> <pos x="-19.327133" y="143.7219" z="0.0"/> </furniture>
+  <furniture id="5" pivot="false" rot="2"> <pos x="-91.15386" y="72.88168" z="0.0"/> </furniture>
+  <furniture id="12" pivot="false" rot="2"> <pos x="-31.480927" y="-239.63249" z="0.0"/> </furniture>
 </scene>

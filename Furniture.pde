@@ -11,21 +11,34 @@ class Furniture {
   String name;
   
   boolean pivot;
+  boolean pivotPos;
+  boolean pivotMob;
 
   BoundingBox bboxTemp;
   
   int tSphere; // taille sphere bounding box
 
+
+//IMPORTANT!!!
+// USING newMob & newPos in constructors
+
+
   Furniture(PApplet parent) {
     id = -1;
     name = "NO_NAME";
     type = Archetype.PIVOT_STD;
+    
+    pivotPos = pivotMob = false;
   }
    
    
    Furniture(PApplet parent, Archetype myType) {
+     
+    pivotPos = pivotMob = false;
     int fileID; 
     String fileName;
+    
+    pivotPos = pivotMob = false;
 
     ArrayList<Integer> myListFur = new ArrayList<Integer>();
     ArrayList<Integer> myListFurFinal = new ArrayList<Integer>();
@@ -89,7 +102,8 @@ class Furniture {
   
   
   Furniture(PApplet _parent, int _id){
-    
+  
+    pivotPos = pivotMob = false;  
     String fileName = myCat.getFurXMLByID( _id ).getChildren("filename")[0].getContent();
     name = myCat.getFurXMLByID( _id ).getChildren("name")[0].getContent();
     
@@ -103,7 +117,7 @@ class Furniture {
     else { println("ISSUE IN LOADINF FURNITURE IN CATALOG: NO TYPE"); type = Archetype.NO_FUR; }
     
     
-    model = new OBJModel(_parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
+    model = new OBJModel(_parent, fileName + ".obj", "relative", POLYGON);
     
     this.position = new PVector();
     this.rotId = 0;
@@ -124,7 +138,7 @@ class Furniture {
     this.position = _pos;
     this.rotId = _rotId;
    
-    model = new OBJModel(parent, "furniture/"+fileName + ".obj", "relative", POLYGON);
+    model = new OBJModel(parent, fileName + ".obj", "relative", POLYGON);
     println("BAD LOADING, SHOULD USE DATABASE");
     name = fileName;
     //model.enableDebug();
@@ -144,6 +158,59 @@ class Furniture {
       return new PVector(box3D.z, box3D.x, box3D.y);
     else
       return new PVector(box3D.x, box3D.z, box3D.y);
+  }
+  
+  void newMob(PApplet _parent) {
+        
+    int fileID; 
+    String fileName;
+
+    ArrayList<Integer> myListFur = new ArrayList<Integer>();
+    ArrayList<Integer> myListFurFinal = new ArrayList<Integer>();
+    XML[] listFurXML = myCat.getListArchetype(type).getChildren("furniture");
+    
+    for(int i=0; i<listFurXML.length; i++)
+      myListFur.add(i);
+      
+    if(buttonCon.get(Textfield.class,"tags").getText().equals("")) {
+      fileID = myListFur.get( int(random(0,myListFur.size())));
+    } else {
+     
+    String[] myTags = split(buttonCon.get(Textfield.class,"tags").getText(), ' ');  
+    for(int i=0; i< myListFur.size(); i++) {
+      //Load tags
+      String[] furTags = split( listFurXML[i].getChildren("tag")[0].getContent(), ' ');  
+      
+      //Check tags
+      boolean ok = false;
+      for(int j=0; j< furTags.length; j++)
+      for(int k=0; k< myTags.length; k++)
+        if(furTags[j].equals(myTags[k]))
+           ok = true;
+      if(ok)
+        myListFurFinal.add( myListFur.get(i) );
+    }
+    
+    fileID = myListFurFinal.get( int(random(0,myListFurFinal.size())));
+   }
+   
+   
+   fileName = listFurXML[fileID].getChildren("filename")[0].getContent()  + ".obj";
+   name = listFurXML[fileID].getChildren("name")[0].getContent();
+   id = listFurXML[fileID].getInt("id");
+  
+
+    model = new OBJModel(_parent, "data/"+fileName, "relative", POLYGON);
+    model.enableDebug();
+    model.enableTexture();
+    model.scale(100);
+    model.translateToCenter();
+    
+    BoundingBox bbox = new BoundingBox(_parent, model);
+    bboxTemp = new BoundingBox(_parent, model);
+    //this.position.z = bbox.getWHD().z;
+    box3D = bbox.getWHD(); // pour collision on va chercher le x,y
+
   }
   
   void newPos() {

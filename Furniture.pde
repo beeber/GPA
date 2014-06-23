@@ -13,7 +13,10 @@ class Furniture {
   boolean pivot;
   boolean pivotPos;
   boolean pivotMob;
-
+  
+  int marginFront, marginBack, marginLeft, marginRight;
+  int margin;
+  
   BoundingBox bboxTemp;
   
   int tSphere; // taille sphere bounding box
@@ -29,12 +32,16 @@ class Furniture {
     type = Archetype.PIVOT_STD;
     
     pivotPos = pivotMob = false;
+    marginFront = 0; marginBack = 0; marginLeft = 0; marginRight = 0;
+    margin = 0;
   }
    
    
    Furniture(PApplet parent, Archetype myType) {
      
     pivotPos = pivotMob = false;
+    marginFront = 0; marginBack = 0; marginLeft = 0; marginRight = 0;
+    margin = 0;
     int fileID; 
     String fileName;
     
@@ -102,8 +109,9 @@ class Furniture {
   
   
   Furniture(PApplet _parent, int _id){
-  
-    pivotPos = pivotMob = false;  
+  margin = 0;
+    pivotPos = pivotMob = false;
+    marginFront = 0; marginBack = 0; marginLeft = 0; marginRight = 0;
     String fileName = myCat.getFurXMLByID( _id ).getChildren("filename")[0].getContent();
     name = myCat.getFurXMLByID( _id ).getChildren("name")[0].getContent();
     
@@ -344,51 +352,80 @@ class Furniture {
   
   void drawCorners(){
     
+    marginFront = 100; marginBack = 0; marginLeft = 25; marginRight = 50;
+    
     tSphere = 5;
     fill(255,0,0);
+    int mL=0, mR=0, mF=0, mB=0;
+    
+    println(rotId);
+    
+    switch(rotId) {
+     case 0: mB = marginLeft; mR = marginFront; mF = marginRight; mL = marginBack; break;
+     case 1: mR = marginLeft; mF = marginRight; mL = marginFront; mB = marginBack; break;
+     case 2: mF = marginLeft; mL = marginFront; mB = marginRight; mR = marginBack; break;
+     case 3: mL = marginLeft; mB = marginRight; mR = marginFront; mF = marginBack; break;
+    }
+   
+    
+     pushMatrix();
+       translate(bboxTemp.getMin().x - mL,0,0); box(10);
+     popMatrix();
+     pushMatrix();
+       translate(bboxTemp.getMax().x + mR,0,0); box(10);
+     popMatrix();
+     pushMatrix();
+       translate(0,0,bboxTemp.getMin().z - mB); box(10);
+     popMatrix();
+     pushMatrix();
+       translate(0,0,bboxTemp.getMax().z + mF); box(10);
+     popMatrix();
   
-     
-    pushMatrix();
-    translate(bboxTemp.getMin().x, bboxTemp.getMin().y, bboxTemp.getMin().z);
+     /*
+      pushMatrix();
+      translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
+      sphere(tSphere);
+      popMatrix();
+      
+      pushMatrix();
+      translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+      sphere(tSphere);
+      popMatrix();
+       
+      pushMatrix();
+      translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
+      sphere(tSphere);
+      popMatrix();
+      
+      pushMatrix();
+      translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+      sphere(tSphere);
+      popMatrix();
 
-    sphere(tSphere);
-    popMatrix();
+    
+    
+    //----
     
     pushMatrix();
     translate(bboxTemp.getMin().x, bboxTemp.getMin().y, bboxTemp.getMax().z);
     sphere(tSphere);
     popMatrix();
-     
+    
     pushMatrix();
-    translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+    translate(bboxTemp.getMax().x, bboxTemp.getMin().y, bboxTemp.getMax().z);
     sphere(tSphere);
     popMatrix();
     
-    pushMatrix();
-    translate(bboxTemp.getMax().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
-    sphere(tSphere);
-    popMatrix();
-    
-    pushMatrix();
-    translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMin().z);
-    sphere(tSphere);
-    popMatrix();
-
     pushMatrix();
     translate(bboxTemp.getMax().x, bboxTemp.getMin().y, bboxTemp.getMin().z);
     sphere(tSphere);
     popMatrix();
     
     pushMatrix();
-    translate(bboxTemp.getMin().x, bboxTemp.getMax().y, bboxTemp.getMax().z);
+    translate(bboxTemp.getMin().x, bboxTemp.getMin().y, bboxTemp.getMin().z);
     sphere(tSphere);
     popMatrix();
-
-    pushMatrix();
-    translate(bboxTemp.getMax().x, bboxTemp.getMin().y, bboxTemp.getMax().z);
-    sphere(tSphere);
-    popMatrix();
-    
+*/
   }
   
  

@@ -79,6 +79,7 @@ void setup() {
   furT.rotId = 0;
   furT.box3D = new PVector(20,160,220);
   furT.pivot = true;
+  furT.margin = 200;
   listFurniture.add(furT);
   
   // porte
@@ -89,6 +90,7 @@ void setup() {
   furT.rotId = 0;
   furT.box3D = new PVector(20,85,210);
   furT.pivot = true;
+  furT.margin = 200;
   listFurniture.add(furT);
   
   // bloc
@@ -99,6 +101,7 @@ void setup() {
   furT.rotId = 0;
   furT.box3D = new PVector(12,42,60);
   furT.pivot = true;
+  furT.margin = 200;
   listFurniture.add(furT);
   
   // Radiateur
@@ -109,6 +112,7 @@ void setup() {
   furT.rotId = 0;
   furT.box3D = new PVector(125,30,100);
   furT.pivot = true;
+  furT.margin = 200;
   listFurniture.add(furT);
   
   // fenetre
@@ -119,6 +123,7 @@ void setup() {
   furT.rotId = 0;
   furT.box3D = new PVector(135,20,120);
   furT.pivot = true;
+  furT.margin = 200;
   listFurniture.add(furT);
   
  
@@ -219,6 +224,8 @@ if(setCamera == true){
       }
       
       if(myGroups.get(i).isMouseOver() ) {
+        //listFurniture.get(i).drawCorners(); // dessiner sphere de bounding box
+        
             noStroke();
              fill(hoverColor);
         listFurniture.get(i).bboxTemp.draw();

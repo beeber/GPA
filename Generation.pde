@@ -63,11 +63,27 @@ void seed(){
         // a) hasard
         listFurniture.get(i).newPos();
         // b) colle au mure
-        //listFurniture.get(i).newPosTouchWall();
+        if(listFurniture.get(i).type == Archetype.SHELF)
+          listFurniture.get(i).newPosTouchWall();
         //listFurniture.get(i).newPosTest();
         // c) colle a un autre objet
         //if(i>0)
         //  listFurniture.get(i).newPosTouchFur(listFurniture.get(0));
+     
+       // CHAISE
+       if(sliderTable >= 1 && listFurniture.get(i).type == Archetype.CHAIR) {
+         int indexTable = 0;
+          for(int j=0; j<listFurniture.size(); j++)
+            if(listFurniture.get(j).type == Archetype.TABLE) {
+               indexTable = j;
+               break;
+            }
+         if(random(1) < 0.75)
+            listFurniture.get(i).newPosTouchFur(listFurniture.get(indexTable));
+       }
+   
+ 
+ 
       }
         
       // 4) On test les regles
@@ -105,9 +121,16 @@ boolean isColliding(Furniture fur1, Furniture fur2) {
     if(fur2.rotId%2==0)  box2 = new PVector( fur2.box3D.z, fur2.box3D.x, fur2.box3D.y); // Don't ask and I won't tell...
     else                 box2 = new PVector( fur2.box3D.x, fur2.box3D.z, fur2.box3D.y);
   
+  /*
+     return !(pos1.x - box1.x/2 - fur1.margin > pos2.x + box2.x/2 + fur2.margin || pos1.x + box1.x/2 + fur1.margin < pos2.x - box2.x/2 - fur2.margin
+          || pos1.y - box1.y/2 - fur1.margin > pos2.y + box2.y/2 + fur2.margin || pos1.y + box1.y/2 + fur1.margin < pos2.y - box2.y/2 - fur2.margin
+          || pos1.z - box1.z/2 - fur1.margin > pos2.z + box2.z/2 + fur2.margin || pos1.z + box1.z/2 + fur1.margin < pos2.z - box2.z/2 - fur2.margin );
+   
+ */  
     return !(pos1.x - box1.x/2 > pos2.x + box2.x/2 || pos1.x + box1.x/2 < pos2.x - box2.x/2
           || pos1.y - box1.y/2 > pos2.y + box2.y/2 || pos1.y + box1.y/2 < pos2.y - box2.y/2
-          || pos1.z - box1.z/2 > pos2.z + box2.z/2 || pos1.z + box1.z/2 < pos2.z - box2.z/2 );
+          || pos1.z - box1.z/2 > pos2.z + box2.z/2 || pos1.z + box1.z/2 < pos2.z - box2.z/2 );        
+  
 }
 
 void checkAccordeon() { /// TODO

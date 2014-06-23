@@ -161,7 +161,7 @@ void checkAccordeon() { /// TODO
     
     controlP5.Group grp = buttonCon.addGroup("" + i + ": " + listFurniture.get(i).name)
                 .setColorLabel(myC)
-                .setBackgroundColor(color(230))
+                .setBackgroundColor(color(255))
                 .setBackgroundHeight(10)
                 .setBarHeight(20)
                 .setId(i);
@@ -170,7 +170,7 @@ void checkAccordeon() { /// TODO
     CheckBox boxFur = buttonCon.addCheckBox("checkBox"+i+1000)
                 .setPosition(10, 20)
                 .setColorActive(color(198, 18, 48))
-                .setColorLabel(color(255))
+                .setColorLabel(color(0))
                 .setSize(20, 20)
                 .setItemsPerRow(2)
                 .setSpacingColumn(70)
@@ -183,9 +183,9 @@ void checkAccordeon() { /// TODO
                
     CheckBox boxPos = buttonCon.addCheckBox("checkBox"+i+2000)
                 .setPosition(10, 60)
-                .setColorForeground(color(120))
+                .setColorForeground(color(255))
                 .setColorActive(color(198, 18, 48))
-                .setColorLabel(color(255))
+                .setColorLabel(color(0))
                 .setSize(20, 20)
                 .setItemsPerRow(2)
                 .setSpacingColumn(70)

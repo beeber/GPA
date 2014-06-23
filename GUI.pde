@@ -203,18 +203,6 @@ void initGUI(){
       buttonCon.getTooltip().setDelay(500);
       buttonCon.getTooltip().register("sliderSofa","Changes the number of sofa.");
       
-                     buttonCon.addSlider("sliderDesk")
-       .setLabel("desk")
-       .setDecimalPrecision (0)
-       .setPosition(10,350)
-       .setSize(100,20)
-       .setRange(0,10)
-       .setNumberOfTickMarks(11) // nombre de tick
-       .setSliderMode(Slider.FIX) // fix = barre / flexible = main
-          .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-       ;
-      buttonCon.getTooltip().setDelay(500);
-      buttonCon.getTooltip().register("sliderDesk","Changes the number of desk.");
 
 
 // TOGGLE ATTRIBUTES
@@ -368,7 +356,7 @@ void initGUI(){
       buttonCon.getTooltip().register("setCamera","set camera position");
            
 // BUTTONS
-
+/*
 
           buttonCon.addBang("buttonTest")
 
@@ -394,7 +382,7 @@ void initGUI(){
      .setSize(24)
      .setFont(font)
       ;
-      
+      */
           buttonCon.addBang("loadDisposition")
        .setLabel("load disposition")
        .setPosition(width -100,530)
@@ -456,15 +444,15 @@ void initGUI(){
        buttonCon.getController("pivRadiator").moveTo("attributes");            
               
        //buttonCon.getController("accordionPiv").moveTo("attributes");        
-       buttonCon.getController("buttonTest").moveTo("global");
-       buttonCon.getController("buttonTest2").moveTo("global");
+       //buttonCon.getController("buttonTest").moveTo("global");
+       //buttonCon.getController("buttonTest2").moveTo("global");
        
        buttonCon.getController("sliderChair").moveTo("archetypes");
        buttonCon.getController("sliderShelf").moveTo("archetypes");
        buttonCon.getController("sliderCoffeeTable").moveTo("archetypes");
        buttonCon.getController("sliderTable").moveTo("archetypes");
        buttonCon.getController("sliderSofa").moveTo("archetypes");
-       buttonCon.getController("sliderDesk").moveTo("archetypes");     
+   
    
        buttonCon.getController("choiceLib").moveTo("keyword");      
        buttonCon.getController("tags").moveTo("keyword");
